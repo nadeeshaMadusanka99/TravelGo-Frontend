@@ -16,12 +16,17 @@ const Header = () => {
               src={logo}
               className="logo"
             />{' '}
-            Travel Go
+            TravelGo
           </Navbar.Brand>
-
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
-
           <Navbar.Collapse id='basic-navbar-nav'>
+          <Nav className="me-auto navContent">
+            <Nav.Link href="./">Home</Nav.Link>
+            <Nav.Link href="#services">Services</Nav.Link>
+            <Nav.Link href="#bookings">Bookings</Nav.Link>
+            <Nav.Link href="#terms">Terms & Conditions</Nav.Link>
+            <Nav.Link href="#contactus">Contact Us</Nav.Link>
+          </Nav>
             <Nav className='ms-auto'>
 
               <LinkContainer to='/login'>
