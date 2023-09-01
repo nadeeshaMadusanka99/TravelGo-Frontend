@@ -1,0 +1,23 @@
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+.logo{
+    width: 90px;
+    height: auto;
+    margin-right: 5px;
+
+}
+.navContent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    height: 60px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+    .nav-link {
+        margin-right: 20px; 
+     }
+}

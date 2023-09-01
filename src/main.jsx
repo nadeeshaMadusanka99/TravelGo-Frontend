@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import App from './App.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.scss'
-import HomeScreen from './screens/HomeScreen.jsx'
+import HomeScreen from './screens/Home/HomeScreen.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
