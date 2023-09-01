@@ -2,14 +2,14 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 import './Header.scss'
-// Import the logo image
-import logo from '../assets/LogoBlue.png';
+import logo from '../../assets/LogoBlue.png';
+import NavLinks from './NavLinks';
 
 const Header = () => {
   return (
     <header>
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
-        <Container>
+        <Container fluid={true}>
           <Navbar.Brand href="./">
             <img
               alt=""
@@ -21,14 +21,9 @@ const Header = () => {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className="me-auto navContent">
-            <Nav.Link href="./">Home</Nav.Link>
-            <Nav.Link href="#services">Services</Nav.Link>
-            <Nav.Link href="#bookings">Bookings</Nav.Link>
-            <Nav.Link href="#terms">Terms & Conditions</Nav.Link>
-            <Nav.Link href="#contactus">Contact Us</Nav.Link>
+              <NavLinks />
           </Nav>
-            <Nav className='ms-auto'>
-
+            <Nav >
               <LinkContainer to='/login'>
                 <Nav.Link>
                   <FaSignInAlt /> Sign In
