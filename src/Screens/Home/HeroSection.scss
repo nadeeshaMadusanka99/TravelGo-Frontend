@@ -1,3 +1,5 @@
+@import '../Common/main.scss';
+
 .hero-section {
     position: relative;
     height: 100vh;
@@ -11,59 +13,63 @@
       height: 100%;
       background-image: url('../../assets/Background\ Img.png');
       background-size: cover;
-      filter: brightness(0.6);
       z-index: -1;
     }
-  
+
+    .glass-container-extend{
+      @include glass-container;
+        padding: 30px; 
+        display: flex;
+    }
     .hero-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: left;
       height: 100%;
+      margin-top: 2%;
   
       h1 {
         font-size: 3rem;
         color: #fff;
-        text-align: center;
+        text-align: left;
         margin-bottom: 10px;
+        font-weight: weight("medium-l");
+        letter-spacing: 0.3px;
       }
-  
       p {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         color: #fff;
         text-align: center;
-        margin-bottom: 30px;
+        background-color: $primary-color;
+        border-radius: 35px;
+        padding: 5px 18px 5px 18px;
+        width: fit-content;
+        margin-bottom: 0.8%;
+        
       }
   
       .search-form {
         display: flex;
         align-items: center;
-
-        .glass-container {
-          background: rgba(255, 255, 255, 0.2);
-          border-radius: 10px;
-          padding: 20px;
-          display: flex;
-          flex-direction: row;
-          gap: 10px;
-          backdrop-filter: blur(7px);
-          box-shadow: 0 4px 6px rgba(144, 47, 47, 0.1);
-  
-          }
-  
+        margin: 10% auto 0 auto;
         input[type='text'],
         input[type='date'] {
-          padding: 10px;
+          padding: 13px;
           margin-right: 10px;
-          border: 1px solid rgba(255, 255, 255, 0.2);
           border-radius: 5px;
           background: none;
+          border: 2px solid rgba(255, 255, 255, 0.715);
+     
         }
+
+        input::placeholder {
+          color: #000000; /* Red color for the placeholder text */
+        }
+
   
-        button {
-          padding: 10px 20px;
-          border-radius: 5px;
+        .button-extend {
+          @include Button;
         }
       }
 
