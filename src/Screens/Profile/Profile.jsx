@@ -19,11 +19,15 @@ const profile = () => {
             <Row>
             
               <Col xs={2} className='col-change'>
-                    <Button variant="secondary" className=" glass-container-button button-extend">About Me </Button>
-                    <Button variant="primary" className="mb-4 mt-4 button-extend">My Tickets &gt;</Button>
-                    <Button variant="primary" className="button-extend">Favourites &gt;</Button>
+                  <Button variant="primary" className=" glass-container-button button-extend">About Me </Button>
+                  <LinkContainer to='/bookinghistory'>
+                    <Button variant="primary" className="mt-4 button-extend">My Tickets &gt;</Button>
+                  </LinkContainer>
+                  <LinkContainer to='/myfavourites'>
+                    <Button variant="primary" className="mt-4 button-extend">Favourites &gt;</Button>
+                  </LinkContainer>
               </Col>
-          
+           
               <Col className='col-change'>
                 <div className="glass-container-extend">
                     <Row>
