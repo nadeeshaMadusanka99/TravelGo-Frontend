@@ -1,4 +1,4 @@
-import { Container, Button, Carousel } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import './HeroSection.scss';
 
 
