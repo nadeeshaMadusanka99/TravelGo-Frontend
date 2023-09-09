@@ -15,6 +15,7 @@ import MyTicketsScreen from './screens/MyTickets/MyTickets'
 import MyFavouritesScreen from './screens/MyFavourites/MyFavourites'
 import PassengerDetails from './screens/PassengerDetails/PassengerDetails'
 import PriceBreakdown from './screens/PriceBreakdown/PriceBreakdown'
+import Payment from './screens/Payment/Payment'
 
 // Create the link element for Google Fonts
 const link = document.createElement('link');
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
       <Route path='/myfavourites' element={<MyFavouritesScreen />} />
       <Route path='/passengerdetails' element={<PassengerDetails />} />
       <Route path='/pricebreakdown' element={<PriceBreakdown />} />
+      <Route path='/payment' element={<Payment />} />
     </Route>
   )
 );

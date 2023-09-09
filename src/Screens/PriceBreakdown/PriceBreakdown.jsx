@@ -6,7 +6,7 @@ import { LinkContainer } from "react-router-bootstrap";
 const PriceBreakdown = () =>{
     return(
         <main className="pricebreakdown">
-            <Container className='pricebreakdown-container'>
+            <Container className='pricebreakdown-container mb-4'>
                 <p className='summary-heading'>Summary</p>
                 <div className="divider mb-2"></div>
                 <Row className='pricebreakdown-row'>
@@ -55,10 +55,10 @@ const PriceBreakdown = () =>{
             <Container fluid={true}>
                 <Row className="bottom-row">
                     <Col xs={4}>
-                        <p className="total">Total Price : </p>
+                        <p className="total mt-2">Total Price : </p>
                     </Col>
                     <Col xs={4}>
-                        <p className="total-value"> 3632.50 LKR</p>
+                        <p className="total-value mt-2"> 3632.50 LKR</p>
                     </Col>
                     <Col xs={4}>
                         <LinkContainer to="/payment">
