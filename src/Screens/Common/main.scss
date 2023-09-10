@@ -1,4 +1,7 @@
 @import "./variables";
+
+// #0D6EFD     This is the color from bootstrap primary button //primary color
+
 //function to get the font weight
 @function weight($weight-name){
     @return map-get($font-weights, $weight-name);
