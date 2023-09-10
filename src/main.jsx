@@ -7,9 +7,15 @@ import App from './App.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.scss'
 
-import HomeScreen from './Screens/Home/HomeScreen.jsx'
-import LoginScreen from './screens/Login/LoginScreen.jsx'
-import RegisterScreen from './screens/Register/RegisterScreen.jsx'
+
+import HomeScreen from './screens/Home/HeroSection.jsx'
+import LoginScreen from './screens/Login/Login'
+import RegisterScreen from './screens/Register/Register'
+import ProfileScreen from './screens/Profile/Profile'
+import MyTicketsScreen from './screens/MyTickets/MyTickets'
+import MyFavouritesScreen from './screens/MyFavourites/MyFavourites'
+import PassengerDetails from './screens/PassengerDetails/PassengerDetails'
+import PriceBreakdown from './screens/PriceBreakdown/PriceBreakdown'
 import ScheduleScreen from './Screens/Schedule/ScheduleScreen.jsx'
 
 // Create the link element for Google Fonts
@@ -26,7 +32,13 @@ const router = createBrowserRouter(
       <Route index={true} path='/' element={<HomeScreen />} />
       <Route path='/login' element={<LoginScreen />} /> 
       <Route path='/register' element={<RegisterScreen />} />
+      <Route path='/profile' element={<ProfileScreen />} />
+      <Route path='/bookinghistory' element={<MyTicketsScreen />} />
+      <Route path='/myfavourites' element={<MyFavouritesScreen />} />
+      <Route path='/passengerdetails' element={<PassengerDetails />} />
+      <Route path='/pricebreakdown' element={<PriceBreakdown />} />
       <Route path='/schedule' element={<ScheduleScreen />} />
+
     </Route>
   )
 );

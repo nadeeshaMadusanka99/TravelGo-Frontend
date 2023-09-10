@@ -1,0 +1,82 @@
+@import '../Common/main.scss';
+
+.profile {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+
+      .myTickets-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('../../assets/PersonalProfile .png');
+        background-size: cover;
+        z-index: 0;
+      }
+
+      p{
+        color: $text-color-shade-light;
+      }
+
+      .glass-container-extend{
+          @include glass-container;
+          box-shadow: 5px 4px 6px 0 rgba(0, 0, 0, 0.897);
+          padding: 50px; 
+          flex-direction: column;
+          height:500px;
+      }
+      .glass-container-button{
+        @include glass-container;
+        padding:0;
+        gap:0;
+        border: none;
+        height: 85px;
+    }
+ 
+      .button-extend {
+        @include Button;
+        border-radius: 15px 0 0 15px;
+        height: 85px;
+        align-items: center;
+        margin-top:40%;
+        }
+      
+        .col-change{
+            display: flex;
+            flex-direction: column;
+            padding:0;
+        }
+        .divider {
+          width: 100%;
+          height: 1px; 
+          background-color: $text-color-shade-light;
+          margin:2px 0 2px 0;
+        }
+
+        .left-title{
+            display: flex;
+            margin: 3px 0 0 0;
+            padding: 4px 0 4px 0;
+         }
+         .right-data{
+          display: flex;
+          margin: 3px 0 0 0;
+          margin-left: 50px;
+          white-space: nowrap;
+          padding: 4px 0 4px 0;
+       }
+         .main-title{
+            white-space: nowrap;
+            font-weight: weight("medium-l");
+            margin:0;
+            font-size: 1.3rem;
+         }
+         
+    }
+  

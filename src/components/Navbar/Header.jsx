@@ -2,12 +2,11 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 import './Header.scss'
-import logo from '../../assets/LogoBlue.png';
+import logo from '../../assets/LogoBlack.png';
 import NavLinks from './NavLinks';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { FaUserCircle } from 'react-icons/fa'
 import { logout } from '../../slices/authSlice';
 import { useLogoutMutation } from '../../slices/usersApiSlice';
 
@@ -40,9 +39,10 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
+      <Navbar expand='lg' collapseOnSelect className='nav-style'>
         <Container fluid={true}>
-          <Navbar.Brand href="./">
+        <LinkContainer to='/'>
+          <Navbar.Brand>
             <img
               alt=""
               src={logo}
@@ -50,13 +50,14 @@ const Header = () => {
             />{' '}
             TravelGo
           </Navbar.Brand>
+          </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
-            <Nav className="me-auto navContent">
+          
+            <Nav className="me-auto nav-content">
               <NavLinks />
             </Nav>
             <Nav >
-
               {userInfo ? (
                 // Render user icon when the user is logged in
                 <>
