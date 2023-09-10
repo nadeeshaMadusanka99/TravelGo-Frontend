@@ -7,6 +7,7 @@ import App from './App.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.scss'
 
+
 import HomeScreen from './screens/Home/HeroSection.jsx'
 import LoginScreen from './screens/Login/Login'
 import RegisterScreen from './screens/Register/Register'
@@ -15,6 +16,7 @@ import MyTicketsScreen from './screens/MyTickets/MyTickets'
 import MyFavouritesScreen from './screens/MyFavourites/MyFavourites'
 import PassengerDetails from './screens/PassengerDetails/PassengerDetails'
 import PriceBreakdown from './screens/PriceBreakdown/PriceBreakdown'
+import ScheduleScreen from './Screens/Schedule/ScheduleScreen.jsx'
 
 // Create the link element for Google Fonts
 const link = document.createElement('link');
@@ -35,6 +37,8 @@ const router = createBrowserRouter(
       <Route path='/myfavourites' element={<MyFavouritesScreen />} />
       <Route path='/passengerdetails' element={<PassengerDetails />} />
       <Route path='/pricebreakdown' element={<PriceBreakdown />} />
+      <Route path='/schedule' element={<ScheduleScreen />} />
+
     </Route>
   )
 );
