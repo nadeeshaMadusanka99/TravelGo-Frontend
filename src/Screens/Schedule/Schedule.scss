@@ -1,0 +1,243 @@
+@import '../Common/main.scss';
+
+.schedule {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 90vh;
+  overflow: hidden;
+
+  .schedule-background {
+    position: absolute;
+    top: 10;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    z-index: 0;
+    margin-top: 150px;
+    
+  }
+  .map-container {
+    
+    position: relative;
+    border-left: 2px solid rgba(0, 0, 0, 0.636);
+    margin: 0 6cm;
+    height: 18%;
+    box-shadow: 3px 3px 2px 2px black; // A
+  }
+  .container {
+    padding: 0 1cm;
+  
+    .row {
+      display: flex;
+      align-items: center;
+  
+      .train-details {
+        flex: 1; /* Take up remaining space in the row */
+        text-align:right;
+  
+        .body-paragraph {
+          margin-bottom: 0.01rem;
+        }
+  
+        .gray-paragraph {
+          color: gray;
+          margin-bottom: 0.01rem;
+        }
+      }
+  
+      .station-details {
+        flex: 1; /* Take up remaining space in the row */
+        text-align: left;
+        border-left: 5px solid black; /* Add vertical line */
+  
+        .gray-paragraph {
+          color: gray;
+          margin-bottom: 0.01rem;
+        }
+      }
+
+      .short-map{
+        .lines{
+          width:100%;
+          height:45px;
+          position: relative;
+
+          .circle{
+            height:40px;
+            width:40px;
+            border:2px solid #080808;
+            left:0;
+
+
+          }
+        }
+        .lines::after, .lines::before{
+          content: "";
+          position: absolute;
+          margin: auto;
+          height: 2px;
+          background: #080808;
+          width: 45%;
+          top:45%;
+        }
+        .lines::after{
+          left: 0;
+        }
+        .lines::before{
+          right: 0;
+        }
+      }
+    }
+  }
+  
+  .text-container {
+    margin-top: 0.7cm;
+    display: flex;
+    align-items: center;
+    margin-left: 3cm;
+
+    h1 {
+      color:$primary-color; // rgb(0, 100, 188);
+      font-weight: 600;
+    }
+    .radio-switch {
+      text-align: right;
+      margin-right: 1cm;
+      margin-left: 5cm;
+      position: relative;
+      font-weight: 300;
+
+      label {
+        color: rgb(203, 5, 5);
+        font-weight: 600;
+      }
+    }
+  }
+
+  .custom-switch {
+    margin-left: 1cm;
+  }
+
+  .choose-class {
+    margin-top: 1cm;
+    margin-left: 3cm;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .book-container {
+    .btn-inc {
+      margin-top: 5px;
+     
+      border-radius: 100%;
+      width: 25px;
+      height: 25px;
+      display: flex;            // Use flexbox
+      justify-content: center;  // Center horizontally
+      align-items: center;
+      margin-left: 1cm;
+
+      // .btn {
+      //   border-radius: 50%;
+      //   width: 25px;
+      //   height: 25px;
+      // }
+    }
+    .btn-dec{
+      @extend .btn-inc;
+      margin-bottom: 5px;
+
+    }
+
+    .booking-ele{
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Vertically center content */
+      align-items: center; /* Horizontally center content */
+      text-align: center; 
+      color:grey;
+
+       p{
+        margin-bottom: 0.002cm;
+      }
+
+    }
+    .booking-class {
+      @extend .booking-ele; /* Extend the base styles from .booking-ele */
+      color: black; /* Override the color property to set it to black */
+      font-weight: 600;
+      font-size: larger;
+      justify-content: flex-start; /* Align content to the start (left) */
+      align-items: flex-start; /* Align items to the start (left) *//* Align text to the left within the flex container */
+    }
+    .booking-count{
+      @extend .booking-ele;
+      justify-content: flex-start; /* Align content to the start (left) */
+      align-items: flex-start; 
+    }
+    
+    .ticket-count{
+      display: flex; /* Use flexbox layout */
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      
+      border: 2px solid $primary-color;
+      color: black;
+      max-width: 35px;
+      max-height: 50px;
+    }
+  }
+  .choose-class-container {
+    display: flex;
+    flex-direction: column;// Evenly space the elements
+    align-items: center; // Vertically center the elements
+    //margin-top: 1cm; // Add margin to the top
+    margin-bottom: 0.1cm;
+    
+  
+    .choose-class {
+      flex: 1; // Allow each element to grow and fill available space
+      max-width: 50%; // Adjust the width based on your desired spacing
+      max-height: 1.8cm;
+      box-shadow: 3px 3px 2px 2px black; // Apply box shadow
+      margin-top: 0.2cm;
+      margin-right: 10%;
+
+    }
+  }
+  .seat-para{
+    padding-top: 0.8cm;
+    font-weight: 500;
+    }
+  .ticket-count{
+    @extend .seat-para;
+    font-weight : 600;
+    font-size: larger;
+    margin-right: 0.3cm;
+  }
+  .ticket-price{
+    font-weight : 600;
+    font-size: larger;
+    margin-right: 0.3cm;
+    font-style: italic;
+    color: $primary-color ;
+  }
+  .cost-para{
+    color: gray;
+    font-weight: 500;
+    font-style: italic;
+    }
+  .btn-book{
+    width: 150px;
+    height: 40px;
+    display: flex;            // Use flexbox
+    justify-content: center;  // Center horizontally
+    align-items: center;
+  }
+  
+  
+}

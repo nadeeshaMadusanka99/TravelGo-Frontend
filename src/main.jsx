@@ -10,6 +10,7 @@ import './index.scss'
 import HomeScreen from './Screens/Home/HomeScreen.jsx'
 import LoginScreen from './screens/Login/LoginScreen.jsx'
 import RegisterScreen from './screens/Register/RegisterScreen.jsx'
+import ScheduleScreen from './Screens/Schedule/ScheduleScreen.jsx'
 
 // Create the link element for Google Fonts
 const link = document.createElement('link');
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route index={true} path='/' element={<HomeScreen />} />
       <Route path='/login' element={<LoginScreen />} /> 
       <Route path='/register' element={<RegisterScreen />} />
+      <Route path='/schedule' element={<ScheduleScreen />} />
     </Route>
   )
 );
