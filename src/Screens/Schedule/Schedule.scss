@@ -25,7 +25,7 @@
     border-left: 2px solid rgba(0, 0, 0, 0.329);
     margin: 0 6cm;
     height: 18%;
-    box-shadow: 3px 3px 2px 2px rgba(0, 0, 0, 0.586); // A
+    box-shadow: 3px 3px 2px 2px rgba(0, 0, 0, 0.586); // Apply box shadow
   }
   .container {
     padding: 0 1cm;
@@ -35,7 +35,7 @@
       align-items: center;
   
       .train-details {
-        flex: 1; /* Take up remaining space in the row */
+        flex: 1;
         text-align:right;
   
         .body-paragraph {
@@ -49,9 +49,9 @@
       }
   
       .station-details {
-        flex: 1; /* Take up remaining space in the row */
+        flex: 1;
         text-align: left;
-        border-left: 5px solid black; /* Add vertical line */
+        border-left: 5px solid black; 
   
         .gray-paragraph {
           color: gray;
@@ -78,7 +78,7 @@
       .short-map {
         .lines {
           width: 100%;
-          height: 20px; /* Adjust the height of the line as needed */
+          height: 20px; 
           position: relative;
           transform: translateY(-90%);
       
@@ -88,19 +88,19 @@
             width: 100%;
             top: 50%;
             transform: translateY(-50%);
-            border-bottom: 2px dotted #080808; /* Create a dotted line */
+            border-bottom: 2px dotted #080808; 
           }
       
           .circle {
-            width: 20px; /* Adjust the size of the circles as needed */
-            height: 20px; /* Adjust the size of the circles as needed */
-            background-image: url('../../assets/finalstate.png' ); /* Set the image path */
-            background-size: cover; /* Scale the image to cover the circle */
-            background-repeat: no-repeat; /* Prevent image repetition */
+            width: 20px; 
+            height: 20px; 
+            background-image: url('../../assets/finalstate.png' ); 
+            background-size: cover; 
+            background-repeat: no-repeat; 
             border-radius: 50%;
             position: absolute;
             top: 50%;
-            left: calc(25% - 10px); /* Adjust the positioning of circles as needed */
+            left: calc(25% - 10px); 
             transform: translateY(-50%);
 
             .next-station{
@@ -145,14 +145,14 @@
         }
         .crowd-line{
           width: 100%;
-          height: 6px; /* Adjust the height of the line as needed */
+          height: 6px; 
           position: relative ;
           transform: translateY(750%);
 
           .crowd-rectangle {
             height: 100%;
             position: absolute;
-            width: 55px; /* Adjust the width of each rectangle as needed */
+            width: 55px; 
           }
         
           .one {
@@ -219,7 +219,7 @@
     margin-left: 3cm;
 
     h1 {
-      color:$primary-color; // rgb(0, 100, 188);
+      color:$primary-color; 
       font-weight: 600;
     }
     .radio-switch {
@@ -260,11 +260,7 @@
       align-items: center;
       margin-left: 1cm;
 
-      // .btn {
-      //   border-radius: 50%;
-      //   width: 25px;
-      //   height: 25px;
-      // }
+     
     }
     .btn-dec{
       @extend .btn-inc;
@@ -286,23 +282,23 @@
 
     }
     .booking-class {
-      @extend .booking-ele; /* Extend the base styles from .booking-ele */
-      color: black; /* Override the color property to set it to black */
+      @extend .booking-ele; 
+      color: black; // Overriding the color property to set it to black 
       font-weight: 600;
       font-size: larger;
-      justify-content: flex-start; /* Align content to the start (left) */
-      align-items: flex-start; /* Align items to the start (left) *//* Align text to the left within the flex container */
+      justify-content: flex-start; //Align content to the start (left) 
+      align-items: flex-start; 
     }
     .booking-count{
       @extend .booking-ele;
-      justify-content: flex-start; /* Align content to the start (left) */
+      justify-content: flex-start; 
       align-items: flex-start; 
     }
     
     .ticket-count{
-      display: flex; /* Use flexbox layout */
-      justify-content: center; /* Center horizontally */
-      align-items: center; /* Center vertically */
+      display: flex;
+      justify-content: center; //Center horizontally 
+      align-items: center; //Center vertically 
       
       border: 2px solid $primary-color;
       color: black;
@@ -313,16 +309,16 @@
   .choose-class-container {
     display: flex;
     flex-direction: column;// Evenly space the elements
-    align-items: center; // Vertically center the elements
-    //margin-top: 1cm; // Add margin to the top
+    align-items: center; 
+  
     margin-bottom: 0.1cm;
     
   
     .choose-class {
       flex: 1; // Allow each element to grow and fill available space
-      max-width: 50%; // Adjust the width based on your desired spacing
+      max-width: 50%; 
       max-height: 1.8cm;
-      box-shadow: 3px 3px 2px 2px rgba(0, 0, 0, 0.415); // Apply box shadow
+      box-shadow: 3px 3px 2px 2px rgba(0, 0, 0, 0.415); 
       margin-top: 0.2cm;
       margin-right: 10%;
 
@@ -353,8 +349,8 @@
   .btn-book{
     width: 150px;
     height: 40px;
-    display: flex;            // Use flexbox
-    justify-content: center;  // Center horizontally
+    display: flex;           
+    justify-content: center;  
     align-items: center;
   }
   
