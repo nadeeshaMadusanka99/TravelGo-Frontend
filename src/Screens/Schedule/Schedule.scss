@@ -22,10 +22,10 @@
   .map-container {
     
     position: relative;
-    border-left: 2px solid rgba(0, 0, 0, 0.636);
+    border-left: 2px solid rgba(0, 0, 0, 0.329);
     margin: 0 6cm;
     height: 18%;
-    box-shadow: 3px 3px 2px 2px black; // A
+    box-shadow: 3px 3px 2px 2px rgba(0, 0, 0, 0.586); // A
   }
   .container {
     padding: 0 1cm;
@@ -322,7 +322,7 @@
       flex: 1; // Allow each element to grow and fill available space
       max-width: 50%; // Adjust the width based on your desired spacing
       max-height: 1.8cm;
-      box-shadow: 3px 3px 2px 2px black; // Apply box shadow
+      box-shadow: 3px 3px 2px 2px rgba(0, 0, 0, 0.415); // Apply box shadow
       margin-top: 0.2cm;
       margin-right: 10%;
 
