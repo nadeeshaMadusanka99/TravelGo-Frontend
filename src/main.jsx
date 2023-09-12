@@ -20,6 +20,8 @@ import PriceBreakdown from './screens/PriceBreakdown/PriceBreakdown'
 import ScheduleScreen from './Screens/Schedule/ScheduleScreen.jsx'
 import Payment from './screens/Payment/Payment'
 import Eticket from './screens/ETicket/Eticket'
+import BookingScreen from './Screens/Booking/BookingScreen';
+
 
 // Create the link element for Google Fonts
 const link = document.createElement('link');
@@ -44,6 +46,7 @@ const router = createBrowserRouter(
       <Route path='/payment' element={<Payment />} />
       <Route path='/eticket' element={<Eticket />} />
       <Route path='/seatview' element={<SeatView />} />
+      <Route path='/booking' element={<BookingScreen />} />
     </Route>
   )
 );
