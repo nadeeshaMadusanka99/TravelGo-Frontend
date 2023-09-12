@@ -75,19 +75,46 @@ const Schedule = () => {
               </Col>
               
               <Col className='station-details' xs={2}>               
-                  <p className='gray-paragraph'>Station</p>            
-                  <p className='gray-paragraph'>Arrival</p>
-                  <p className='gray-paragraph'>Departure</p>                
-                  <p className='gray-paragraph'>Crowd</p>               
+                  <p className='station-paragraph' >Station</p>            
+                  <p className='arrival-paragraph'>Arrival</p>
+                  <p className='departure-paragraph'>Departure</p>                
+                  <p className='crowd-paragraph'>Crowd</p>               
               </Col>
               <Col xs={7} className='short-map'>
-                <div>
-                 <div className='lines'>
-                  <div className='circle'>
-
+                <div className='lines'>
+                  <div className='circle' >
+                    <p className='next-station'>Colombo Fort</p>
+                    <p className='arrival-time'>06:30 am</p>
+                    <p className='departure-time'>06:45 am</p>
                   </div>
-                 </div> 
-                </div>
+                  <div className='circle' >
+                  <p className='next-station'>Mount Lavinia</p>
+                  <p className='arrival-time'>07:15 am</p>
+                  <p className='departure-time'>07:17 am</p>
+                  </div>
+                  <div className='circle' >
+                  <p className='next-station'>Ambalangoda</p>
+                  <p className='arrival-time'>09:15 am</p>
+                  <p className='departure-time'>09:17 am</p>
+                  </div>
+                  <div className='circle' >
+                  <p className='next-station'>Beliatta</p>
+                  <p className='arrival-time'>11:15 am</p>
+                  <p className='departure-time'></p>
+                  </div>
+              </div>
+              <div className='crowd-line'>
+              <div className="crowd-rectangle one"></div>
+              <div className="crowd-rectangle two"></div>
+              <div className="crowd-rectangle three"></div>
+              <div className="crowd-rectangle four"></div>
+              <div className="crowd-rectangle five"></div>
+              <div className="crowd-rectangle six"></div>
+              <div className="crowd-rectangle seven"></div>
+              <div className="crowd-rectangle eight"></div>
+              <div className="crowd-rectangle nine"></div>
+              <div className="crowd-rectangle ten"></div>
+              </div>
               </Col>
               
             </Row>
