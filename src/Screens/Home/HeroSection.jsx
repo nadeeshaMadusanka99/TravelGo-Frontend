@@ -9,9 +9,10 @@ const HeroSection = () => {
       <div className="hero-background"></div>
 
       <Container className="hero-content">
-      <p>Hello Travellers</p>
+      <div><p>Hello Travellers</p>
         <h1>make your booking<br />
-        experience easy!</h1>
+        experience easy!</h1></div>
+      
         <div className="search-form">
           <div className="glass-container-extend">
             <input type="text" placeholder="From" />
