@@ -1,0 +1,87 @@
+@import '../Common/main.scss';
+.eticket {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+.eticket-container{
+    @include blue-backdrop;
+    box-shadow: none;
+    background-color: #b29e5e51;
+    margin:auto;
+}
+
+.eticket-heading{
+    font-size: 1.4rem;
+    font-weight: weight(bold);
+    margin-bottom: 2px;   
+}
+
+.heading-container{
+    margin-top: 6%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $successful-color;
+}
+.heading{
+    font-size: 1.8rem;
+    font-weight: weight(bold);
+    letter-spacing: 0.2rem;
+}
+.success-icon{
+    font-size: 3.0rem;
+    margin-bottom: 2%;
+}
+.important-notice{
+    color: $important-color;
+    font-weight: weight(medium-s);
+}
+.container-header{
+    background-color: #05448b69;
+    border-radius: 10px 10px 0px 0px;
+}
+.logo-inside{
+    width: 60%;
+    height: auto;
+    margin-right: 2px;
+    filter: brightness(1.5)
+}
+.header-text{
+    color: $text-color-light;
+    font-size: 2.6rem;
+    margin: 0 auto 0 auto;
+    font-weight: weight(medium-s);
+}
+.content-text{
+    font-size: 1.3rem;
+}
+.content-text-data{
+    font-size: 1.2rem;
+    font-weight: weight(bold);
+}
+.seat-text-data{
+    @extend .content-text-data;
+    padding: 5px;
+}
+.box{
+    background-color: #b29e5eb2;
+    border-radius: 10px;
+}
+.qr{
+    width: 90%;
+    margin-bottom: 15%;
+}
+.download-btn{
+
+    &:hover{
+        color: #b29e5eb2;
+        cursor: pointer;
+    }
+}
+.main-row{
+    margin:0;
+}

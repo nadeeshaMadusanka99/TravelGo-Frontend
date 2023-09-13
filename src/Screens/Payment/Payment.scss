@@ -1,0 +1,112 @@
+@import '../Common/main.scss';
+.payment {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+
+    .payment-container{
+        @include blue-backdrop;
+    }
+}
+.content-inside{
+    margin: 2% 0 0 3%;
+}
+.centered-container {
+    display: flex;
+    align-items: center;
+    margin: 1% 0 0 0;
+  }
+  
+.card-icon {
+    margin-right: 10px; 
+  }
+.divider {
+    width: 100%;
+    height: 1.5px; 
+    background-color: $secondary-color;
+}
+.input-headings{
+    font-weight: weight(medium-l);
+    margin-bottom: 10px;
+}
+.new-card{
+    background-color: #057aff43;
+    padding: 5px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.086);
+}
+.form-check-payment-methods{
+    font-size: 2rem;
+}
+.new-card-content{
+    margin: auto auto auto 3%;
+    padding:1%;
+}
+.form-check-input-radio{
+    margin: 3px;
+    width: 17px;
+    height: 17px;
+}
+
+.card-inputs{
+    border: 1.6px solid $primary-color;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    width: 94.6%;
+    height: 33px;
+    margin:5px 0 10px 0;
+}
+.card-inputs-date{
+    @extend .card-inputs;
+    width: 45%;
+}
+.slash{
+    margin: 0 10px 0 10px;
+    font-size: 1.9rem;
+    color: $primary-color;
+}
+.form-check-input{
+    border: 1.6px solid $primary-color;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 100%;
+}
+.divider-outside{
+    width: 100%;
+    height: 2.5px; 
+    background-color: $primary-color;
+    margin-top: 19px;
+    margin-bottom: 10px;
+}
+.form-check{
+    margin-bottom:2%;
+    margin-top: 1%;
+}
+.terms-check{
+    display: flex;
+    align-items: left;
+
+}
+.terms-check-label{
+    font-size: 1.1rem;
+    font-weight: weight(medium-l);
+}
+.checkout-btn{
+    margin-left: 50%;
+    margin-bottom: 3%;
+    align-items: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.total , .total-value{
+    font-size: 1.2rem;
+    font-weight: weight(bold);
+    margin-left: 30%;
+}
+.total{
+    margin-left: 76%;
+}

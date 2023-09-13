@@ -4,20 +4,85 @@ header {
     z-index: 1;
 }
 .logo{
-    width: 90px;
+    width: 95px;
     height: auto;
-    margin-right: 5px;
-    filter: brightness(1.4)
+    margin-right: 2px;
+    filter: brightness(1.5)
+}
+.nav-style{
+    height: 70px;
+    background: linear-gradient(to top, transparent , #ffffff ); 
+    box-shadow: 0 0 10px rgb(0, 0, 0);
 
 }
-.navContent{
+.nav-content{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: auto;
-    height: 60px;
-    
+    height: 80px;
     .nav-link {
         margin-right: 20px; 
+        color: #000000;
+        font-size: 1.05rem;
+        &:hover{
+            color: #0578FF;
+            ;
+        }
      }
+}
+#name{
+    font-weight: bold;
+    margin-right: 30px;
+    &:hover{
+        color: #0578FF;
+    }
+}
+
+@media (max-width :1056px) and ( min-width: 992px){
+
+    .header{
+        
+    }
+    .nav-content{
+        .nav-link{
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+    }
+    // Define a custom class to reduce the size of the icon and text
+    .small-icon-link {  
+        svg {
+            font-size: 16px; // Adjust the font size as needed
+            margin-right: 1px; // Optional: Add some spacing between the icon and text
+        }
+  
+    // Adjust the font size of the text
+    .nav-link-text {
+      font-size: 12px; // Adjust the font size as needed
+     }
+    }
+  
+    // Apply the custom class to the Nav.Link
+    .nav-link {
+    &.small-icon-link {
+      // Include the custom styles
+      svg {
+        font-size: 16px; // Adjust the font size as needed
+        margin-right: 1px; // Optional: Add some spacing between the icon and text
+    }
+    }
+  }
+  .logo{
+        width: 80px;
+        height: auto;
+        margin-right: 1px;
+        
+    
+  }
+
+}
+@media (max-width :992px){
+    // Define a custom class to reduce the size of the icon and text
+    
 }

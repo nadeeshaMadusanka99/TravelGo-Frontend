@@ -31,7 +31,6 @@
       }
       .glass-container-extend{
           @include glass-container;
-          
           margin: 10% 12% 15% auto; 
           max-width: 420px; 
           width: 90%;
@@ -122,4 +121,54 @@
       
     }
   }
+
+@media (max-width:920px){
+  
+  .login-background{
+    justify-content: center;
+    align-items: center;
+    .large-text-container{
+      display: none;
+    }
+    .glass-container-extend{
+      
+        width: 80%;
+        height: 70%;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        margin-left: 9%;
+        margin-right: 9%;
+        margin-top: 30%;
+        .name-row{
+          flex-direction: column;
+          width: 100%;
+          
+          
+          .name-pass{
+            width: 100%;
+            align-items: center;
+            margin-top: 4px;
+          }
+        }
+        .name-pass{
+          width: 100%;
+          margin-top: 3px;
+          align-items: center;
+  
+        }
+        .button-extend{
+          max-width: 80%;
+          max-height: 50px;
+          justify-content: center;
+          align-items: center;
+          
+        }
+        .inputs{
+          max-width: 80%;
+        }
+      }
+    }
+  }
+
   
