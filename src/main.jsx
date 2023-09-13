@@ -10,7 +10,7 @@ import './index.scss'
 
 import HomeScreen from './Screens/Home/HeroSection.jsx'
 import LoginScreen from './Screens/Login/Login'
-import RegisterScreen from './Screens/Register/Register'
+import RegisterScreen from './Screens/Register/Register.jsx'
 import ProfileScreen from './Screens/Profile/Profile'
 import SeatView from './Screens/SeatView/SeatView'
 import MyTicketsScreen from './Screens/MyTickets/MyTickets'
