@@ -5,6 +5,19 @@ import './Booking.scss';
 
 
 const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
+  const colors = ['#e6f360', '#a7b047', '#e9621e', '#ff0000', '#ff0000', '#e9621e', '#ff9800', '#a7b047', '#e6f360', '#e6f360'];
+
+  const crowdRectangleStyles = Array.from({ length: 10 }).map((_, index) => ({
+    backgroundColor: colors[index],
+    height: '100%',
+    width: '9.7%',
+    position: 'relative',
+    left: `calc(${index + 1} * 10% - 10%)`,
+    bottom: `calc(${index + 1} * 100%)`,
+  }));
+  
+ 
+  
   return (
     <div className="map-container">
       <Container>
@@ -45,7 +58,7 @@ const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
             </div>
             <div className="crowd-line">
               {Array.from({ length: 10 }).map((_, index) => (
-                <div className={`crowd-rectangle ${index + 1}`} key={index}></div>
+                <div className={`crowd-rectangle ${index + 1}`} key={index} style={crowdRectangleStyles[index]}></div>
               ))}
             </div>
           </Col>

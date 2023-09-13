@@ -1,5 +1,4 @@
 @import '../Common/main.scss';
-$colors: #e6f360, #a7b047, #e9621e, #b1605b, #b05927, #e9621e, #ff9800, #a7b047, #e6f360, #e6f360;
 
 .booking{
     display: flex;
@@ -201,18 +200,7 @@ $colors: #e6f360, #a7b047, #e9621e, #b1605b, #b05927, #e9621e, #ff9800, #a7b047,
                   width: 100%;
                   height: 8px; 
                   position: relative ;
-                  transform: translateY(600%);
-
-                  @for $i from 1 through length($colors) {
-                    .crowd-rectangle:nth-child(#{$i}) {
-                      background-color: nth($colors, $i);
-                      height: 100%;
-                      width:9.7%;
-                      position: relative;
-                      left: calc(#{$i} * 10% - 10%);
-                      bottom: calc(#{$i} * 100% );
-                    }
-                  }                 
+                  transform: translateY(600%);               
                 }
         
               }
