@@ -8,18 +8,20 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.scss'
 
 
-import HomeScreen from './screens/Home/HeroSection.jsx'
-import LoginScreen from './screens/Login/Login'
-import RegisterScreen from './screens/Register/Register'
-import ProfileScreen from './screens/Profile/Profile'
-import SeatView from './screens/SeatView/SeatView'
-import MyTicketsScreen from './screens/MyTickets/MyTickets'
-import MyFavouritesScreen from './screens/MyFavourites/MyFavourites'
-import PassengerDetails from './screens/PassengerDetails/PassengerDetails'
-import PriceBreakdown from './screens/PriceBreakdown/PriceBreakdown'
+import HomeScreen from './Screens/Home/HeroSection.jsx'
+import LoginScreen from './Screens/Login/Login'
+import RegisterScreen from './Screens/Register/Register.jsx'
+import ProfileScreen from './Screens/Profile/Profile'
+import SeatView from './Screens/SeatView/SeatView'
+import MyTicketsScreen from './Screens/MyTickets/MyTickets'
+import MyFavouritesScreen from './Screens/MyFavourites/MyFavourites'
+import PassengerDetails from './Screens/PassengerDetails/PassengerDetails'
+import PriceBreakdown from './Screens/PriceBreakdown/PriceBreakdown'
 import ScheduleScreen from './Screens/Schedule/ScheduleScreen.jsx'
-import Payment from './screens/Payment/Payment'
-import Eticket from './screens/ETicket/Eticket'
+import Payment from './Screens/Payment/Payment'
+import Eticket from './Screens/ETicket/Eticket'
+import BookingScreen from './Screens/Booking/BookingScreen';
+
 
 // Create the link element for Google Fonts
 const link = document.createElement('link');
@@ -44,6 +46,7 @@ const router = createBrowserRouter(
       <Route path='/payment' element={<Payment />} />
       <Route path='/eticket' element={<Eticket />} />
       <Route path='/seatview' element={<SeatView />} />
+      <Route path='/booking' element={<BookingScreen />} />
     </Route>
   )
 );

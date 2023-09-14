@@ -8,9 +8,9 @@ const PriceBreakdown = () =>{
         <main className="pricebreakdown">
             <Container className='pricebreakdown-container mb-4'>
                 <p className='summary-heading'>Summary</p>
-                <div className="divider mb-2"></div>
+                <div className="divider-upper mb-2"></div>
                 <Row className='pricebreakdown-row'>
-                    <Col className='pricebreakdown-col' xs={4}>
+                    <Col className='pricebreakdown-col-left' xs={4}>
                         <p className="left-headings">Train Number & Name</p>
                         <p className="left-headings">Start Station</p>
                         <p className="left-headings">End Station</p>
@@ -21,9 +21,9 @@ const PriceBreakdown = () =>{
                         <p className="left-headings">Price Per Seat</p>
                         <p className="left-headings">Discounts</p>
                     </Col>
-                    <Col className='pricebreakdown-col' xs={4}>
+                    <Col className='pricebreakdown-col-mid' xs={4}>
                     </Col>
-                    <Col className='pricebreakdown-col' xs={4}>
+                    <Col className='pricebreakdown-col-right' xs={4}>
                         <p className="right-data">8057 Galu Kumari</p>
                         <p className="right-data">Colombo Fort</p>
                         <p className="right-data">Ambalangoda</p>
@@ -35,32 +35,40 @@ const PriceBreakdown = () =>{
                         <p className="right-data-select">Select</p>
                     </Col>
                 </Row>
-                <div className="divider mb-2"></div>
+                <div className="divider-below mb-2"></div>
                 <Row className='pricebreakdown-row'>
-                    <Col className='pricebreakdown-col' xs={4}>
+                    <Col className='pricebreakdown-col-left' xs={4}>
+                    <div className="sum-charge">
                         <p className="left-headings">Seat Charges</p>
                         <p className="left-headings">Taxes</p>
                         <p className="left-headings">Booking Charges</p>
+                    </div>
+                        
                     </Col>
-                    <Col className='pricebreakdown-col' xs={4}>
+                    <Col className='pricebreakdown-col-mid' xs={4}>
                     </Col>
-                    <Col className='pricebreakdown-col' xs={4}>
+                    <Col className='pricebreakdown-col-right' xs={4}>
+                        <div className="sum-charge">
                         <p className="right-data">3100 LKR</p>
                         <p className="right-data">232.50 LKR</p>
                         <p className="right-data">300 LKR</p>
+                        </div>
                     </Col>
                 </Row>
             </Container>
             <div className="divider-outside mb-2"></div>
             <Container fluid={true}>
                 <Row className="bottom-row">
-                    <Col xs={4}>
-                        <p className="total mt-2">Total Price : </p>
+                    <Col xs={4} className="price-colomn">
+                        
+                        <p className="total-a mt-2">Total Price : </p>
+                       
+                        
                     </Col>
-                    <Col xs={4}>
-                        <p className="total-value mt-2"> 3632.50 LKR</p>
+                    <Col xs={4} className="price-colomn">
+                        <p className="total-val mt-2"> 3632.50 LKR</p>
                     </Col>
-                    <Col xs={4}>
+                    <Col xs={4} className="checkout">
                         <LinkContainer to="/payment">
                             <button className="btn btn-primary btn-block btn-lg checkout-btn">Checkout</button>
                         </LinkContainer>

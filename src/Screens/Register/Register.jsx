@@ -73,6 +73,7 @@ const Register = () => {
               <div className="name-pass">
                 <label htmlFor="firstName">First Name</label>
                 <input
+                  className='inputs'
                   type="text"
                   value={firstName}
                   id="firstName"
@@ -85,6 +86,7 @@ const Register = () => {
               <div className="name-pass">
                 <label htmlFor="lastName">Last Name</label>
                 <input
+                  className='inputs'
                   type="text"
                   id="lastName"
                   name="lastName"
@@ -99,6 +101,7 @@ const Register = () => {
             <div className="name-pass">
               <label htmlFor="email">Email Address</label>
               <input
+                className='inputs'
                 type="email"
                 id="email"
                 name="email"
@@ -111,6 +114,7 @@ const Register = () => {
             <div className="name-pass">
               <label htmlFor="password">Password</label>
               <input
+                className='inputs'
                 type="password"
                 id="password"
                 name="password"
@@ -123,6 +127,7 @@ const Register = () => {
             <div className="name-pass">
               <label htmlFor="confirmPassword">Confirm Password</label>
               <input
+                className='inputs'
                 type="password"
                 id="confirmPassword"
                 name="confirmPassword"
@@ -135,8 +140,8 @@ const Register = () => {
             <div className="register-terms">
               <p className="signup-link">
                 Already have an account?<br />
-                <LinkContainer className='register' to='/login'>
-                  <Nav.Link>Log In Here</Nav.Link>
+                <LinkContainer className='register-link' to='/login'>
+                  <Nav.Link className="login_link">Log In Here</Nav.Link>
                 </LinkContainer>
               </p>
 

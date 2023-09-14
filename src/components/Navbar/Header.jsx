@@ -73,16 +73,17 @@ const Header = () => {
                 <>
 
                   <LinkContainer to='/login'>
-                    <Nav.Link>
-                      <FaSignInAlt /> Sign In
+                    <Nav.Link className="small-icon-link">
+                      <FaSignInAlt   /> <span className="nav-link-text">Sign In</span>
                     </Nav.Link>
                   </LinkContainer>
 
-                  <LinkContainer to='/register'>
-                    <Nav.Link>
-                      <FaSignOutAlt /> Sign Up
+                  <LinkContainer to="/register">
+                   <Nav.Link className="small-icon-link">
+                      <FaSignOutAlt /> <span className="nav-link-text">Sign Up</span>
                     </Nav.Link>
                   </LinkContainer>
+
 
                 </>
               )}
