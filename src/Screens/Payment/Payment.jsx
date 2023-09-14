@@ -9,7 +9,7 @@ const Payment = () =>{
     return(
         <main className="payment">
             <Container className='payment-container'>
-                <div className="content-inside">
+                <div className="content-inside-upper">
                     <p className='payment-heading'>Payment Method</p>
                     <div className="centered-container">
                             <FaRegCreditCard size="1.5rem" className="card-icon" />
@@ -29,7 +29,7 @@ const Payment = () =>{
                         </div>
                     </div>
                 <div className="divider"></div>
-                <div className="content-inside">
+                <div className="content-inside-bottom">
                     <div className="new-card mb-4">
                         <p className="new-card-content">
                             <FaRegCreditCard size="1.5rem" className="card-icon" />
@@ -38,15 +38,15 @@ const Payment = () =>{
                     </div>
                     <form className="card-form">
                         <Row>
-                            <Col xs={6}>
+                            <Col className="card-number">
                                 <div className="form-group">
-                                    <label htmlFor="card-number">Card Number</label>
+                                    <label htmlFor="card-number" className="card-label">Card Number</label>
                                     <input type="text" className="card-inputs" id="card-number"  />
                                 </div>
                             </Col>
-                            <Col xs={6}>
+                            <Col className="card-holder">
                                 <div className="form-group">
-                                    <label htmlFor="card-holder">Card Holder's Name</label>
+                                    <label htmlFor="card-holder" className="card-label">Card Holder's Name</label>
                                     <input type="text" className="card-inputs" id="card-holder" />
                                 </div>
                             </Col>
@@ -54,7 +54,7 @@ const Payment = () =>{
                         <Row>
                             <Col xs={6}>
                             <div className="form-group">
-                         <label htmlFor="card-expiry">Card Expiry Date</label>
+                         <label htmlFor="card-expiry" className="card-label">Card Expiry Date</label>
                                 <div className="d-flex">
                                     <input
                                         type="text"
@@ -77,8 +77,8 @@ const Payment = () =>{
                             </Col>
                             <Col xs={6}>
                                 <div className="form-group">
-                                    <label htmlFor="card-cvv">CVV</label>
-                                    <input type="text" className="card-inputs" id="card-cvv"  />
+                                    <label htmlFor="card-cvv" className="card-label">CVV</label>
+                                    <input type="text" className="card-inputs-cvv" id="card-cvv"  />
                                 </div>
                             </Col>
                         </Row>
@@ -105,10 +105,11 @@ const Payment = () =>{
 
             <Container fluid={true}>
                 <Row className="bottom-row">
-                    <Col xs={4}>
+                    <Col  className="total-price" xs={4}>
                         <p className="total mt-2">Total Price : </p>
                     </Col>
-                    <Col xs={4}>
+                    <Col  className="total-price-val" xs={4}>
+                        
                         <p className="total-value mt-2"> 3632.50 LKR</p>
                     </Col>
                     <Col xs={4}>
