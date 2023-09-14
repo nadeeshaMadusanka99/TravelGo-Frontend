@@ -21,9 +21,9 @@ const HeroSection = () => {
         <div className="search-form">
           <div className="glass-container-extend">
             <select>
-              {data.map((station) => (
+              {(data!=undefined) ? data.map((station) => (
                 <option>{station.StationName}</option>
-              ))}
+              )) : <><option>Loading</option></>}
            
             </select>
             <input type="text" placeholder="From" />
