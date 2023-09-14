@@ -1,0 +1,178 @@
+@import '../Common/main.scss';
+.pricebreakdown {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+
+    .pricebreakdown-container{
+        @include blue-backdrop;
+    }
+}
+
+.summary-heading{
+    font-size: 1.2rem;
+    font-weight: weight(bold);
+    background-color: $primary-color;
+    color: $text-color-shade-light;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    width: 13%;
+    margin: 15px auto 5px auto;
+    padding: 7px;
+    border-radius: 10px;
+
+    
+}
+.divider-upper {
+    width: 100%;
+    height: 1.5px; 
+    background-color: #959a9a;
+}
+.divider-below {
+    width: 100%;
+    height: 1.5px; 
+    background-color: #959a9a;
+}
+.left-headings{
+    font-weight: weight(medium-l);
+    margin-left: 25%;
+    margin-bottom: 10px;
+}
+.right-data{
+    margin-left : 40%;
+    font-weight: weight(medium-s);
+    margin-bottom: 10px;
+}
+.right-data-select{
+    @extend .right-data;
+    color: $primary-color;
+    &:hover
+    {
+        cursor: pointer;
+        color: $text-color-shade-light;
+    }
+}
+
+.divider-outside{
+    width: 100%;
+    height: 2.5px; 
+    background-color: $primary-color;
+    margin-top: 19px;
+    margin-bottom: 10px;
+}
+.checkout-btn{
+    margin-left: 60%;
+    margin-bottom: 3%;
+    align-items: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.total-a , .total-val{
+    font-size: 1.2rem;
+    font-weight: weight(bold);
+    margin-left: 30%;
+}
+.total-a{
+    margin-left: 76%;
+}
+
+@media(max-width: 768px){
+
+    .pricebreakdown-container{
+
+        position: relative;
+        width: 87%;
+        height: 65%;
+        //margin: 0;
+        padding: 0;
+        //padding-top: 10%;
+        transform: translateY(15%);
+
+        .divider-upper{
+            margin-top: 8%;
+            margin-bottom: 10%;
+           
+                       
+        }
+        .divider-below{
+            margin-top: 17px;
+           
+        }
+        
+        .pricebreakdown-row{
+            
+            height: 60%;
+            width: 100%;
+        }
+
+
+        .pricebreakdown-col-left{
+            width: 45%;
+            display: inline;
+
+        }
+        .pricebreakdown-col-right{
+            width: 45%;
+            display: inline;
+        }
+        .pricebreakdown-col-mid{
+            width: 4%;
+        }
+
+    }
+    .summary-heading{
+        width: 45%;
+        height: 20%;
+        margin-top: 8%;
+        
+        align-items: center;
+    }
+    .left-headings{
+        margin-left: 10%;
+        margin-top: 9%;
+       
+        font-size: 55%;
+        
+    }
+    .right-data{
+        margin-left : 10%;
+        font-size: 55%;
+        margin-top: 9%;
+        
+    }
+    .right-data-select{
+        margin-left : 10%;
+    }
+    .total-a{
+        margin-left: 20%;
+        font-size: 100%;
+        
+        
+    }
+    .total-val{
+        margin-left: 2%;
+       
+    }
+    .sum-charge{
+        margin-top: 20%;
+        font-size: 132%;
+    }
+   .price-colomn{
+    display: flex;
+    align-items: center;
+    width:50%;
+    text-align: center;
+    margin-top: -20%; 
+   }
+   .checkout{
+    width:50%;
+    margin-top: -5%;
+    margin-bottom: 8%;
+    margin-left: 5%;
+
+   }
+}
