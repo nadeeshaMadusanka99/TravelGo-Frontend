@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './PassengerDetails.scss';
 import { Col,Row, Container } from 'react-bootstrap';
-import passengerIcon from '../../assets/passenger-info.png';
 import { LinkContainer } from 'react-router-bootstrap';
+import {MdOutlineTrain} from 'react-icons/md';
 
 
 const PassengerDetails = () => {
@@ -57,7 +57,7 @@ const PassengerDetails = () => {
                     </Row>
                     <Row>
                         <div className="same-line">
-                            <img src={passengerIcon} alt="passenger icon" className='passenger-icon'></img>
+                            <MdOutlineTrain className='train-icon'/>
                             <p className='other-passengers'> Other Passengers Info</p>
                         </div>
                         <p>Please enter details of the all other passengers</p>
