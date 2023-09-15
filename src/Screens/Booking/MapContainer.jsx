@@ -2,6 +2,7 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import './Booking.scss';
+import { LinkContainer } from 'react-router-bootstrap';
 
 
 const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
@@ -29,9 +30,11 @@ const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
               <p className="gray-paragraph">Train No. {trainNo}</p>
               <h6 className="body-paragraph">Daily</h6>
               <p className="gray-paragraph">Classes: {classes}</p>
+              <LinkContainer to="/schedule">
               <Button variant="primary" className="btn-book">
                 Book Tickets
               </Button>
+              </LinkContainer>
             </Col>
 
             <Col>
