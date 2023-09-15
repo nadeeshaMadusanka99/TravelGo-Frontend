@@ -22,19 +22,39 @@ const HeroSection = () => {
       
         <div className="search-form">
           <div className="glass-container-extend">
+            <div className='dropdown-class'>
+            <label className='dropdown-label'>From</label>
             <select>
               {(data!=undefined) ? data.map((station) => (
                 <option>{station.StationName}</option>
               )) : <><option>Loading</option></>}
            
             </select>
-            <input type="text" placeholder="From" />
-            <input type="text" placeholder="To" />
-            <input type="date" placeholder="Date" />
+            </div>
             
+
+            <div className='dropdown-class'>
+            <label className='dropdown-label'>To</label>
+            <select>
+              {(data!=undefined) ? data.map((station) => (
+                <option>{station.StationName}</option>
+              )) : <><option>Loading</option></>}
+           
+            </select>
+            </div>
+
+            <div className='dropdown-class'>
+            <label className='dropdown-label'>Date</label>
+            <input type="date" placeholder="Date" />
+            </div>
+
+            
+            
+            <div className='search-btn'>
             <LinkContainer to="/booking">
             <Button variant="primary" className='button-extend'>Search</Button>
             </LinkContainer>
+            </div>
           </div>
         </div>
       </Container>
