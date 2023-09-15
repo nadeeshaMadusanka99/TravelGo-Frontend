@@ -5,6 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 const NavLinks = () => {
   const links = [
+
     { to: '/', text: 'Home' },
     { to: '/Services', text: 'Services' },
     { to: '/Bookings', text: 'Bookings' },

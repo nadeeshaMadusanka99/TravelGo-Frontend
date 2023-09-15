@@ -46,6 +46,8 @@ const HeroSection = () => {
             <div className='dropdown-class'>
             <label className='dropdown-label'>Date</label>
             <input type="date" placeholder="Date" />
+
+
             </div>
 
             
