@@ -11,7 +11,6 @@ import Button from 'react-bootstrap/Button';
 
 const SeatView = () => {
     const [checked, setChecked] = useState(false);
-    
     const seats = [
         { id: 1, label: '01' },
         { id: 2, label: '02' },

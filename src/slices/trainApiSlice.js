@@ -9,6 +9,12 @@ export const trainApiSlice = apiSlice.injectEndpoints({
                 url: GET_STATIONS_API_URL,
                 method: 'GET'
             })
+        }),
+        getTrains: builder.query({
+            query: (stationCode) => ({
+                url: GET_TRAINS_API_URL + stationCode,
+                method: 'GET'
+            })
         })
     })
 })
