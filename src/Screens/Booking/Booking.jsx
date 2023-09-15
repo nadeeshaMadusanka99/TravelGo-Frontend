@@ -50,7 +50,7 @@ const Booking = () => {
     
    
       <div className="booking-background">
-      <div className='glass-wrapper'>
+      <div className='glass-wrapper glass-wrapper-search'>
       <div className='glass'>
             <input type="text" placeholder="From" />
             <input type="text" placeholder="To" />
