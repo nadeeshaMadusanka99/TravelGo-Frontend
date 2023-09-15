@@ -1,6 +1,7 @@
 import { Container, Button } from 'react-bootstrap';
 import './HeroSection.scss';
 import { useGetStationsQuery } from '../../slices/trainApiSlice';
+import { LinkContainer } from 'react-router-bootstrap';
 
 
 const HeroSection = () => {
@@ -30,8 +31,9 @@ const HeroSection = () => {
             <input type="text" placeholder="From" />
             <input type="text" placeholder="To" />
             <input type="date" placeholder="Date" />
+            <LinkContainer to="/booking"><Button variant="primary" className='button-extend'>Search</Button></LinkContainer>
             
-            <Button variant="primary" className='button-extend'>Search</Button>
+            
           </div>
         </div>
       </Container>
