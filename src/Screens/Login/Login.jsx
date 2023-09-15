@@ -63,10 +63,10 @@ const Login = () => {
           <div className="glass-container-extend">
             <h2>Login</h2>
             <div className="name-pass">
-              <p>Your Name</p>
+              <p>Username</p>
               <input 
                 type="email"
-                placeholder="Username"
+                // placeholder="Username"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 />
@@ -75,7 +75,7 @@ const Login = () => {
               <p>Password</p>
               <input 
                 type="password" 
-                placeholder="Password"
+                // placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} 
                 />
