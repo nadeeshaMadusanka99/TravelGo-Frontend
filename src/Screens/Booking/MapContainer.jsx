@@ -2,6 +2,7 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import './Booking.scss';
+import { LinkContainer } from 'react-router-bootstrap';
 
 
 const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
