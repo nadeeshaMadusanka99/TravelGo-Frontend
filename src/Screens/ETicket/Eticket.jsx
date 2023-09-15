@@ -1,5 +1,5 @@
 import React from "react";
-import "./Eticket.scss";
+import "./ETicket.scss";
 import { Col, Row, Container } from "react-bootstrap";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import logo from '../../assets/LogoBlack.png';

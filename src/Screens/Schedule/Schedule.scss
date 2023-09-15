@@ -347,6 +347,7 @@
     font-style: italic;
     }
   .btn-book{
+    @include Button;
     width: 150px;
     height: 40px;
     display: flex;           

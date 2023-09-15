@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 import './Schedule.scss';
+import { LinkContainer } from 'react-router-bootstrap';
 
 // Reusable component for class details
 const ClassDetails = ({ seatClass, price }) => {
@@ -156,7 +157,9 @@ const Schedule = () => {
     </div>
   </Col>
   <Col xs={6} className='d-flex align-items-center justify-content-end'>
-    <Button variant="primary" className="btn-book">Continue</Button>
+    <LinkContainer to="/seatview">
+      <Button variant="primary" className="btn-book">Continue</Button>
+    </LinkContainer>
   </Col>
 </Row>
 

@@ -1,1 +1,135 @@
-@import '../Common/main.scss'
+@import '../Common/main.scss';
+
+.seat-view{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;    
+    .seat-view-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 1rem;
+        margin-top: 7%;
+        color: $text-color-dark;
+    }
+}
+.verticle-line{
+    width: 6px;
+    height: 67%;
+    background-color: black;
+    margin:2% 2% 3% 2% ;
+
+}
+.left-main-data{
+    font-weight: weight(medium-s);
+    line-height: 1;
+    color: $secondary-color;
+}
+.box-right-data{
+    font-weight: weight(medium-l);
+    line-height: 1;
+    color: $secondary-color;
+}
+.left-box-heading-text{
+    font-size: 1.4rem;
+    font-weight: weight(medium-l);
+    margin:0 0 2% 0;
+}
+.edit-train-box{
+    color: $primary-color;
+    font-style: underline;
+    margin-left: 30%;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.box-train-icon{
+    width: 9%;
+    height: auto;
+    margin: 0 0 1.1% 2.5%;
+}
+.train-box-container {
+    display: flex;
+    align-items: center;
+    margin: 1%;
+
+  }
+.box-text-container{
+    margin-left: 2%;
+}
+.train-box {
+    margin: 8%;
+    padding: 1%;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+.scrollable {
+    overflow: auto;
+    height: 80vh;
+
+    &::-webkit-scrollbar {
+        width: 0em;
+      }
+}
+
+.list-group{
+    width: 30%;
+    margin-top: 35%;
+    .list-group-item{
+        border: 1px solid black;
+        border-radius: 20px;
+        margin-bottom: 5%;git status
+        &:hover{
+            cursor: pointer;
+            background-color: $primary-color;
+            color: white;
+            opacity: 0.5;
+        }
+    }
+}
+.wagon{
+    height: 600px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #057aff5f;
+    box-shadow: 4px 6px 5px 2px rgba(0, 0, 0, 0.297);
+    margin: 2% 15% 6% 10%;
+   
+}
+.wagon-row{
+   width: 100%;
+}
+
+.window {
+    width: 4px;
+    height: 50%;
+    background-color: $primary-color;
+    margin-top: 20%;
+  }
+.left-window{
+    @extend .window;
+    border-radius: 0 10px 10px 0;
+    float: left;
+}
+.right-window{
+    @extend .window;
+    border-radius: 10px 0 0 10px;
+    float: right; 
+}
+.button-proceed{
+    @include Button;
+    align-items: center;
+    width: 30%;
+    margin-top: 35%;
+}
+.button-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items:flex-end;
+    flex-direction: column;
+}
