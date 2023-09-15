@@ -56,8 +56,11 @@ const Header = () => {
           
             <Nav className="me-auto nav-content">
               <NavLinks />
+
+              
             </Nav>
-            <Nav >
+
+            <Nav className='end-nav' >
               {userInfo ? (
                 // Render user icon when the user is logged in
                 <>
@@ -88,6 +91,7 @@ const Header = () => {
                 </>
               )}
             </Nav>
+            
           </Navbar.Collapse>
         </Container>
       </Navbar>

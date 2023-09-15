@@ -20,7 +20,7 @@ const ClassDetails = ({ seatClass, price }) => {
   return (
     <Container className='book-container'>
       <Row>
-        <Col className='booking-class'>{seatClass}</Col>
+        <Col sm={11} md={6} className='booking-class'>{seatClass}</Col>
         <Col className='booking-ele'>
           <p>60 seats</p>
           <p>{price}LKR</p>
