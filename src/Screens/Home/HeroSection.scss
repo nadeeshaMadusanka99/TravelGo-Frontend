@@ -82,39 +82,24 @@
 
     .hero-content{
       align-items: center;
+      margin-top: -1%;
       justify-content: center;
       h1{
         display: none;
       }
-      p{
-        
-      }
+      
       .search-form{
         
         .glass-container-extend{
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          padding: 10%;
+          padding: 6%;
           width: 100%;
         }
-        input[type='text']{
-
-          
-          padding: 13px;
-          
-          border-radius: 5px;
-          
-          border: 2px solid rgba(255, 255, 255, 0.715);
-          width: 100%;}
-        input[type='date'] {
-          padding: 13px;
-         
-    
-          border-radius: 5px;
-          
-          border: 2px solid rgba(255, 255, 255, 0.715);
+        input[type='text'], select {
+          width: 100%;
+        }
+        input[type='date'] { 
           width: 100%;
         }
         .button-extend{
