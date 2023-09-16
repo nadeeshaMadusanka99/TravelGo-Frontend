@@ -21,6 +21,9 @@
             display: flex;
             justify-content: center;
             margin-bottom: 3%;
+            @media (max-width: 920px) {
+              display: none; // Hide the entire .glass-wrapper when screen size is below 920px
+          }
             .glass{
                 @include glass-container;
                // max-width: ;
@@ -59,7 +62,8 @@
     
             position: relative;
             border: 2px solid rgb(0, 0, 0);
-            margin: 0 6cm;
+            margin-left: 20%;
+            margin-right: 20%;
             height: 20%;
             margin-top: 1%;
            
@@ -93,7 +97,8 @@
                     justify-content: center;  // Center horizontally
                     align-items: center;
                     border-radius: 0%;
-                    transform: translateX(30%);
+                    margin-left:15%
+                    
                 }
               }
           
@@ -268,4 +273,77 @@
         }
           
     }
+}
+
+@media(max-width:920px){
+
+  .booking-background{
+    overflow-y: scroll; 
+
+  .map-container{
+    justify-content: left ;
+    margin-top: 20% !important;
+    margin-left:10% !important;
+    margin-right: 10% !important;
+    height: 35% !important;   
+    margin-bottom: -10% !important;
+  }
+  .container {
+  
+  
+    .row {
+     
+  
+      .train-details {
+      
+        text-align:start !important;
+        
+  
+        .body-paragraph {
+          font-size: 1.16rem;
+        }
+  
+        .gray-paragraph {
+         
+        }
+        .btn-book{
+            margin-top: 5%;  
+            margin-bottom: 5%;
+        }
+      }
+      .station-details{
+        display: none;
+      }
+      .lines{
+       margin-top: 20%;
+      }
+      .next-station{
+        
+        font-size: 8px !important;
+        display: block !important;
+
+      }
+      .arrival-time{
+        font-size: 8px !important;
+        margin-left: 50%;
+        
+      
+
+
+      }
+      .departure-time{
+        
+        font-size: 8px !important;
+        margin-left: 50%;
+        transform: translateY(90%);
+      }
+     
+
+}
+
+}
+.crowd-intensity{
+  display: none;
+}
+}
 }

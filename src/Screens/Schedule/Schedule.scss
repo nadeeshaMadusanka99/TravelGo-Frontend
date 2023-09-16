@@ -357,3 +357,35 @@
   
   
 }
+
+
+@media (max-width :1056px) and ( min-width: 350px){
+  .map-container {
+    display: none !important;
+  }
+
+  .schedule-background {
+    margin-top: 0 !important;
+  }
+
+  .text-container h1 {
+    font-size: 1rem;
+  }
+
+  .text-container {
+    margin-left: 15px !important;
+    margin-bottom: 15px;
+  }
+
+  .radio-switch {
+    margin-left: 0 !important;
+  }
+
+  .choose-class {
+    margin-left: 5px!important;
+  }
+  .booking-count {
+    display: none!important;
+  }
+
+}
