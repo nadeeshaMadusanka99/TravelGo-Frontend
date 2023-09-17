@@ -1,0 +1,118 @@
+
+.schedule-container {
+    padding: (75px) 5% 0 5%;
+    
+}
+
+.train-container {
+    border: 1.5px black solid;
+    padding: 5px 1%;
+}
+
+.train-details {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+
+}
+
+.train-name {
+    font-weight: 600;
+    margin-bottom: 0;
+    
+}
+.vertical-bar-container {
+    display: flex;
+    align-items: center;
+    padding: 3px;
+}
+.vertical-bar {
+    width: 8px;
+    height: 90%;
+    background-color: black;
+}
+
+.right-side-train {
+    div {
+        font-size: 15px;
+        //overflow: hidden;
+    }
+}
+
+.end-station {
+    display: flex;
+    justify-content: end;
+}
+.source-station, .dest-station {
+    display: flex;
+    justify-content: center;
+}
+
+.map-container-lines {
+    position: relative;
+    padding: 10px 0.7%;
+}
+
+.dotted-line {
+    border: 2px blue dashed;
+   
+}
+
+.circle-position {
+    position: absolute;
+    background-image: url('../../assets/finalstate.png' ); 
+    background-size: cover; 
+    height: 20px;
+    width: 20px;
+    top: 0;
+}
+
+.c-p-source {
+    left: 41%;
+}
+
+.c-p-dest {
+    right: 24%
+}
+
+.c-p-end {
+    right: 5px;
+}
+
+.crowd-boxes {
+    height: 12px;
+    margin: 5px 2px;
+}
+
+
+@media (max-width: 720px) {
+    .train-details {
+        align-items: center;
+    }
+
+    .right-side-train {
+        div {
+           
+            font-size: 70%;
+            
+        }
+    }
+    .horizontal-bar-container {
+        padding: 0 8% 6px 10%;
+    }
+    .horizontal-bar {
+        background-color: black;
+        height: 6px;
+    }
+
+    
+    .crowd-boxes-container{
+        margin-left: 4%;
+        .crowd-boxes {
+            height: 8px;
+            margin: 2px 1px 10px ;
+           
+        }
+    }
+}
