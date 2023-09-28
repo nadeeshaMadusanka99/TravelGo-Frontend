@@ -1,12 +1,15 @@
-
+@import '../Common/main.scss';
 .schedule-container {
     padding: (75px) 5% 0 5%;
+    
     
 }
 
 .train-container {
     border: 1.5px black solid;
-    padding: 5px 1%;
+    padding: 50px 10%;
+    margin-top: 3%;
+   
 }
 
 .train-details {
@@ -20,6 +23,8 @@
 .train-name {
     font-weight: 600;
     margin-bottom: 0;
+    padding-top: 10px;
+   
     
 }
 .vertical-bar-container {
@@ -84,6 +89,11 @@
     height: 12px;
     margin: 5px 2px;
 }
+.heading-container h1{
+    color: $primary-color;
+    font-weight: 700;
+}
+
 
 
 @media (max-width: 720px) {

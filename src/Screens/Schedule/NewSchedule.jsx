@@ -186,8 +186,8 @@ const NewSchedule = () => {
          <ClassDetails seatClass="First-Class" price="1850" />
          <ClassDetails seatClass="Second Class" price="950" />
          <ClassDetails seatClass="Third Class" price="550" />
-        <Container fluid='true' className="button-container" md='12'>
-          <Row>
+        <Container className="button-container" md='12'>
+          <Row className="jus" style={{ margin: '20px'}}>
                 <Col md="9" sm="12" className='d-flex align-items-start justify-content-start'>
                     <Row><p className='ticket-count'>2 First Class</p><p className='seat-para'> Seats selected</p></Row>
                     <Row>
