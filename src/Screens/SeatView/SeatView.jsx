@@ -18,7 +18,7 @@ const SeatView = () => {
     const label = i < 10 ? `0${i}` : `${i}`;
     seats.push({ id: i, label });
     }
-    
+     
 
     const seatsInRows = [];
 
@@ -199,30 +199,7 @@ const SeatView = () => {
                                                 ))}
                                         </div>
                                     </div>
-                                    {/* <h4 id="wagon-4">Wagon 4</h4>
-                                    <div className="wagon">
-                                        <div className="wagon-row">
-                                                {seatsInRows.map((row, rowIndex) => (
-                                                    <div key={rowIndex} className="row">
-                                                        <Col xs={6}>
-                                                        <div className="left-window"></div>
-                                                     
-                                                        {row[0].map((seat) => (
-                                                            <SeatButton key={seat.id} seat={seat} />
-                                                            ))}
-                                                        </Col>
-                                                            
-                                                        
-                                                        <Col xs={6}>
-                                                        {row[1].map((seat) => (
-                                                            <SeatButton key={seat.id} seat={seat} />
-                                                            ))}
-                                                            <div className="right-window"></div>
-                                                        </Col>
-                                                    </div>
-                                                ))}
-                                        </div>
-                                    </div> */}
+                        
                                 </div>
                             </div>
                     </Col>
@@ -232,7 +209,6 @@ const SeatView = () => {
                             <a className="list-group-item list-group-item-action" href="#wagon-1">1st Wagon</a>
                             <a className="list-group-item list-group-item-action" href="#wagon-2">2nd Wagon</a>
                             <a className="list-group-item list-group-item-action" href="#wagon-3">3rd Wagon</a>
-                            {/* <a className="list-group-item list-group-item-action" href="#wagon-4">4th wagon</a> */}
                         </div>
                         <div className="button-container"> 
                             <LinkContainer to="/pricebreakdown">
