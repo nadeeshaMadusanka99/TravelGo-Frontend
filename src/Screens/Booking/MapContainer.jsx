@@ -2,6 +2,7 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import './Booking.scss';
+import { LinkContainer } from 'react-router-bootstrap';
 
 
 const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
@@ -22,31 +23,33 @@ const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
     <div className="map-container">
       <Container>
         <Row>
-          <Col className="train-details" xs={3}>
+          <Col className="train-details"  xs={12} sm={3}>
             <Col>
               <h5 className="body-paragraph">{trainName}</h5>
               <p className="gray-paragraph">{trainType}</p>
               <p className="gray-paragraph">Train No. {trainNo}</p>
               <h6 className="body-paragraph">Daily</h6>
               <p className="gray-paragraph">Classes: {classes}</p>
-              <Button variant="primary" className="btn-book">
-                Book Tickets
-              </Button>
+              <LinkContainer to="/schedule">
+                <Button variant="primary" className="btn-book">
+                  Book Tickets
+                </Button>
+              </LinkContainer>
             </Col>
 
-            <Col>
+            <Col >
               <div className="vertical-line"></div>
             </Col>
           </Col>
 
-          <Col className="station-details" xs={2}>
+          <Col className="station-details" xs={12} sm={2}>
             <p className="station-paragraph">Station</p>
             <p className="arrival-paragraph">Arrival</p>
             <p className="departure-paragraph">Departure</p>
             <p className="crowd-paragraph">Crowd</p>
           </Col>
 
-          <Col xs={7} className="short-map">
+          <Col xs={12} sm={7} className="short-map">
             <div className="lines">
               {schedule.map((station, index) => (
                 <div className="circle" key={index}>

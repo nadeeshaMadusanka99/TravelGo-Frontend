@@ -10,22 +10,19 @@
 
   .schedule-background {
     position: absolute;
-    top: 10;
-    left: 0;
     width: 100%;
-    
     background-size: cover;
     z-index: 0;
-    margin-top: 150px;
+    margin-top: 110px;
     
   }
   .map-container {
     
     position: relative;
-    border-left: 2px solid rgba(0, 0, 0, 0.329);
+    border: 2px solid black;
     margin: 0 6cm;
     height: 18%;
-    box-shadow: 3px 3px 2px 2px rgba(0, 0, 0, 0.586); // Apply box shadow
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.16);
   }
   .container {
     padding: 0 1cm;
@@ -318,9 +315,9 @@
       flex: 1; // Allow each element to grow and fill available space
       max-width: 50%; 
       max-height: 1.8cm;
-      box-shadow: 3px 3px 2px 2px rgba(0, 0, 0, 0.415); 
-      margin-top: 0.2cm;
-      margin-right: 10%;
+      box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.207); 
+      border-radius: 5px;
+      margin: 0.5%;
 
     }
   }
@@ -354,6 +351,46 @@
     justify-content: center;  
     align-items: center;
   }
+  .bottom-row-conotainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0cm 3cm 0.5cm 3cm;
+
+    
+  }
   
-  
+}
+
+
+@media (max-width :1056px) and ( min-width: 350px){
+  .map-container {
+    display: none !important;
+  }
+
+  .schedule-background {
+    margin-top: 0 !important;
+  }
+
+  .text-container h1 {
+    font-size: 1rem;
+  }
+
+  .text-container {
+    margin-left: 15px !important;
+    margin-bottom: 15px;
+  }
+
+  .radio-switch {
+    margin-left: 0 !important;
+  }
+
+  .choose-class {
+    margin-left: 5px!important;
+  }
+  .booking-count {
+    display: none!important;
+  }
+
 }

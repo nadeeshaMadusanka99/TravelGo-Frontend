@@ -41,8 +41,15 @@ header {
 
 @media (max-width :1056px) and ( min-width: 992px){
 
-    .header{
-        
+    .navbar-collapse {
+        height: 14rem !important;
+    }
+
+    #basic-navbar-nav {
+    }
+
+    header{
+        position: absolute;
     }
     .nav-content{
         .nav-link{
@@ -84,5 +91,22 @@ header {
 }
 @media (max-width :992px){
     // Define a custom class to reduce the size of the icon and text
-    
+    .navbar-collapse {
+        height: 16rem !important;
+    }
+
+    header {
+        position: relative;
+        background: linear-gradient(to top, transparent , #ffffff ); 
+        box-shadow: 0 0 10px rgb(0, 0, 0);
+    }
+
+    .nav-style {
+        height: auto;
+    }
+
+    .end-nav {
+        margin-top: 7rem;
+    }
+
 }

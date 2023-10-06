@@ -78,7 +78,7 @@ const Register = () => {
                   value={firstName}
                   id="firstName"
                   name="firstName"
-                  placeholder="First Name"
+                  // placeholder="First Name"
                   required
                   onChange={(e) => setFirstName(e.target.value)} />
               </div>
@@ -90,7 +90,7 @@ const Register = () => {
                   type="text"
                   id="lastName"
                   name="lastName"
-                  placeholder="Last Name"
+                  // placeholder="Last Name"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                 />
@@ -105,7 +105,7 @@ const Register = () => {
                 type="email"
                 id="email"
                 name="email"
-                placeholder="Email Address"
+                // placeholder="Email Address"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)} />
@@ -118,7 +118,7 @@ const Register = () => {
                 type="password"
                 id="password"
                 name="password"
-                placeholder="Password"
+                // placeholder="Password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} />
@@ -131,7 +131,7 @@ const Register = () => {
                 type="password"
                 id="confirmPassword"
                 name="confirmPassword"
-                placeholder="Confirm Password"
+                // placeholder="Confirm Password"
                 required
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)} />

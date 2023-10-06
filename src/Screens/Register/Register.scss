@@ -73,8 +73,9 @@
       input[type='email'] {
         padding: 10px;
         border-radius: 5px;
-        background-color: $text-color-light; ;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: $text-color-light;
+        background: none; 
+        border: 2px solid rgba(255, 255, 255, 0.715);
       }
       .register-terms{
         display:flex;
