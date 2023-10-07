@@ -27,7 +27,7 @@ const Eticket = () => {
             <p className="header-text text-center">FIRST CLASS</p>
           </Col>
         </Row>
-        <div className="content-inside">
+        <div className="content-inside px-4 pt-1">
           <Row className="main-row">
             <Col xs={10} className="content-col">
               <Row className="content-row">
