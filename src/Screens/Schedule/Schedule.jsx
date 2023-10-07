@@ -1,42 +1,30 @@
 /* eslint-disable react/prop-types */
 
-import React, { useState } from "react";
 import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import "./Schedule.scss";
 import { LinkContainer } from "react-router-bootstrap";
+import useCounter from "./useCounter";
 
-// Reusable component for class details
-const ClassDetails = ({ seatClass, price }) => {
-  const [counter, setCounter] = useState(0);
-
-  const increment = () => {
-    setCounter(counter + 1);
-  };
-
-  const decrement = () => {
-    if (counter > 0) {
-      setCounter(counter - 1);
-    }
-  };
-
+const ClassDetails = ({ seatClass, price ,seatsCount, availableSeats , bookedSeats}) => {
+  const { count, increment, decrement } = useCounter(); //custom hook
   return (
     <Container className="book-container">
       <Row>
         <Col sm={11} md={6} className="booking-class">
           {seatClass}
         </Col>
-        <Col className="booking-ele">
-          <p>60 seats</p>
+        <Col className="booking-seats">
+          <p>{seatsCount} Seats</p>
           <p>{price}LKR</p>
         </Col>
         <Col className="booking-count">
-          <p>Available: 25</p>
-          <p>Booked:35</p>
+          <p>Available:{availableSeats}</p>
+          <p >Booked: {bookedSeats}</p>
         </Col>
-        <Col className="booking-ele">
+        <Col>
           <Row>
             <Col className="ticket-count">
-              <span style={{ marginTop: "-30px" }}>{counter}</span>
+              <span style={{ marginTop: "-30px"  }}>{count}</span>
             </Col>
             <Col className="booking-ele">
               <Row>
@@ -142,42 +130,39 @@ const Schedule = () => {
         </div>
         <div className="choose-class-container">
           <div className="choose-class">
-            <ClassDetails seatClass="First-Class" price="1850" />
+            <ClassDetails seatClass="First Class" price="1850" seatsCount="30" availableSeats="20" bookedSeats="10"/>
           </div>
           <div className="choose-class">
-            <ClassDetails seatClass="Second Class" price="950" />
+            <ClassDetails seatClass="Second Class" price="950" seatsCount="66" availableSeats="40" bookedSeats="26" />
           </div>
           <div className="choose-class">
-            <ClassDetails seatClass="Third Class" price="550" />
+            <ClassDetails seatClass="Third Class" price="550" seatsCount="92" availableSeats="58" bookedSeats="34"/>
           </div>
         </div>
         <Container className="bottom-row-conotainer">
-            <Col xs={6} className="d-flex align-items-center">
-              <div>
-                <div className="d-flex align-items-center">
-                  <p className="ticket-count">2 First Class</p>
-                  <p className="seat-para"> Seats selected</p>
-                </div>
-
-                <div className="d-flex align-items-center">
-                  <p className="ticket-price">3100 LKR</p>
-                  <p className="cost-para">
-                    {" "}
-                    Costs can vary due to offers and other promotional matters
-                  </p>
-                </div>
+          <Col xs={6} className="d-flex align-items-center">
+            <div>
+              <div className="d-flex align-items-center">
+                <p className="ticket-count">2 First Class</p>
+                <p className="seat-para"> Seats selected</p>
               </div>
-            </Col>
-            <Col
-              xs={6}
-              className="d-flex align-items-center justify-content-end"
-            >
-              <LinkContainer to="/seatview">
-                <Button variant="primary" className="btn-book">
-                  Continue
-                </Button>
-              </LinkContainer>
-            </Col>
+
+              <div className="d-flex align-items-center">
+                <p className="ticket-price">3100 LKR</p>
+                <p className="cost-para">
+                  {" "}
+                  Costs can vary due to offers and other promotional matters
+                </p>
+              </div>
+            </div>
+          </Col>
+          <Col xs={6} className="d-flex align-items-center justify-content-end">
+            <LinkContainer to="/seatview">
+              <Button variant="primary" className="btn-book">
+                Continue
+              </Button>
+            </LinkContainer>
+          </Col>
         </Container>
       </div>
     </main>
