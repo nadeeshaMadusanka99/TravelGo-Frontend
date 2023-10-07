@@ -32,7 +32,7 @@ const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
               <p className="gray-paragraph">Classes: {classes}</p>
               <LinkContainer to="/schedule">
                 <Button variant="primary" className="btn-book">
-                  Book Tickets
+                  <p>Book Tickets</p>
                 </Button>
               </LinkContainer>
             </Col>
