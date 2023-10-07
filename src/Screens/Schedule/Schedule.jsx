@@ -31,7 +31,7 @@ const ClassDetails = ({ seatClass, price ,seatsCount, availableSeats , bookedSea
                 <Button
                   variant="primary"
                   className="btn-inc"
-                  onClick={increment}
+                  onClick = {increment}
                 >
                   +
                 </Button>
@@ -40,7 +40,7 @@ const ClassDetails = ({ seatClass, price ,seatsCount, availableSeats , bookedSea
                 <Button
                   variant="primary"
                   className="btn-dec"
-                  onClick={decrement}
+                  onClick = {decrement}
                 >
                   -
                 </Button>
