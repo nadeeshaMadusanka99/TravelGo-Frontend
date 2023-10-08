@@ -58,9 +58,13 @@ const Booking = () => {
             </Button>
           </div>
         </div>
-        {trainData.map((data, index) => (
+
+        {/* rendering train data from trainData array */}
+
+        {trainData.map((data, index) => (   
           <MapContainer key={index} {...data} />
         ))}
+        
         <div className="intensity-container">
           <div className="crowd-intensity">
             <div className="low-crowd">

@@ -18,6 +18,7 @@ const Eticket = () => {
           ticket while travelling{" "}
         </p>
       </container>
+      {/* E-Ticket container */}
       <Container className="eticket-container">
         <Row className="container-header">
           <Col xs={2} className="m-2 mx-4">
@@ -112,6 +113,7 @@ const Eticket = () => {
           </Row>
         </div>
       </Container>
+      {/* Download Area */}
       <BsDownload size="2rem" className="download-btn mb-2"></BsDownload>
       <p className="download-text"> Download from here</p>
     </main>

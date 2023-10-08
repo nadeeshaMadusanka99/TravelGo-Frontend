@@ -1,11 +1,10 @@
-/* eslint-disable react/prop-types */
-
 import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import "./Schedule.scss";
 import { LinkContainer } from "react-router-bootstrap";
 import useCounter from "./useCounter";
 
-const ClassDetails = ({ seatClass, price ,seatsCount, availableSeats , bookedSeats}) => {
+// eslint-disable-next-line react/prop-types
+const ClassDetails = ({seatClass,price,seatsCount,availableSeats,bookedSeats,}) => {
   const { count, increment, decrement } = useCounter(); //custom hook
   return (
     <Container className="book-container">
@@ -19,19 +18,19 @@ const ClassDetails = ({ seatClass, price ,seatsCount, availableSeats , bookedSea
         </Col>
         <Col className="booking-count">
           <p>Available:{availableSeats}</p>
-          <p >Booked: {bookedSeats}</p>
+          <p>Booked: {bookedSeats}</p>
         </Col>
         <Col>
           <Row>
             <Col className="ticket-count">
-              <span style={{ marginTop: "-30px"  }}>{count}</span>
+              <span style={{ marginTop: "-30px" }}>{count}</span>
             </Col>
             <Col className="booking-ele">
               <Row>
                 <Button
                   variant="primary"
                   className="btn-inc"
-                  onClick = {increment}
+                  onClick={increment}
                 >
                   +
                 </Button>
@@ -40,7 +39,7 @@ const ClassDetails = ({ seatClass, price ,seatsCount, availableSeats , bookedSea
                 <Button
                   variant="primary"
                   className="btn-dec"
-                  onClick = {decrement}
+                  onClick={decrement}
                 >
                   -
                 </Button>
@@ -130,13 +129,31 @@ const Schedule = () => {
         </div>
         <div className="choose-class-container">
           <div className="choose-class">
-            <ClassDetails seatClass="First Class" price="1850" seatsCount="30" availableSeats="20" bookedSeats="10"/>
+            <ClassDetails
+              seatClass="First Class"
+              price="1850"
+              seatsCount="30"
+              availableSeats="20"
+              bookedSeats="10"
+            />
           </div>
           <div className="choose-class">
-            <ClassDetails seatClass="Second Class" price="950" seatsCount="66" availableSeats="40" bookedSeats="26" />
+            <ClassDetails
+              seatClass="Second Class"
+              price="950"
+              seatsCount="66"
+              availableSeats="40"
+              bookedSeats="26"
+            />
           </div>
           <div className="choose-class">
-            <ClassDetails seatClass="Third Class" price="550" seatsCount="92" availableSeats="58" bookedSeats="34"/>
+            <ClassDetails
+              seatClass="Third Class"
+              price="550"
+              seatsCount="92"
+              availableSeats="58"
+              bookedSeats="34"
+            />
           </div>
         </div>
         <Container className="bottom-row-conotainer">

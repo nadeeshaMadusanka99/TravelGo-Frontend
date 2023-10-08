@@ -19,30 +19,31 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
   const [register, { isLoading }] = useRegisterMutation();
 
   const submitHandler = async (e) => {
     e.preventDefault();   //refrains from default behaviour when submitting form. prevents page reload.
 
+    //check if passwords match
     if (password !== confirmPassword) {
       toast.error('Passwords do not match');
     } else {
       try {
+        //registering the user
         const res = await register({
           firstname: firstName,
           lastname: lastName,
           email: email,
           password: password
-        }).unwrap();
+        }).unwrap(); //returns the actual value of a fulfilled promise.
         navigate(LOGIN);
         toast.success('Registration Successful! Please login')
 
       } catch (err) {
         console.log(err);
-        toast.error(err?.data?.message || err.error);
+        toast.error(err?.data?.message || err.error); //
       }
     }
 

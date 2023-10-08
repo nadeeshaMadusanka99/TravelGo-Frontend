@@ -2,10 +2,12 @@
 
 
 //function to get the font weight
+
 @function weight($weight-name){
     @return map-get($font-weights, $weight-name);
 }
 
+//setting the font tothe body
 body{
     font-family: $primary-font;
 }
@@ -32,7 +34,7 @@ body{
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.138);
         font-weight: weight(medium-s);
 }
-
+// blue-backdrop common features
 @mixin blue-backdrop{
         display: flex;
         flex-direction: column;

@@ -6,6 +6,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 
 const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
+  
   const colors = ['#e6f360', '#a7b047', '#e9621e', '#ff0000', '#ff0000', '#e9621e', '#ff9800', '#a7b047', '#e6f360', '#e6f360'];
 
   const crowdRectangleStyles = Array.from({ length: 10 }).map((_, index) => ({
