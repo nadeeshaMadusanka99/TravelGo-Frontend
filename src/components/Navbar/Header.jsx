@@ -12,14 +12,18 @@ import { useLogoutMutation } from '../../slices/usersApiSlice';
 
 const Header = () => {
 
+  /* This code block is responsible for handling user authentication and logout functionality in the
+  Header component. */
   const { userInfo } = useSelector((state) => state.auth);
   var isLoggedIn = false;
-
-  const dispatch = useDispatch();
+  
+  const dispatch = useDispatch(); 
   const navigate = useNavigate();
 
-  const [logoutApiCall] = useLogoutMutation();
+  const [logoutApiCall] = useLogoutMutation(); //
 
+
+  //logout process by making an API call, dispatching a logout action, and navigating to the home page.
   const logoutHandler = async () => {
     try {
       await logoutApiCall().unwrap();

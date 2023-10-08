@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./SeatView.scss";
-import {Container , Row, Col, ToggleButton, ButtonGroup} from "react-bootstrap"; 
+import {Container , Row, Col} from "react-bootstrap"; 
 import {MdOutlineTrain} from "react-icons/md";
 import { LinkContainer } from "react-router-bootstrap";
 import SeatButton from "./SeatButton";
@@ -10,8 +10,7 @@ import Button from 'react-bootstrap/Button';
 
 
 const SeatView = () => {
-    const [checked, setChecked] = useState(false);
-    
+    // Reserving 28 seats per a wagon
     const seats = [];
 
     for (let i = 1; i <= 28; i++) {
@@ -23,19 +22,11 @@ const SeatView = () => {
     const seatsInRows = [];
 
     //  Loop through the seats array and group seats in rows of 4
-
     for (let i = 0; i < seats.length; i += 4) {
         const leftSeats = seats.slice(i, i + 2);
         const rightSeats = seats.slice(i + 2, i + 4);
         seatsInRows.push([leftSeats, rightSeats]);
     }
-    // const wagonSeats =[];
-
-    // for (let i = 0; i < seatsInRows.length; i += 7) {
-    //     const setofSeats =[];
-    //     setofSeats.push(seatsInRows.slice(i, i + 7));
-    //     wagonSeats.push(setofSeats);
-    // }
 
     return(
         <main className="seat-view">
@@ -129,6 +120,8 @@ const SeatView = () => {
                                     <h4 id="wagon-1">Wagon 1</h4>
                                     <div className="wagon">
                                         <div className="wagon-row">
+                                                {/* Iterate through the rows of seats in the current wagon */}
+                                                
                                                 {seatsInRows.map((row, rowIndex) => (
                                                     <div key={rowIndex} className="row">
                                                         <Col xs={6}>
