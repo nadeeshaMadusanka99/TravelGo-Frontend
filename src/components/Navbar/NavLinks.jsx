@@ -9,8 +9,8 @@ const NavLinks = () => {
     { to: '/', text: 'Home' },
     { to: '/Services', text: 'Services' },
     { to: '/Bookings', text: 'Bookings' },
-    { to: '/pricebreakdown', text: 'Terms & Conditions' },
-    { to: '/passengerdetails', text: 'Contact Us' },
+    { to: '/TermsAndConditions', text: 'Terms & Conditions' },
+    { to: '/ContactUs', text: 'Contact Us' },
   ];
 
   return (
