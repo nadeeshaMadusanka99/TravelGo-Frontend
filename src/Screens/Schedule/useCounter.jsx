@@ -6,6 +6,7 @@ export default function useCounter() {
   function increment() {
     setCount(count + 1);
   }
+  
   function decrement() {
     if (count > 0) {
       setCount(count - 1);

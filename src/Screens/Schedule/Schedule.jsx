@@ -5,7 +5,9 @@ import useCounter from "./useCounter";
 
 // eslint-disable-next-line react/prop-types
 const ClassDetails = ({seatClass,price,seatsCount,availableSeats,bookedSeats,}) => {
-  const { count, increment, decrement } = useCounter(); //custom hook
+
+  const { count, increment, decrement } = useCounter(); 
+  
   return (
     <Container className="book-container">
       <Row>
