@@ -84,14 +84,10 @@
         input::placeholder {
           color: #000000; /* Red color for the placeholder text */
         }
-
-  
         .button-extend {
           @include Button;
         }
-      }
-
-      
+      }  
     }
   }
  
@@ -105,31 +101,16 @@
       h1{
         display: none;
       }
-      p{
-        
-      }
       .search-form{
         
         .glass-container-extend{
-          display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
           padding: 10%;
           width: 100%;
         }
         input[type='text'], select {
-
-          
-          padding: 13px;
-          border-radius: 5px;
-          border: 2px solid rgba(255, 255, 255, 0.715);
           width: 100%;}
         input[type='date'] {
-          padding: 13px;
-          border-radius: 5px;
-          
-          border: 2px solid rgba(255, 255, 255, 0.715);
           width: 100%;
         }
         .button-extend{
@@ -138,7 +119,7 @@
         }
         .search-btn {
           margin-left: 0;
-          margin-top: 1rem;
+          margin-top: 10%;
         }
       }
     }
