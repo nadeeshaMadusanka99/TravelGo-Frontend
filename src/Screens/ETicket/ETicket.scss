@@ -4,20 +4,18 @@
     flex-direction: column;
     justify-content: space-between; 
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
 }
 .eticket-container{
     @include blue-backdrop;
     box-shadow: none;
     background-color: #b29e5e51;
-    margin:auto;
+    margin: 2% 0 2% 0;
+    padding: 0;
 }
 
 .eticket-heading{
     font-size: 1.4rem;
-    font-weight: weight(bold);
-    margin-bottom: 2px;   
+    font-weight: weight(bold);  
 }
 
 .heading-container{
@@ -41,8 +39,10 @@
     font-weight: weight(medium-s);
 }
 .container-header{
-    background-color: #05448b69;
+    background-color: #05448b75;
     border-radius: 10px 10px 0px 0px;
+    width: 100%;
+    margin-left: 0px;
 }
 .logo-inside{
     width: 60%;
