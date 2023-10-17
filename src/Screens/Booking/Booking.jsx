@@ -1,15 +1,84 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import "./Booking.scss";
 import MapContainer from "./MapContainer";
-import { LinkContainer } from "react-router-bootstrap";
+import {useLocation} from "react-router-dom";
+import { useGetScheduleMutation } from "../../slices/trainApiSlice";
 
 const Booking = () => {
+
+  const location = useLocation();
+  const { state } = location;
+  const [schedule, { isLoading: isload }] = useGetScheduleMutation();
+  const [scheduleData, setScheduleData] = useState(null);
+  
+  // Get the data from the query parameters
+  const { fromStation, toStation, date } = state.searchData;
+// Get the day of the week from the date
+const dateName = new Date(date);
+const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const dayOfWeek = daysOfWeek[dateName.getDay()];
+
+  useEffect(() => {
+    async function fetchSchedule() {
+      try {
+        const res = await schedule({
+          sourceId: fromStation,
+          destinationId: toStation,
+          date: dayOfWeek, 
+        }).unwrap();
+        setScheduleData(res); 
+
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    if (fromStation && toStation) {
+      fetchSchedule(); 
+    }
+  }, [fromStation, toStation]); 
+  console .log(scheduleData);
+  
+  let trainNo, trainName, arrivalTime, departureTime, arrivalTimeAtDestination, arrivalTimeAtSource, defaultTotalSeats, departureTimeAtSource, destinationStationID, frequencyName, sourceStationID, trainType;
+
+if (scheduleData && scheduleData.length > 0) {
+  const firstItem = scheduleData[0];
+  trainNo = firstItem.TrainNo;
+  trainName = firstItem.TrainName;
+  arrivalTime = firstItem.ArrivalTime;
+  departureTime = firstItem.DepartureTime;
+  arrivalTimeAtDestination = firstItem.ArrivalTimeAtDestination;
+  arrivalTimeAtSource = firstItem.ArrivalTimeAtSource;
+  defaultTotalSeats = firstItem.DefaultTotalSeats;
+  departureTimeAtSource = firstItem.DepartureTimeAtSource;
+  destinationStationID = firstItem.DestinationStationID;
+  frequencyName = firstItem.FrequencyName;
+  sourceStationID = firstItem.SourceStationID;
+  trainType = firstItem.TrainType;
+} else {
+  console.log('No schedule data available.');
+}
+console.log("trainNo:", trainNo);
+console.log("trainName:", trainName);
+console.log("arrivalTime:", arrivalTime);
+console.log("departureTime:", departureTime);
+console.log("arrivalTimeAtDestination:", arrivalTimeAtDestination);
+console.log("arrivalTimeAtSource:", arrivalTimeAtSource);
+console.log("defaultTotalSeats:", defaultTotalSeats);
+console.log("departureTimeAtSource:", departureTimeAtSource);
+console.log("destinationStationID:", destinationStationID);
+console.log("frequencyName:", frequencyName);
+console.log("sourceStationID:", sourceStationID);
+console.log("trainType:", trainType);
+
+
   const trainData = [
     {
-      trainName: "GALU KUMARI",
-      trainType: "Colombo Commuter",
-      trainNo: "7034",
+      trainName: trainName,
+      trainType: trainType,
+      trainNo: trainNo,
+      frequencyName: frequencyName,
       classes: "1st, 2nd, 3rd",
       schedule: [
         { name: "Colombo Fort", arrival: "06:30 am", departure: "06:45 am" },
@@ -30,18 +99,6 @@ const Booking = () => {
         { name: "Beliatta", arrival: "09:15 pm", departure: "" },
       ],
     },
-    {
-      trainName: "GALU KUMARI",
-      trainType: "Colombo Commuter",
-      trainNo: "8057",
-      classes: "3rd",
-      schedule: [
-        { name: "Colombo Fort", arrival: "08:45 am", departure: "08:50 am" },
-        { name: "Mount Lavinia", arrival: "09:15 am", departure: "09:20 am" },
-        { name: "Ambalangoda", arrival: "01:15 pm", departure: "01:17 pm" },
-        { name: "Beliatta", arrival: "05:15 am", departure: "" },
-      ],
-    },
   ];
 
   return (
@@ -58,8 +115,6 @@ const Booking = () => {
             </Button>
           </div>
         </div>
-
-        {/* rendering train data from trainData array */}
 
         {trainData.map((data, index) => (   
           <MapContainer key={index} {...data} />

@@ -1,18 +1,20 @@
 import { Container, Button } from "react-bootstrap";
 import "./HeroSection.scss";
-import { useGetScheduleMutation, useGetStationsQuery } from "../../slices/trainApiSlice";
-import { LinkContainer } from "react-router-bootstrap";
-import { useEffect, useState } from "react";
+import {
+  useGetStationsQuery,
+} from "../../slices/trainApiSlice";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
   //getting stations data from api
   const { data, isLoading } = useGetStationsQuery();
-  const [ fromStation , setFromStation ] = useState("");
-  const [ toStation , setToStation ] = useState("");
-  const [ date , setDate ] = useState("");
+  const [fromStation, setFromStation] = useState("");
+  const [toStation, setToStation] = useState("");
+  const [date, setDate] = useState("");
 
-  const [schedule, { isLoading: isload}] = useGetScheduleMutation();
-  // const { date, setDate } = useState("");
+  
+  const navigate = useNavigate();
 
   //function to handle from station
   const handleFromStation = (e) => {
@@ -25,28 +27,18 @@ const HeroSection = () => {
   //function to handle date
   const handleDate = (e) => {
     setDate(e.target.value);
-  }
-  // useEffect(() => {
-  //   console.log("fromStation: " + date);
-  // }, [date]);
+  };
 
-  const handleSubmit = async () => {
-    console.log("fromStation: " + fromStation);
-    console.log("toStation: " + toStation);
-    console.log("date: " + date);
-
-    try {
-     const res = await schedule({
-        sourceId: fromStation,
-        destinationId: toStation,
-        date: "Monday"
-      }).unwrap();
-      console.log(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
+  const handleSubmit = () => {
+    // Convert the data to an object
+    const searchData = {
+      fromStation,
+      toStation,
+      date,
+    };
+    // Use the history object to navigate to the next page and pass the data as query parameters
+    navigate("/booking", { state: { searchData } });
+  };
   return (
     <section className="hero-section">
       <div className="hero-background"></div>
@@ -82,8 +74,7 @@ const HeroSection = () => {
             </div>
 
             <div className="dropdown-class" id="to-select">
-            
-            {/* Dropdown menu for selecting to station. */}
+              {/* Dropdown menu for selecting to station. */}
               <label className="dropdown-label">To</label>
               <select onChange={handleToStation}>
                 {data != undefined ? (
@@ -101,13 +92,24 @@ const HeroSection = () => {
             </div>
             <div className="dropdown-class">
               <label className="dropdown-label">Date</label>
-              <input type="date" placeholder="Date" id="date-select"  onChange={handleDate}/>
+              <input
+                type="date"
+                placeholder="Date"
+                id="date-select"
+                onChange={handleDate}
+              />
             </div>
-            <LinkContainer to="/booking">
-              <Button variant="primary" className="search-button-extend" onClick={handleSubmit}>
+            {/* <LinkContainer to="/booking"> */}
+              {/* <Link to={`/booking?data=${JSON.stringify(sheduleData)}`}> */}
+              <Button
+                variant="primary"
+                className="search-button-extend"
+                onClick={handleSubmit}
+              >
                 Search
               </Button>
-            </LinkContainer>
+              {/* </Link> */}
+            {/* </LinkContainer> */}
           </div>
         </div>
       </Container>

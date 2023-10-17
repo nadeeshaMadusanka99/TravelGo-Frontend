@@ -1,347 +1,317 @@
-@import '../Common/main.scss';
+@import "../Common/main.scss";
 
-.booking{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    .booking-background{
-       // position: absolute;
-       // top: 10;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        z-index: 0;
-        margin-top: 6%;
-        .glass-wrapper{
-
-            display: flex;
-            justify-content: center;
-            margin-bottom: 3%;
-            .glass{
-                @include glass-container;
-                padding: 30px; 
-                max-width: 60%;
-                display: flex;
-                justify-content: center;
-                box-shadow: 0 5px 7px 0 rgba(2, 3, 26, 0.201);
-            }
-            
-        }
-        .search-form {
-            display: flex;
-            align-items: center;
-            margin: 10% auto 0 auto;
-            input[type='text'],
-            input[type='date'] {
-              padding: 5px;
-              margin-right: 10px;
-              border-radius: 5px;
-              background: none;
-              border: 2px solid rgba(255, 255, 255, 0.715);
-         
-            }
-    
-            input::placeholder {
-              color: #000000; /* Red color for the placeholder text */
-            }
-    
-      
-            .button-extend {
-              @include Button;
-            }
-          }
-        
-        .map-container {
-    
-            position: relative;
-            border: 2px solid rgb(0, 0, 0);
-            margin-left: 20%;
-            margin-right: 20%;
-            height: 20%;
-            margin-top: 1%;
-           
-          }
-          .container {
-            padding: 0 1cm;
-          
-            .row {
-              display: flex;
-              align-items: center;
-          
-              .train-details {
-                flex: 1;
-                text-align:right;
-                
-          
-                .body-paragraph {
-                  margin-bottom: 0.001rem;
-                }
-          
-                .gray-paragraph {
-                  color: gray;
-                  font-size:x-small;
-                  margin-bottom: 0.001rem;
-                  font-weight: 500;
-                } 
-                .btn-book{
-                    width: 130px;
-                    height: 25px;
-                    display: flex;            
-                    justify-content: center;  
-                    align-items: center;
-                    border-radius: 15px;                    
-                    margin-left: 15%;
-                    p{
-                      font-size: 13px;
-                      color: rgb(255, 255, 255);
-                      font-weight: 500;
-                      margin-top: 15%;
-                    }
-                }
-              }
-          
-              .station-details {
-                flex: 1;
-                text-align: left;
-                border-left: 5px solid black; 
-          
-                .gray-paragraph {
-                  color: gray;
-                  margin-bottom: 0.1rem;
-                }
-                .station-paragraph{
-                  @extend .gray-paragraph;
-                  transform: translateY(-50%);
-                  font-size: small;
-                }
-                .arrival-paragraph{
-                  @extend .gray-paragraph;
-                  transform: translateY(60%);
-                  font-size: small;
-                }
-                .departure-paragraph{
-                  @extend .gray-paragraph;
-                  transform: translateY(60%);
-                  font-size: small;
-                }
-                .crowd-paragraph{
-                  @extend .gray-paragraph;
-                  font-size: small;
-                  transform: translateY(65%);
-                }
-              }
-        
-              .short-map {
-                .lines {
-                  width: 100%;
-                  height: 20px; 
-                  position: relative;
-                  transform: translateY(-90%);
-              
-                  &::before {
-                    content: "";
-                    position: absolute;
-                    width: 100%;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    border-bottom: 2px dotted #080808; 
-                  }
-              
-                  .circle {
-                    width: 20px; 
-                    height: 20px; 
-                    background-image: url('../../assets/finalstate.png' ); 
-                    background-size: cover; 
-                    background-repeat: no-repeat; 
-                    border-radius: 50%;
-                    position: absolute;
-                    top: 50%;
-                    left: calc(25% - 10px); 
-                    transform: translateY(-50%);
-        
-                    .next-station{
-                      white-space: nowrap; 
-                      position: absolute;
-                      top: 50%;
-                      left: calc(10% - 20px); 
-                      transform: translateY(-170%);
-                      
-                      font-weight: 600;
-                      font-size: 12px;
-                    }
-                    .arrival-time{
-                      @extend .next-station;  
-                      transform: translateY(90%);
-                      color: grey;
-        
-        
-                    }
-                    .departure-time{
-                      @extend .next-station;
-                      transform: translateY(200%);
-                      color: grey;
-                    }
-                  }
-        
-                  .circle:nth-child(1) {
-                    left: calc(0% - 10px);
-                  }
-              
-                  .circle:nth-child(2) {
-                    left: calc(20% - 10px);
-                  }
-              
-                  .circle:nth-child(3) {
-                    left: calc(60% - 10px);
-                  }
-              
-                  .circle:nth-child(4) {
-                    left: calc(100% - 10px);
-                  }
-                }
-                .crowd-line{
-                  width: 100%;
-                  height: 8px; 
-                  position: relative ;
-                  transform: translateY(600%);               
-                }
-        
-              }
-              
-            }
-          }
-          .intensity-container{
-            display: flex;
-            justify-content: center;
-            margin-top: 1.4%;
-          .crowd-intensity{
-            
-                height: 10px; 
-               
-                background-image: linear-gradient(to right, #e8f934, #ff0000);
-                width: 60%;
-           
-                .low-crowd{
-                  display: flex;
-                  justify-content: center;
-                  background-color: rgba(48, 97, 246, 0.647);
-                  width:110px;
-                  height: 24px;
-                  margin-top:20px;
-                  transform: translateX(-50%);
-                  border-radius: 10%;
-                  margin-left: 0.7%;
-
-                }
-                 .low-arrow{
-                  height: 0;
-                  width:0;
-                  position: absolute;
-                  top:-9.5px;
-                  border-right: 10px solid transparent;
-                  border-left: 10px solid transparent;
-                  border-bottom: 10px solid rgba(48, 97, 246, 0.647);
-                  left:40px;
-                
-          }
-                .high-crowd{
-                  display: flex;
-                  justify-content: center;
-                  position: absolute;
-                  background-color: rgba(48, 97, 246, 0.647);
-                  width:110px;
-                  height: 24px;
-                  bottom:0.8%;
-                  border-radius: 10%;
-                  right:16.1%;
-          }
-          .high-arrow{
-            @extend .low-arrow;
-            top:-9.5px;
-          }
-           
-          }
-
-         
-        }
-          
+.booking {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  .booking-background {
+    // position: absolute;
+    // top: 10;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    z-index: 0;
+    margin-top: 6%;
+    .glass-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3%;
+      .glass {
+        @include glass-container;
+        padding: 30px;
+        max-width: 60%;
+        display: flex;
+        justify-content: center;
+        box-shadow: 0 5px 7px 0 rgba(2, 3, 26, 0.201);
+      }
     }
-}
+    .search-form {
+      display: flex;
+      align-items: center;
+      margin: 10% auto 0 auto;
+      input[type="text"],
+      input[type="date"] {
+        padding: 5px;
+        margin-right: 10px;
+        border-radius: 5px;
+        background: none;
+        border: 2px solid rgba(255, 255, 255, 0.715);
+      }
 
-@media(max-width:920px){
+      input::placeholder {
+        color: #000000; /* Red color for the placeholder text */
+      }
 
-  .booking-background{
-    overflow-y: scroll; 
+      .button-extend {
+        @include Button;
+      }
+    }
 
-  .map-container{
-    justify-content: left ;
-    margin-top: 20% !important;
-    margin-left:10% !important;
-    margin-right: 10% !important;
-    height: 35% !important;   
-    margin-bottom: -10% !important;
+    .map-container {
+      position: relative;
+      border: 2px solid rgb(0, 0, 0);
+      margin-left: 20%;
+      margin-right: 20%;
+      height: auto;
+      margin-top: 1%;
+      padding: 1% 0 1% 0;
+    }
+    .container {
+      padding: 0 1cm;
+
+      .row {
+        display: flex;
+        align-items: center;
+
+        .train-details {
+          flex: 1;
+          text-align: right;
+
+          .body-paragraph {
+            margin-bottom: 0.001rem;
+          }
+
+          .gray-paragraph {
+            color: gray;
+            font-size: x-small;
+            margin-bottom: 0.001rem;
+            font-weight: 500;
+          }
+          .btn-book {
+            width: 130px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            margin-left: 15%;
+            p {
+              font-size: 13px;
+              color: rgb(255, 255, 255);
+              font-weight: 500;
+              margin-top: 15%;
+            }
+          }
+        }
+
+        .station-details {
+          border-left: 5px solid black;
+
+          .gray-paragraph {
+            color: gray;
+            margin-bottom: 0.25rem;
+          }
+          .station-paragraph {
+            @extend .gray-paragraph;
+            transform: translateY(-50%);
+            font-size: small;
+          }
+          .arrival-paragraph {
+            @extend .gray-paragraph;
+            transform: translateY(60%);
+            font-size: small;
+          }
+          .departure-paragraph {
+            @extend .gray-paragraph;
+            transform: translateY(60%);
+            font-size: small;
+          }
+          .crowd-paragraph {
+            @extend .gray-paragraph;
+            font-size: small;
+            transform: translateY(65%);
+          }
+        }
+
+        .short-map {
+          .lines {
+            width: 100%;
+            height: 20px;
+            position: relative;
+            transform: translateY(-90%);
+
+            &::before {
+              content: "";
+              position: absolute;
+              width: 100%;
+              top: 50%;
+              transform: translateY(-50%);
+              border-bottom: 2px dotted #080808;
+            }
+
+            .circle {
+              width: 20px;
+              height: 20px;
+              background-image: url("../../assets/finalstate.png");
+              background-size: cover;
+              background-repeat: no-repeat;
+              border-radius: 50%;
+              position: absolute;
+              top: 50%;
+              left: calc(25% - 10px);
+              transform: translateY(-50%);
+
+              .next-station {
+                white-space: nowrap;
+                position: absolute;
+                top: 50%;
+                left: calc(10% - 20px);
+                transform: translateY(-170%);
+
+                font-weight: 600;
+                font-size: 12px;
+              }
+              .arrival-time {
+                @extend .next-station;
+                transform: translateY(90%);
+                color: grey;
+              }
+              .departure-time {
+                @extend .next-station;
+                transform: translateY(200%);
+                color: grey;
+              }
+            }
+
+            .circle:nth-child(1) {
+              left: calc(0% - 10px);
+            }
+
+            .circle:nth-child(2) {
+              left: calc(20% - 10px);
+            }
+
+            .circle:nth-child(3) {
+              left: calc(60% - 10px);
+            }
+
+            .circle:nth-child(4) {
+              left: calc(100% - 10px);
+            }
+          }
+          .crowd-line {
+            width: 100%;
+            height: 8px;
+            position: relative;
+            transform: translateY(600%);
+          }
+        }
+      }
+    }
+    .intensity-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 1.4%;
+      .crowd-intensity {
+        height: 10px;
+
+        background-image: linear-gradient(to right, #e8f934, #ff0000);
+        width: 60%;
+
+        .low-crowd {
+          display: flex;
+          justify-content: center;
+          background-color: rgba(48, 97, 246, 0.647);
+          width: 110px;
+          height: 24px;
+          margin-top: 20px;
+          transform: translateX(-50%);
+          border-radius: 10%;
+          margin-left: 0.7%;
+        }
+        .low-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: -9.5px;
+          border-right: 10px solid transparent;
+          border-left: 10px solid transparent;
+          border-bottom: 10px solid rgba(48, 97, 246, 0.647);
+          left: 40px;
+        }
+        .high-crowd {
+          display: flex;
+          justify-content: center;
+          position: absolute;
+          background-color: rgba(48, 97, 246, 0.647);
+          width: 110px;
+          height: 24px;
+          bottom: 0.8%;
+          border-radius: 10%;
+          right: 16.1%;
+        }
+        .high-arrow {
+          @extend .low-arrow;
+          top: -9.5px;
+        }
+      }
+    }
   }
-  .container {
-  
-  
-    .row {
-     
-  
-      .train-details {
-      
-        text-align:start !important;
-        
-  
-        .body-paragraph {
-          font-size: 1.16rem;
-        }
-  
-        .btn-book{
-            margin-top: 5%;  
+}
+// .vertical-line{
+//   border-left: 1px solid #000000;
+//   height: 100%;
+//   position: absolute;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   z-index: 1;
+// }
+@media (max-width: 920px) {
+  .booking-background {
+    overflow-y: scroll;
+
+    .map-container {
+      justify-content: left;
+      margin-top: 20% !important;
+      margin-left: 10% !important;
+      margin-right: 10% !important;
+      height: 35% !important;
+      margin-bottom: -10% !important;
+    }
+    .container {
+      .row {
+        .train-details {
+          text-align: start !important;
+
+          .body-paragraph {
+            font-size: 1.16rem;
+          }
+
+          .btn-book {
+            margin-top: 5%;
             margin-bottom: 5%;
+          }
+          // .gray-paragraph {
+
+          // }
         }
-        // .gray-paragraph {
-         
-        // }
-      
+        .station-details {
+          display: none;
+        }
+        .lines {
+          margin-top: 20%;
+        }
+        .next-station {
+          font-size: 8px !important;
+          display: block !important;
+        }
+        .arrival-time {
+          font-size: 8px !important;
+          margin-left: 50%;
+        }
+        .departure-time {
+          font-size: 8px !important;
+          margin-left: 50%;
+          transform: translateY(90%);
+        }
       }
-      .station-details{
-        display: none;
-      }
-      .lines{
-       margin-top: 20%;
-      }
-      .next-station{
-        
-        font-size: 8px !important;
-        display: block !important;
-
-      }
-      .arrival-time{
-        font-size: 8px !important;
-        margin-left: 50%;
-        
-      
-
-
-      }
-      .departure-time{
-        
-        font-size: 8px !important;
-        margin-left: 50%;
-        transform: translateY(90%);
-      }
-     
-
-}
-
-}
-.crowd-intensity{
-  display: none;
-}
-}
+    }
+    .crowd-intensity {
+      display: none;
+    }
+  }
 }
