@@ -147,7 +147,7 @@ const Payment = () => {
       {/* Price breakdown total - footer*/}
       <div className="divider-outside mb-2"></div>
 
-      <Container fluid={true}>
+      <Container fluid={true} className="bottom-price">
         <Row className="bottom-row">
           <Col className="total-price" xs={4}>
             <p className="total mt-2">Total Price : </p>
