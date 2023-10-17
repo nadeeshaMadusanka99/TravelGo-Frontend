@@ -20,6 +20,7 @@
       @include glass-container;
         padding: 30px; 
         display: flex;
+        
     }
     .hero-content {
       display: flex;
@@ -105,7 +106,7 @@
         .glass-container-extend{
           flex-direction: column;
           padding: 10%;
-          width: 100%;
+          width: 300px;
         }
         input[type='text'], select {
           width: 100%;}
