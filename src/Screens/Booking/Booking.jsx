@@ -22,22 +22,22 @@ const dayOfWeek = daysOfWeek[dateName.getDay()];
   useEffect(() => {
     async function fetchSchedule() {
       try {
-        const res = await schedule({
+        const result = await schedule({
           sourceId: fromStation,
           destinationId: toStation,
           date: dayOfWeek, 
         }).unwrap();
-        setScheduleData(res); 
+        setScheduleData(result); 
 
       } catch (error) {
         console.log(error);
       }
     }
 
-    if (fromStation && toStation) {
+    if (fromStation && toStation && date) {
       fetchSchedule(); 
     }
-  }, [fromStation, toStation]); 
+  }, [fromStation, toStation, date]); 
   console .log(scheduleData);
   
   let trainNo, trainName, arrivalTime, departureTime, arrivalTimeAtDestination, arrivalTimeAtSource, defaultTotalSeats, departureTimeAtSource, destinationStationID, frequencyName, sourceStationID, trainType;
@@ -59,18 +59,18 @@ if (scheduleData && scheduleData.length > 0) {
 } else {
   console.log('No schedule data available.');
 }
-console.log("trainNo:", trainNo);
-console.log("trainName:", trainName);
-console.log("arrivalTime:", arrivalTime);
-console.log("departureTime:", departureTime);
-console.log("arrivalTimeAtDestination:", arrivalTimeAtDestination);
-console.log("arrivalTimeAtSource:", arrivalTimeAtSource);
-console.log("defaultTotalSeats:", defaultTotalSeats);
-console.log("departureTimeAtSource:", departureTimeAtSource);
-console.log("destinationStationID:", destinationStationID);
-console.log("frequencyName:", frequencyName);
-console.log("sourceStationID:", sourceStationID);
-console.log("trainType:", trainType);
+// console.log("trainNo:", trainNo);
+// console.log("trainName:", trainName);
+// console.log("arrivalTime:", arrivalTime);
+// console.log("departureTime:", departureTime);
+// console.log("arrivalTimeAtDestination:", arrivalTimeAtDestination);
+// console.log("arrivalTimeAtSource:", arrivalTimeAtSource);
+// console.log("defaultTotalSeats:", defaultTotalSeats);
+// console.log("departureTimeAtSource:", departureTimeAtSource);
+// console.log("destinationStationID:", destinationStationID);
+// console.log("frequencyName:", frequencyName);
+// console.log("sourceStationID:", sourceStationID);
+// console.log("trainType:", trainType);
 
 
   const trainData = [
@@ -85,18 +85,6 @@ console.log("trainType:", trainType);
         { name: "Mount Lavinia", arrival: "07:15 am", departure: "07:17 am" },
         { name: "Ambalangoda", arrival: "09:15 am", departure: "09:17 am" },
         { name: "Beliatta", arrival: "11:15 am", departure: "" },
-      ],
-    },
-    {
-      trainName: "GALU KUMARI",
-      trainType: "Express Train",
-      trainNo: "8057",
-      classes: "1st, 2nd, 3rd",
-      schedule: [
-        { name: "Colombo Fort", arrival: "01:30 pm", departure: "01:55 pm" },
-        { name: "Mount Lavinia", arrival: "02:35 pm", departure: "02:35 pm" },
-        { name: "Ambalangoda", arrival: "07:15 pm", departure: "07:30 pm" },
-        { name: "Beliatta", arrival: "09:15 pm", departure: "" },
       ],
     },
   ];
