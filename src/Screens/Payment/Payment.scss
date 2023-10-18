@@ -118,12 +118,13 @@
     margin-left: 76%;
 }
 
-@media (max-width:920px){
+@media (max-width:720px){
     .payment-container{
         width: 85%;
         height: 70%;
+       
         
-        transform: translateY(15%);
+        transform: translateY(5%);
         .centered-container{
             margin: 0;
             font-size: 75%;
@@ -137,7 +138,7 @@
         }
 
         .divider{
-            transform: translateY(-3000%);
+            transform: translateY(-70px);
         }
         .content-inside-upper{
             margin-top:12%;
@@ -145,7 +146,7 @@
         }
         .content-inside-bottom{
            
-            transform: translateY(-20%);
+            transform: translateY(-70px);
         }
         .new-card{
             transform: translateY(-30%);
@@ -194,15 +195,26 @@
     }
     .terms-check{
         margin-top: 15%;
+        transform: translateY(-100%);
     }
     .terms-check-label{
         font-size: 90%;
-        
+       
         margin-bottom: 10%;
     }
     .bottom-row{
         display: flex;
         flex-direction: row;
+    }
+    .bottom-price{
+       
+      
+        display: flex;
+        flex-direction: column;
+        transform: translateY(20%);
+       // font-size: 1rem;
+        justify-content: center;
+        align-items: center;
     }
     
     .total-price{
@@ -233,11 +245,12 @@
         
     }
     .checkout-btn{
-        margin-left: 100%;
-        font-size: 0.8rem;
-        width:150%;
-        transform: translateY(-45%);
-       
+        margin-left: 70%!important;
+        font-size:1rem;
+        //margin-bottom: 10%;
+        width:200%;
+          
+       transform: translateY(-50%);
     }
 
 }
