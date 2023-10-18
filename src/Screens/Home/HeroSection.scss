@@ -1,96 +1,92 @@
 @import '../Common/main.scss';
 
 .hero-section {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-  
-    .hero-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('../../assets/Background\ Img.png');
-      background-size: cover;
-      z-index: -1;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/Background\ Img.png');
+    background-size: cover;
+    z-index: -1;
+  }
+
+  .glass-container-extend{
+    @include glass-container;
+      padding: 30px; 
+      display: flex;
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    height: 100%;
+    margin-top: 2%;
+
+    h1 {
+      font-size: 3rem;
+      color: #fff;
+      text-align: left;
+      margin-bottom: 10px;
+      font-weight: weight("medium-l");
+      letter-spacing: 0.3px;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #fff;
+      text-align: center;
+      background-color: $primary-color;
+      border-radius: 35px;
+      padding: 5px 18px 5px 18px;
+      width: fit-content;
+      margin-bottom: 0.8%;
+      
+
     }
 
-    .glass-container-extend{
-      @include glass-container;
-        padding: 30px; 
-        display: flex;
-        
-    }
-    .hero-content {
+    .dropdown-class {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: left;
-      height: 100%;
-      margin-top: 2%;
-  
-      h1 {
-        font-size: 3rem;
-        color: #fff;
-        text-align: left;
-        margin-bottom: 10px;
-        font-weight: weight("medium-l");
-        letter-spacing: 0.3px;
+    }
+
+    .dropdown-label {
+      margin-bottom: 7px;
+      color: white;
+    }
+
+    .search-form {
+      display: flex;
+      align-items: center;
+      margin: 10% auto 0 auto;
+      select,
+      input[type='text'],
+      input[type='date'] {
+        padding: 13px;
+        margin-right: 10px;
+        border-radius: 5px;
+        background: none;
+        border: 2px solid rgba(255, 255, 255, 0.715);
+   
       }
-      p {
-        font-size: 1.2rem;
-        color: #fff;
-        text-align: center;
-        background-color: $primary-color;
-        border-radius: 35px;
-        padding: 5px 18px 5px 18px;
-        width: fit-content;
-        margin-bottom: 0.8%;
+
+      input::placeholder {
+        color: #000000; /* Red color for the placeholder text */
+      }
+
+      .search-button-extend {
+        @include Button;
+        height: 10%;
+        margin-top: 3%;
         
       }
-
-      .dropdown-class {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .dropdown-label {
-        margin-bottom: 7px;
-        color: white;
-      }
-
-      .search-form {
-        display: flex;
-        align-items: center;
-        margin: 10% auto 0 auto;
-        select,
-        input[type='text'],
-        input[type='date'] {
-          padding: 13px;
-          margin-right: 10px;
-          border-radius: 5px;
-          background: none;
-          border: 2px solid rgba(255, 255, 255, 0.715);
-     
-        }
-
-        input::placeholder {
-          color: #000000; /* Red color for the placeholder text */
-        }
-
-        .button-extend {
-
-          @include Button;
-          height: 10%;
-          margin-top: 3%;
-          
-        }
-
-      }  
     }
-  }
- 
+
 @media(max-width:920px){
   .hero-section{
 
@@ -175,3 +171,5 @@
       }
     } 
   }
+}
+}

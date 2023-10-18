@@ -1,13 +1,19 @@
+/* eslint-disable react/prop-types */
 import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import "./Schedule.scss";
 import { LinkContainer } from "react-router-bootstrap";
 import useCounter from "./useCounter";
+import { useState } from "react";
 
-// eslint-disable-next-line react/prop-types
-const ClassDetails = ({seatClass,price,seatsCount,availableSeats,bookedSeats,}) => {
-
-  const { count, increment, decrement } = useCounter(); 
-  
+const ClassDetails = ({
+  seatClass,
+  price,
+  seatsCount,
+  availableSeats,
+  bookedSeats,
+  updateTicketCounts,
+}) => {
+  const { count, increment, decrement } = useCounter();
   return (
     <Container className="book-container">
       <Row>
@@ -19,8 +25,8 @@ const ClassDetails = ({seatClass,price,seatsCount,availableSeats,bookedSeats,}) 
           <p>{price}LKR</p>
         </Col>
         <Col className="booking-count">
-          <p>Available:{availableSeats}</p>
-          <p>Booked: {bookedSeats}</p>
+          <p>Available:{availableSeats - count}</p>
+          <p>Booked: {seatsCount - availableSeats}</p>
         </Col>
         <Col>
           <Row>
@@ -32,7 +38,10 @@ const ClassDetails = ({seatClass,price,seatsCount,availableSeats,bookedSeats,}) 
                 <Button
                   variant="primary"
                   className="btn-inc"
-                  onClick={increment}
+                  onClick={() => {
+                    increment();
+                    updateTicketCounts(seatClass, count + 1); // Update the count for the specific class
+                  }}
                 >
                   +
                 </Button>
@@ -41,7 +50,10 @@ const ClassDetails = ({seatClass,price,seatsCount,availableSeats,bookedSeats,}) 
                 <Button
                   variant="primary"
                   className="btn-dec"
-                  onClick={decrement}
+                  onClick={() => {
+                    decrement();
+                    updateTicketCounts(seatClass, count - 1); // Update the count for the specific class
+                  }}
                 >
                   -
                 </Button>
@@ -55,6 +67,26 @@ const ClassDetails = ({seatClass,price,seatsCount,availableSeats,bookedSeats,}) 
 };
 
 const Schedule = () => {
+  const [ticketCounts, setTicketCounts] = useState({ "": 0 });
+
+  // Update ticket counts
+  const updateTicketCounts = (ticketClass, newCount) => {
+    setTicketCounts((prevCounts) => {
+      if (prevCounts[""] === 0) {
+        // Remove the initial empty class count
+        delete prevCounts[""];
+      }
+      if (newCount < 0) {
+        return prevCounts;
+      } else {
+        return {
+          ...prevCounts,
+          [ticketClass]: newCount,
+        };
+      }
+    });
+  };
+
   return (
     <main className="schedule">
       <div className="schedule-background">
@@ -137,6 +169,7 @@ const Schedule = () => {
               seatsCount="30"
               availableSeats="20"
               bookedSeats="10"
+              updateTicketCounts={updateTicketCounts}
             />
           </div>
           <div className="choose-class">
@@ -146,6 +179,7 @@ const Schedule = () => {
               seatsCount="66"
               availableSeats="40"
               bookedSeats="26"
+              updateTicketCounts={updateTicketCounts}
             />
           </div>
           <div className="choose-class">
@@ -155,6 +189,7 @@ const Schedule = () => {
               seatsCount="92"
               availableSeats="58"
               bookedSeats="34"
+              updateTicketCounts={updateTicketCounts}
             />
           </div>
         </div>
@@ -162,7 +197,21 @@ const Schedule = () => {
           <Col xs={6} className="d-flex align-items-center">
             <div>
               <div className="d-flex align-items-center">
-                <p className="ticket-count">2 First Class</p>
+                {Object.entries(ticketCounts).map(
+                  ([ticketClass, count], index) => (
+                    <p className="ticket-count" key={index}>
+                      {index === 0 ? (
+                        <span>
+                          {count} {ticketClass}
+                        </span>
+                      ) : (
+                        <span>
+                          , {count} {ticketClass}
+                        </span>
+                      )}
+                    </p>
+                  )
+                )}
                 <p className="seat-para"> Seats selected</p>
               </div>
 

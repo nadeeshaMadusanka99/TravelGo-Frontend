@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 
 // eslint-disable-next-line react/prop-types
-const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
+const MapContainer = ({ trainName, trainType, frequencyName ,trainNo, schedule, classes }) => {
   
   const colors = ['#e6f360', '#a7b047', '#e9621e', '#ff0000', '#ff0000', '#e9621e', '#ff9800', '#a7b047', '#e6f360', '#e6f360'];
 
@@ -29,7 +29,7 @@ const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
               <h5 className="body-paragraph">{trainName}</h5>
               <p className="gray-paragraph">{trainType}</p>
               <p className="gray-paragraph">Train No. {trainNo}</p>
-              <h6 className="body-paragraph">Daily</h6>
+              <h6 className="body-paragraph">{frequencyName}</h6>
               <p className="gray-paragraph">Classes: {classes}</p>
               <LinkContainer to="/schedule">
                 <Button variant="primary" className="btn-book">
@@ -38,9 +38,9 @@ const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
               </LinkContainer>
             </Col>
 
-            <Col >
+            {/* <Col >
               <div className="vertical-line"></div>
-            </Col>
+            </Col> */}
           </Col>
 
           <Col className="station-details" xs={12} sm={2}>
