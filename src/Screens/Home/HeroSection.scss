@@ -74,24 +74,19 @@
      
         }
 
-        .search-btn{
-          height: 2rem;
-          margin-top: auto;
-          margin-bottom: 1.5rem;
-          margin-left: 2rem;
-        }
-
         input::placeholder {
           color: #000000; /* Red color for the placeholder text */
         }
 
-  
         .button-extend {
-          @include Button;
-        }
-      }
 
-      
+          @include Button;
+          height: 10%;
+          margin-top: 3%;
+          
+        }
+
+      }  
     }
   }
  
@@ -105,31 +100,16 @@
       h1{
         display: none;
       }
-      p{
-        
-      }
       .search-form{
         
         .glass-container-extend{
-          display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
           padding: 10%;
           width: 100%;
         }
         input[type='text'], select {
-
-          
-          padding: 13px;
-          border-radius: 5px;
-          border: 2px solid rgba(255, 255, 255, 0.715);
           width: 100%;}
         input[type='date'] {
-          padding: 13px;
-          border-radius: 5px;
-          
-          border: 2px solid rgba(255, 255, 255, 0.715);
           width: 100%;
         }
         .button-extend{
@@ -138,10 +118,59 @@
         }
         .search-btn {
           margin-left: 0;
-          margin-top: 1rem;
+          margin-top: 10%;
         }
+
+//       }
+
+//       @media(max-width:920px){
+//         .hero-section{
+      
+//           .hero-content{
+//             align-items: center;
+//             margin-top: 0;
+//             justify-content: center;
+//             h1{
+//               display: none;
+//             }
+//             p{
+              
+//             }
+//             .search-form{
+              
+//               .glass-container-extend{
+//                 display: flex;
+//                 flex-direction: column;
+//                 justify-content: center;
+//                 align-items: center;
+//                 padding: 10%;
+//                 width: 100%;
+//               }
+//               input[type='text'], select {
+      
+                
+//                 padding: 13px;
+//                 border-radius: 5px;
+//                 border: 2px solid rgba(255, 255, 255, 0.715);
+//                 width: 100%;}
+//               input[type='date'] {
+//                 padding: 13px;
+//                 border-radius: 5px;
+                
+//                 border: 2px solid rgba(255, 255, 255, 0.715);
+//                 width: 100%;
+//               }
+//               .button-extend{
+//                 width: 100%;
+//                 padding: 5px 2.3rem;
+//               }
+//               .search-btn {
+//                 margin-left: 0;
+//                 margin-top: 1rem;
+//               }
+//             }
+//           }
+         }
       }
-    }
+    } 
   }
-}  
-  

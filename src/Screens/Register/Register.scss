@@ -48,19 +48,19 @@
         width: 100%;
         
         .name-pass{
-          width: 46%;
-          margin-right : 8%;
+          display: flex;
+          flex-direction: space-between;
+          width: 50%;
+          margin-right : 3%;
+
         }
       }
       .name-pass {
         display: flex;
         flex-direction: column;
-
         margin-bottom: 3%;
         color: $text-color-light;
         font-size: 0.9rem;
-
-
           p {
             margin: 0; 
             padding: 0; 
@@ -73,8 +73,9 @@
       input[type='email'] {
         padding: 10px;
         border-radius: 5px;
-        background-color: $text-color-light; ;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: $text-color-light;
+        background: none; 
+        border: 2px solid rgba(255, 255, 255, 0.715);
       }
       .register-terms{
         display:flex;
@@ -177,7 +178,6 @@
       .name-row{
         flex-direction: column;
         width: 100%;
-        
         
         .name-pass{
           width: 100%;

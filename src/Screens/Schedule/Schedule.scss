@@ -1,4 +1,4 @@
-@import '../Common/main.scss';
+@import "../Common/main.scss";
 
 .schedule {
   display: flex;
@@ -7,359 +7,350 @@
   align-items: center;
   height: 90vh;
   overflow: hidden;
+}
+.schedule-background {
+  position: absolute;
+  width: 100%;
+  background-size: cover;
+  z-index: 0;
+  margin-top: 110px;
+}
+.map-container {
+  position: relative;
+  border: 2px solid black;
+  margin: 0 6cm;
+  height: 18%;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.16);
+}
+.container {
+  padding: 0 1cm;
 
-  .schedule-background {
-    position: absolute;
-    top: 10;
-    left: 0;
-    width: 100%;
-    
-    background-size: cover;
-    z-index: 0;
-    margin-top: 150px;
-    
-  }
-  .map-container {
-    
-    position: relative;
-    border-left: 2px solid rgba(0, 0, 0, 0.329);
-    margin: 0 6cm;
-    height: 18%;
-    box-shadow: 3px 3px 2px 2px rgba(0, 0, 0, 0.586); // Apply box shadow
-  }
-  .container {
-    padding: 0 1cm;
-  
-    .row {
-      display: flex;
-      align-items: center;
-  
-      .train-details {
-        flex: 1;
-        text-align:right;
-  
-        .body-paragraph {
-          margin-bottom: 0.01rem;
-        }
-  
-        .gray-paragraph {
-          color: gray;
-          margin-bottom: 0.01rem;
-        }
-      }
-  
-      .station-details {
-        flex: 1;
-        text-align: left;
-        border-left: 5px solid black; 
-  
-        .gray-paragraph {
-          color: gray;
-          margin-bottom: 0.01rem;
-        }
-        .station-paragraph{
-          @extend .gray-paragraph;
-          transform: translateY(-50%);
-        }
-        .arrival-paragraph{
-          @extend .gray-paragraph;
-          transform: translateY(60%);
-        }
-        .departure-paragraph{
-          @extend .gray-paragraph;
-          transform: translateY(60%);
-        }
-        .crowd-paragraph{
-          @extend .gray-paragraph;
-          transform: translateY(70%);
-        }
-      }
-
-      .short-map {
-        .lines {
-          width: 100%;
-          height: 20px; 
-          position: relative;
-          transform: translateY(-90%);
-      
-          &::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-            border-bottom: 2px dotted #080808; 
-          }
-      
-          .circle {
-            width: 20px; 
-            height: 20px; 
-            background-image: url('../../assets/finalstate.png' ); 
-            background-size: cover; 
-            background-repeat: no-repeat; 
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: calc(25% - 10px); 
-            transform: translateY(-50%);
-
-            .next-station{
-              white-space: nowrap; 
-              position: absolute;
-              top: 50%;
-              left: calc(10% - 20px); 
-              transform: translateY(-170%);
-              
-              font-weight: 600;
-              font-size: 12px;
-            }
-            .arrival-time{
-              @extend .next-station;  
-              transform: translateY(90%);
-              color: grey;
-
-
-            }
-            .departure-time{
-              @extend .next-station;
-              transform: translateY(200%);
-              color: grey;
-            }
-          }
-
-          .circle:nth-child(1) {
-            left: calc(0% - 10px);
-          }
-      
-          .circle:nth-child(2) {
-            left: calc(20% - 10px);
-          }
-      
-          .circle:nth-child(3) {
-            left: calc(60% - 10px);
-          }
-      
-          .circle:nth-child(4) {
-            left: calc(100% - 10px);
-          }
-        }
-        .crowd-line{
-          width: 100%;
-          height: 6px; 
-          position: relative ;
-          transform: translateY(750%);
-
-          .crowd-rectangle {
-            height: 100%;
-            position: absolute;
-            width: 55px; 
-          }
-        
-          .one {
-            left: 0;
-            background-color: #e6f360;
-          }
-          
-          .two {
-            left: 10%;
-            background-color: #a7b047;
-          }
-          
-          .three{
-            left: 20%;
-            background-color: #e9621e ;
-          }
-          
-          .four {
-            left: 30%;
-            background-color: #b1605b;
-          }
-          
-          .five {
-            left: 40%;
-            background-color:  #b05927;
-          }
-          
-          .six {
-            left: 50%;
-            background-color: #e9621e ;
-          }
-          
-          .seven {
-            left: 60%;
-            background-color:  #ff9800;
-          }
-          
-          .eight {
-            left: 70%;
-            background-color: #a7b047;
-          }
-          
-          .nine {
-            left: 80%;
-            background-color: #e6f360;
-          }
-          
-          .ten {
-            left: 90%;
-            background-color: #e6f360;
-          }
-         
-        }
-
-      }
-      
-    }
-  }
-  
-  .text-container {
-    margin-top: 0.7cm;
+  .row {
     display: flex;
     align-items: center;
-    margin-left: 3cm;
 
-    h1 {
-      color:$primary-color; 
-      font-weight: 600;
-    }
-    .radio-switch {
+    .train-details {
+      flex: 1;
       text-align: right;
-      margin-right: 1cm;
-      margin-left: 5cm;
-      position: relative;
-      font-weight: 300;
 
-      label {
-        color: rgb(203, 5, 5);
-        font-weight: 600;
+      .body-paragraph {
+        margin-bottom: 0.01rem;
+      }
+
+      .gray-paragraph {
+        color: gray;
+        margin-bottom: 0.01rem;
+      }
+    }
+
+    .station-details {
+      flex: 1;
+      text-align: left;
+      border-left: 5px solid black;
+
+      .gray-paragraph {
+        color: gray;
+        margin-bottom: 0.01rem;
+      }
+      .station-paragraph {
+        @extend .gray-paragraph;
+        transform: translateY(-50%);
+      }
+      .arrival-paragraph {
+        @extend .gray-paragraph;
+        transform: translateY(60%);
+      }
+      .departure-paragraph {
+        @extend .gray-paragraph;
+        transform: translateY(60%);
+      }
+      .crowd-paragraph {
+        @extend .gray-paragraph;
+        transform: translateY(70%);
+      }
+    }
+
+    .short-map {
+      .lines {
+        width: 100%;
+        height: 20px;
+        position: relative;
+        transform: translateY(-90%);
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          top: 50%;
+          transform: translateY(-50%);
+          border-bottom: 2px dotted #080808;
+        }
+
+        .circle {
+          width: 20px;
+          height: 20px;
+          background-image: url("../../assets/finalstate.png");
+          background-size: cover;
+          background-repeat: no-repeat;
+          border-radius: 50%;
+          position: absolute;
+          top: 50%;
+          left: calc(25% - 10px);
+          transform: translateY(-50%);
+
+          .next-station {
+            white-space: nowrap;
+            position: absolute;
+            top: 50%;
+            left: calc(10% - 20px);
+            transform: translateY(-170%);
+
+            font-weight: 600;
+            font-size: 12px;
+          }
+          .arrival-time {
+            @extend .next-station;
+            transform: translateY(90%);
+            color: grey;
+          }
+          .departure-time {
+            @extend .next-station;
+            transform: translateY(200%);
+            color: grey;
+          }
+        }
+
+        .circle:nth-child(1) {
+          left: calc(0% - 10px);
+        }
+
+        .circle:nth-child(2) {
+          left: calc(20% - 10px);
+        }
+
+        .circle:nth-child(3) {
+          left: calc(60% - 10px);
+        }
+
+        .circle:nth-child(4) {
+          left: calc(100% - 10px);
+        }
+      }
+      .crowd-line {
+        width: 100%;
+        height: 6px;
+        position: relative;
+        transform: translateY(750%);
+
+        .crowd-rectangle {
+          height: 100%;
+          position: absolute;
+          width: 55px;
+        }
+
+        .one {
+          left: 0;
+          background-color: #e6f360;
+        }
+
+        .two {
+          left: 10%;
+          background-color: #a7b047;
+        }
+
+        .three {
+          left: 20%;
+          background-color: #e9621e;
+        }
+
+        .four {
+          left: 30%;
+          background-color: #b1605b;
+        }
+
+        .five {
+          left: 40%;
+          background-color: #b05927;
+        }
+
+        .six {
+          left: 50%;
+          background-color: #e9621e;
+        }
+
+        .seven {
+          left: 60%;
+          background-color: #ff9800;
+        }
+
+        .eight {
+          left: 70%;
+          background-color: #a7b047;
+        }
+
+        .nine {
+          left: 80%;
+          background-color: #e6f360;
+        }
+
+        .ten {
+          left: 90%;
+          background-color: #e6f360;
+        }
       }
     }
   }
-
-  .custom-switch {
-    margin-left: 1cm;
-  }
-
-  .choose-class {
-    margin-top: 1cm;
-    margin-left: 3cm;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .book-container {
-    .btn-inc {
-      margin-top: 5px;
-     
-      border-radius: 100%;
-      width: 25px;
-      height: 25px;
-      display: flex;            // Use flexbox
-      justify-content: center;  // Center horizontally
-      align-items: center;
-      margin-left: 1cm;
-
-     
-    }
-    .btn-dec{
-      @extend .btn-inc;
-      margin-bottom: 5px;
-
-    }
-
-    .booking-ele{
-      display: flex;
-      flex-direction: column;
-      justify-content: center; /* Vertically center content */
-      align-items: center; /* Horizontally center content */
-      text-align: center; 
-      color:grey;
-
-       p{
-        margin-bottom: 0.002cm;
-      }
-
-    }
-    .booking-class {
-      @extend .booking-ele; 
-      color: black; // Overriding the color property to set it to black 
-      font-weight: 600;
-      font-size: larger;
-      justify-content: flex-start; //Align content to the start (left) 
-      align-items: flex-start; 
-    }
-    .booking-count{
-      @extend .booking-ele;
-      justify-content: flex-start; 
-      align-items: flex-start; 
-    }
-    
-    .ticket-count{
-      display: flex;
-      justify-content: center; //Center horizontally 
-      align-items: center; //Center vertically 
-      
-      border: 2px solid $primary-color;
-      color: black;
-      max-width: 35px;
-      max-height: 50px;
-    }
-  }
-  .choose-class-container {
-    display: flex;
-    flex-direction: column;// Evenly space the elements
-    align-items: center; 
-  
-    margin-bottom: 0.1cm;
-    
-  
-    .choose-class {
-      flex: 1; // Allow each element to grow and fill available space
-      max-width: 50%; 
-      max-height: 1.8cm;
-      box-shadow: 3px 3px 2px 2px rgba(0, 0, 0, 0.415); 
-      margin-top: 0.2cm;
-      margin-right: 10%;
-
-    }
-  }
-  .seat-para{
-    padding-top: 0.8cm;
-    font-weight: 500;
-    }
-  .ticket-count{
-    @extend .seat-para;
-    font-weight : 600;
-    font-size: larger;
-    margin-right: 0.3cm;
-  }
-  .ticket-price{
-    font-weight : 600;
-    font-size: larger;
-    margin-right: 0.3cm;
-    font-style: italic;
-    color: $primary-color ;
-  }
-  .cost-para{
-    color: gray;
-    font-weight: 500;
-    font-style: italic;
-    }
-  .btn-book{
-    @include Button;
-    width: 150px;
-    height: 40px;
-    display: flex;           
-    justify-content: center;  
-    align-items: center;
-  }
-  
-  
 }
 
+.text-container {
+  margin-top: 0.7cm;
+  display: flex;
+  align-items: center;
+  margin-left: 3cm;
 
-@media (max-width :1056px) and ( min-width: 350px){
+  h1 {
+    color: $primary-color;
+    font-weight: 600;
+  }
+  .radio-switch {
+    text-align: right;
+    margin-right: 1cm;
+    margin-left: 5cm;
+    position: relative;
+    font-weight: 300;
+
+    label {
+      color: rgb(203, 5, 5);
+      font-weight: 600;
+    }
+  }
+}
+
+.custom-switch {
+  margin-left: 1cm;
+}
+
+.choose-class {
+  margin-top: 1cm;
+  margin-left: 3cm;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.book-container {
+  .btn-inc {
+    margin-top: 5px;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex; // Use flexbox
+    justify-content: center; // Center horizontally
+    align-items: center;
+    margin-left: 40%;
+  }
+  .btn-dec {
+    @extend .btn-inc;
+    margin-bottom: 15px;
+  }
+  .booking-seats {
+    position: relative;
+    font-weight: 600;
+    margin-bottom: 10px;
+    p{
+      margin-bottom: 3px;
+    }
+  }
+
+  .booking-ele {
+    display: flex;
+    flex-direction: column;
+    color: grey;
+    font-weight: 500;
+  }
+  .booking-class {
+    @extend .booking-ele;
+    color: black;
+    font-weight: 600;
+    font-size: larger;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 3px;
+  }
+  .booking-count {
+    @extend .booking-ele;
+    p {
+      font-size: medium;
+      margin-bottom: 5px;
+    }
+  }
+
+  .ticket-count {
+    display: flex;
+    justify-content: center; //Center horizontally
+    align-items: center; //Center vertically
+
+    border: 2px solid $primary-color;
+    color: black;
+    max-width: 35px;
+    max-height: 50px;
+  }
+}
+.choose-class-container {
+  display: flex;
+  flex-direction: column; // Evenly space the elements
+  align-items: center;
+
+  margin-bottom: 0.1cm;
+
+  .choose-class {
+    flex: 1; // Allow each element to grow and fill available space
+    max-width: 50%;
+    max-height: 1.8cm;
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.207);
+    border-radius: 5px;
+    margin: 0.5%;
+  }
+}
+.seat-para {
+  padding-top: 0.8cm;
+  font-weight: 500;
+}
+.ticket-count {
+  @extend .seat-para;
+  font-weight: 600;
+  font-size: larger;
+  margin-right: 0.3cm;
+}
+.ticket-price {
+  font-weight: 600;
+  font-size: larger;
+  margin-right: 0.3cm;
+  font-style: italic;
+  color: $primary-color;
+}
+.cost-para {
+  color: gray;
+  font-weight: 500;
+  font-style: italic;
+}
+.btn-book {
+  @include Button;
+  width: 150px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bottom-row-conotainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0cm 3cm 0.5cm 3cm;
+}
+
+@media (max-width: 1056px) and (min-width: 350px) {
   .map-container {
     display: none !important;
   }
@@ -382,10 +373,9 @@
   }
 
   .choose-class {
-    margin-left: 5px!important;
+    margin-left: 5px !important;
   }
   .booking-count {
-    display: none!important;
+    display: none !important;
   }
-
 }

@@ -19,30 +19,31 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
   const [register, { isLoading }] = useRegisterMutation();
 
   const submitHandler = async (e) => {
     e.preventDefault();   //refrains from default behaviour when submitting form. prevents page reload.
 
+    //check if passwords match
     if (password !== confirmPassword) {
       toast.error('Passwords do not match');
     } else {
       try {
+        //registering the user
         const res = await register({
           firstname: firstName,
           lastname: lastName,
           email: email,
           password: password
-        }).unwrap();
+        }).unwrap(); //returns the actual value of a fulfilled promise.
         navigate(LOGIN);
         toast.success('Registration Successful! Please login')
 
       } catch (err) {
         console.log(err);
-        toast.error(err?.data?.message || err.error);
+        toast.error(err?.data?.message || err.error); //
       }
     }
 
@@ -78,7 +79,7 @@ const Register = () => {
                   value={firstName}
                   id="firstName"
                   name="firstName"
-                  placeholder="First Name"
+                  // placeholder="First Name"
                   required
                   onChange={(e) => setFirstName(e.target.value)} />
               </div>
@@ -90,7 +91,7 @@ const Register = () => {
                   type="text"
                   id="lastName"
                   name="lastName"
-                  placeholder="Last Name"
+                  // placeholder="Last Name"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                 />
@@ -105,7 +106,7 @@ const Register = () => {
                 type="email"
                 id="email"
                 name="email"
-                placeholder="Email Address"
+                // placeholder="Email Address"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)} />
@@ -118,7 +119,7 @@ const Register = () => {
                 type="password"
                 id="password"
                 name="password"
-                placeholder="Password"
+                // placeholder="Password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} />
@@ -131,7 +132,7 @@ const Register = () => {
                 type="password"
                 id="confirmPassword"
                 name="confirmPassword"
-                placeholder="Confirm Password"
+                // placeholder="Confirm Password"
                 required
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)} />

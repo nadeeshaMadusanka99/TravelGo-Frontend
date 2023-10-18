@@ -1,30 +1,13 @@
 @import '../Common/main.scss';
 
-.button-group {
-    display: inline-block;
-    border: 2px solid #007bff;
+.seat-image{
+    width: 29%;
+    height: auto;
     cursor: pointer;
-    margin: 18% 4% 6% 10%;
-    
-  
-    &.checked {
-      background-color: #007bff;
-      color: white;
-    }
-  
-    .toggle-button {
-      width:  45px;
-      height: 45px;
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-      outline: none;
-      font-size: 1.1rem;
-      font-weight : weight(medium-s); 
-
-      &.active {
+    margin: 5px;
+    font-weight : weight(medium-s); 
+    &.active {
         color: white;
       }
-    }
-  }
-  
+    
+}

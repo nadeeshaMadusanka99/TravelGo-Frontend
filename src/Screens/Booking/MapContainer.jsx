@@ -1,11 +1,12 @@
 // MapContainer.jsx
-import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import './Booking.scss';
 import { LinkContainer } from 'react-router-bootstrap';
 
 
+// eslint-disable-next-line react/prop-types
 const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
+  
   const colors = ['#e6f360', '#a7b047', '#e9621e', '#ff0000', '#ff0000', '#e9621e', '#ff9800', '#a7b047', '#e6f360', '#e6f360'];
 
   const crowdRectangleStyles = Array.from({ length: 10 }).map((_, index) => ({
@@ -23,7 +24,7 @@ const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
     <div className="map-container">
       <Container>
         <Row>
-          <Col className="train-details" xs={3}>
+          <Col className="train-details"  xs={12} sm={3}>
             <Col>
               <h5 className="body-paragraph">{trainName}</h5>
               <p className="gray-paragraph">{trainType}</p>
@@ -31,26 +32,27 @@ const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
               <h6 className="body-paragraph">Daily</h6>
               <p className="gray-paragraph">Classes: {classes}</p>
               <LinkContainer to="/schedule">
-              <Button variant="primary" className="btn-book">
-                Book Tickets
-              </Button>
+                <Button variant="primary" className="btn-book">
+                  <p>Book Tickets</p>
+                </Button>
               </LinkContainer>
             </Col>
 
-            <Col>
+            <Col >
               <div className="vertical-line"></div>
             </Col>
           </Col>
 
-          <Col className="station-details" xs={2}>
+          <Col className="station-details" xs={12} sm={2}>
             <p className="station-paragraph">Station</p>
             <p className="arrival-paragraph">Arrival</p>
             <p className="departure-paragraph">Departure</p>
             <p className="crowd-paragraph">Crowd</p>
           </Col>
 
-          <Col xs={7} className="short-map">
+          <Col xs={12} sm={7} className="short-map">
             <div className="lines">
+              {/* eslint-disable-next-line react/prop-types */}
               {schedule.map((station, index) => (
                 <div className="circle" key={index}>
                   <p className="next-station">{station.name}</p>
