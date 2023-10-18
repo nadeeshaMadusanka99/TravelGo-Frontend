@@ -1,10 +1,10 @@
 import React from 'react'
 
-import NewBooking from './NewBooking';
+import Booking from './Booking';
 
 const BookingScreen = () => {
   return (
-    <NewBooking />
+    <Booking />
   )
 }
 
