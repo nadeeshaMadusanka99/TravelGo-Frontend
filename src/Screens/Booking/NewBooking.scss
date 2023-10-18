@@ -6,14 +6,14 @@
     justify-content: center;
     height: 100vh;
     background-color: #f5f5f5;
-    overflow: hidden;
+    // overflow: hidden;
    
 }
 .booking-background{
     display : flex;
     flex-direction: column;
     margin-top: 3%;
-    overflow: hidden;
+    // overflow: hidden;
     height: 100%;
     
   
@@ -78,41 +78,52 @@
     padding: 0% 4% 0 5%;
     margin-top: -1%;
     margin-bottom: -1%;
+    
 }
 
 .train-container {
-    border: 1.5px black solid;
-    padding: 5px 1%;
+    border: 2px black solid;
+    margin-left: 15%;
+      margin-right: 15%;
+      margin-top: 4%;
+    padding: 1.5%;
+    height:auto;
+    box-shadow: 2px 3px 2px 0 rgba(2, 3, 26, 0.237);
 }
 
 .train-details {
     display: flex;
     flex-direction: column;
     align-items: end;
-    justify-content: center;
 
 }
 
 .train-name {
-    font-weight: 600;
-    font-size:x-large;
-    margin-bottom: 0;
+    font-weight: weight(medium-s);
+    font-size: 22px;
     margin-top: -5%;
+    margin-left: auto;
     
 }
 .grey-para{
     color: grey;
     font-size: 13px;
-    margin-top: -1%;
+    font-size: weight(bold);
 }
 .train-right-label{
     color:grey;
+    font-weight: weight(medium-s);
 }
 .btn-book{
-    display: flex;
-    height:20%;
-    align-items: center;
-    justify-content: center;
+    width: 130px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            margin-top: 2%;
+            margin-left: 15%;
+            box-shadow: 0 2px 2px 0 rgba(2, 3, 26, 0.316);
 }
 .vertical-bar-container {
     display: flex;
@@ -135,10 +146,12 @@
 .end-station {
     display: flex;
     justify-content: end;
+    font-weight: weight(medium-s);
 }
-.source-station, .dest-station {
+.source-station, .dest-station , .start-station {
     display: flex;
     justify-content: center;
+    font-weight: weight(medium-s);
 }
 
 .map-container-lines {
@@ -267,11 +280,6 @@
     .glass-wrapper{
         margin-top: 40%;
     }
-
-    .train-name{
-        margin-top: 0%;
-    }
-    
 
 }
 

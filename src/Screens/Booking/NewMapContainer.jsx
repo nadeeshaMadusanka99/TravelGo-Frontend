@@ -39,7 +39,7 @@ const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
                 Station
               </Col>
               <Col xs="2" className="start-station">
-                Colombo
+                  Colombo
               </Col>
               <Col xs="2" className="source-station">
                 Mount Lavinia
