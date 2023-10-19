@@ -3,12 +3,19 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
-    align-items: center;
+   // align-items: center;
     height: 100vh;
     overflow: hidden;
 
     .payment-container{
         @include blue-backdrop;
+        max-width: 90%;
+    }
+    .payment-heading{
+        font-size: 1.5rem;
+        font-weight: weight(bold);
+        margin-top: 0;
+        margin-bottom: 0;
     }
 }
 .content-inside-upper{
@@ -68,9 +75,14 @@
     @extend .card-inputs;
   
 }
+
+
 .card-inputs-date{
     @extend .card-inputs;
     width: 45%;
+}
+.card-label{
+    display: block;
 }
 .slash{
     margin: 0 10px 0 10px;
@@ -95,14 +107,16 @@
 }
 .terms-check{
     display: flex;
-    align-items: left;
+    margin-left: 9%;
+    max-width:88%;
+   
 
 }
 .terms-check-label{
     font-size: 1.1rem;
     font-weight: weight(medium-l);
 }
-.checkout-btn{
+.check-btn{
     margin-left: 50%;
     margin-bottom: 3%;
     align-items: center;
@@ -114,143 +128,28 @@
     font-weight: weight(bold);
     margin-left: 30%;
 }
-.total{
-    margin-left: 76%;
-}
 
-@media (max-width:720px){
-    .payment-container{
-        width: 85%;
-        height: 70%;
-       
-        
-        transform: translateY(5%);
-        .centered-container{
-            margin: 0;
-            font-size: 75%;
-        }
-        .form-check-inline{
-            margin-left: 4%;
-        }
-        .form-check-payment-methods{
-            font-size: 2rem;
-           
-        }
 
-        .divider{
-            transform: translateY(-70px);
-        }
-        .content-inside-upper{
-            margin-top:12%;
-            margin-bottom: 10%;
-        }
-        .content-inside-bottom{
-           
-            transform: translateY(-70px);
-        }
-        .new-card{
-            transform: translateY(-30%);
-        }
-        .new-card-content{
-            //margin: auto auto auto 3%;
-            padding:1%;
-            font-size: 75%;
-        }
-        .card-number{
-            transform: translateY(-30%);
 
-        }
-        .card-holder{
-            
-            transform: translateX(-100%);
-            margin-top: 10%;
-            
+@media (max-width:770px){
 
-        }
-        .card-label{
-            font-size: 70%;
-            transform: translateY(40%);
-            width: 100%;
-        }
-        .card-inputs-date{
-            width: 20%;
-            transform: translateX(-5%);
-        }
-        .card-inputs-cvv{
-             width: 45%;
-             margin-left: 4%;
-             
-         }
-        .form-group{
-            width: 200%;
-        }
+    .payment{
+        overflow-y:scroll ;
     }
-    .form-check{
-        margin-left: 1%;
-       
-    }
-    .form-check-label{
-        font-size: 90%;
-        
-    }
-    .terms-check{
-        margin-top: 15%;
-        transform: translateY(-100%);
-    }
-    .terms-check-label{
-        font-size: 90%;
-       
-        margin-bottom: 10%;
-    }
-    .bottom-row{
-        display: flex;
-        flex-direction: row;
-    }
-    .bottom-price{
-       
-      
+    .btncontainer{
         display: flex;
         flex-direction: column;
-        transform: translateY(20%);
-       // font-size: 1rem;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+     
+      
     }
-    
-    .total-price{
-        margin-bottom: 5%;
-        width: 40%;
-        margin-left: 5%;
-        height: 10%;
-        margin-top:-5%
+    .check-btn{
+        margin-left: 0%;
     }
-
-    .total{
-        margin-left: 5%;
-        font-size: 1rem;
-        display: inline-block;
+    .total , .total-value{
+        text-align: center;
+        margin-left: 0%;
     }
-    .total-price-val{
-        margin-top: -5%;
-        margin-bottom: 5%;
-        width: 40%;
-        height: 10%;
-        margin-left: 10%;
-    }
-    .total-value{
-        
-        margin-left: 5%;
-        font-size: 1rem;
-        width: 100%;
-        
-    }
-    .checkout-btn{
-        margin-left: 70%!important;
-        font-size:1rem;
-        //margin-bottom: 10%;
-        width:200%;
-          
-       transform: translateY(-50%);
-    }
-
+   
 }
