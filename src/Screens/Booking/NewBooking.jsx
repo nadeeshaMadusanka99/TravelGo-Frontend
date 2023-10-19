@@ -13,14 +13,15 @@ const NewBooking = () => {
   const { state } = location;
   const [schedule, { isLoading: isload }] = useGetScheduleMutation();
   const [scheduleData, setScheduleData] = useState(null);
-
+  
   // Get the data from the query parameters
   const { fromStation, toStation, date } = state.searchData;
+  const [newDate, setNewDate] = useState(date);
   // Get the day of the week from the date
   const dateName = new Date(date);
   const daysOfWeek = [
-    "Sunday",
-    "Monday",
+  "Sunday",
+  "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
@@ -29,6 +30,10 @@ const NewBooking = () => {
   ];
   const dayOfWeek = daysOfWeek[dateName.getDay()];
 
+  
+  const handleDateChange = (e) => {
+    setNewDate(e.target.value);
+  }
   useEffect(() => {
     async function fetchSchedule() {
       try {
@@ -104,6 +109,32 @@ const NewBooking = () => {
         { name: "Beliatta", arrival: "11:15 am", departure: "" },
       ],
     },
+    {
+      trainName: trainName,
+      trainType: trainType,
+      trainNo: trainNo,
+      frequencyName: frequencyName,
+      classes: "1st, 2nd, 3rd",
+      schedule: [
+        { name: "Colombo Fort", arrival: "06:30 am", departure: "06:45 am" },
+        { name: "Mount Lavinia", arrival: "07:15 am", departure: "07:17 am" },
+        { name: "Ambalangoda", arrival: "09:15 am", departure: "09:17 am" },
+        { name: "Beliatta", arrival: "11:15 am", departure: "" },
+      ],
+    },
+    {
+      trainName: trainName,
+      trainType: trainType,
+      trainNo: trainNo,
+      frequencyName: frequencyName,
+      classes: "1st, 2nd, 3rd",
+      schedule: [
+        { name: "Colombo Fort", arrival: "06:30 am", departure: "06:45 am" },
+        { name: "Mount Lavinia", arrival: "07:15 am", departure: "07:17 am" },
+        { name: "Ambalangoda", arrival: "09:15 am", departure: "09:17 am" },
+        { name: "Beliatta", arrival: "11:15 am", departure: "" },
+      ],
+    },
   ];
 
   return (
@@ -115,8 +146,11 @@ const NewBooking = () => {
               <div className="dropdown-class">
                 <label className="dropdown-label">From</label>
                 <select>
+                  <option disabled value="" selected>
+                    {fromStation}
+                  </option>
                   {data != undefined ? (
-                    data.map((station,index) => (
+                    data.map((station, index) => (
                       <option key={index}>{station.StationName}</option>
                     ))
                   ) : (
@@ -130,8 +164,11 @@ const NewBooking = () => {
               <div className="dropdown-class">
                 <label className="dropdown-label">To</label>
                 <select>
+                  <option disabled value="" selected>
+                    {toStation}
+                  </option>
                   {data != undefined ? (
-                    data.map((station,index) => (
+                    data.map((station, index) => (
                       <option key={index}>{station.StationName}</option>
                     ))
                   ) : (
@@ -144,7 +181,7 @@ const NewBooking = () => {
 
               <div className="dropdown-class">
                 <label className="dropdown-label">Date</label>
-                <input type="date" placeholder="Date" />
+                <input type="date" value={newDate} onChange={handleDateChange} />
               </div>
 
               <div className="search-btn">
@@ -157,7 +194,6 @@ const NewBooking = () => {
             </div>
           </div>
         </Container>
-
         {trainData.map((data, index) => (
           <NewMapContainer key={index} {...data} />
         ))}

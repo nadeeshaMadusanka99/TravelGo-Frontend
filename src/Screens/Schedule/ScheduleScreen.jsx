@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
-import NewShedule from './NewSchedule'
+import NewSchedule from './NewSchedule'
 
 const ScheduleScreen = () => {
   return (

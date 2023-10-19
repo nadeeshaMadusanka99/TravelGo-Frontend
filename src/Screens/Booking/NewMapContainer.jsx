@@ -1,11 +1,10 @@
-// MapContainer.jsx
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import './NewBooking.scss';
 import { LinkContainer } from 'react-router-bootstrap';
 
 
-const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
+const MapContainer = ({ trainName, trainType, trainNo, schedule, classes ,frequencyName }) => {
   const colors = ['#e6f360', '#a7b047', '#e9621e', '#ff0000', '#ff0000', '#e9621e', '#ff9800', '#a7b047', '#e6f360', '#e6f360'];  
   return (
     <div className="map-container">
@@ -17,7 +16,7 @@ const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
                 <h4 className="train-name">{trainName}</h4>
                 <div className="grey-para">{trainType}</div>
                 <div className="grey-para">Train No: {trainNo}</div>
-                <div >Daily</div>
+                <div >{frequencyName}</div>
                 <div className="grey-para">Classes: {classes}</div>
                 <LinkContainer to="/schedule">
                     <Button variant="primary" className="btn-book">
@@ -67,7 +66,7 @@ const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
 
 
             {/* Arrival Times */}
-            <Row className="arrival-time-row">
+            <Row className="arrival-time-row margin-s">
               <Col xs="2" className="train-right-label">
                 Arrival
               </Col>
@@ -87,7 +86,7 @@ const MapContainer = ({ trainName, trainType, trainNo, schedule, classes }) => {
             </Row>
 
             {/* Dest times */}
-            <Row>
+            <Row className='margin-s'>
               <Col xs="2" className="train-right-label">
                 Departure
               </Col>
