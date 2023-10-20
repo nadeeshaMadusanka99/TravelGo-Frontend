@@ -197,20 +197,21 @@ const Schedule = () => {
           <Col xs={6} className="d-flex align-items-center">
             <div>
               <div className="d-flex align-items-center">
-                {Object.entries(ticketCounts).map(([ticketClass, count]) => (
-                  <p className="ticket-count" key={ticketClass}>
-                    {ticketClass !== "First Class" && ticketClass !== "" ? (
-                      <span>
-                        ,{" "}
-                        {count} {ticketClass}
-                      </span>
-                    ) : (
-                      <span>
-                        {count} {ticketClass}
-                      </span>
-                    )}
-                  </p>
-                ))}
+                {Object.entries(ticketCounts).map(
+                  ([ticketClass, count], index) => (
+                    <p className="ticket-count" key={index}>
+                      {index === 0 ? (
+                        <span>
+                          {count} {ticketClass}
+                        </span>
+                      ) : (
+                        <span>
+                          , {count} {ticketClass}
+                        </span>
+                      )}
+                    </p>
+                  )
+                )}
                 <p className="seat-para"> Seats selected</p>
               </div>
 

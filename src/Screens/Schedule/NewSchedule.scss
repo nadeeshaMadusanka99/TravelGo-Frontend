@@ -1,0 +1,260 @@
+@import "../Common/main.scss";
+.schedule-container {
+  padding: (75px) 5% 0 5%;
+}
+
+.train-container {
+  border: 1.5px black solid;
+  padding: 50px 10%;
+  margin-top: 1% ;
+}
+
+.train-details {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+}
+
+.train-name {
+  font-weight: 600;
+  margin-bottom: 0;
+  padding-top: 10px;
+}
+.vertical-bar-container {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+}
+.vertical-bar {
+  width: 8px;
+  height: 90%;
+  background-color: black;
+}
+
+.right-side-train {
+  div {
+    font-size: 15px;
+  }
+}
+
+.end-station {
+  display: flex;
+  justify-content: end;
+}
+.source-station,
+.dest-station {
+  display: flex;
+  justify-content: center;
+}
+
+.map-container-lines {
+  position: relative;
+  padding: 10px 0.7%;
+}
+
+.dotted-line {
+  border: 2px blue dashed;
+}
+
+.circle-position {
+  position: absolute;
+  background-image: url("../../assets/finalstate.png");
+  background-size: cover;
+  height: 20px;
+  width: 20px;
+  top: 0;
+}
+
+.c-p-source {
+  left: 41%;
+}
+
+.c-p-dest {
+  right: 24%;
+}
+
+.c-p-end {
+  right: 5px;
+}
+
+.crowd-boxes {
+  height: 12px;
+  margin: 5px 2px;
+}
+.headingContainer h1 {
+  color: $primary-color;
+  font-size: xx-large;
+}
+.headingContainer {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.count-container {
+  margin-bottom: 2%;
+  width: 60%;
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.207);
+  border-radius: 5px;
+  margin: 1% auto 0 auto;
+  padding: 0.8%;
+}
+.count-container h2 {
+  font-size: x-large;
+  font-weight: weight(medium-l);
+  margin-left: 10%;
+}
+.seat-class {
+  display: flex;
+  align-items: center;
+}
+.tkt-price {
+  color: grey;
+  font-style: italic;
+  font-size: smaller;
+}
+.seat-cnt {
+  color: grey;
+  font-weight: 500;
+}
+.seat-grey {
+  color: grey;
+  display: flex;
+  margin-left: 10%;
+  font-weight: 500;
+}
+.seat-grey p {
+  width: fit-content;
+  margin: 0;
+  align-items: left;
+  justify-content: left;
+}
+.avai-para {
+  color: black;
+  font-weight: 500;
+}
+
+.btn-inc,
+.btn-dec {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: x-large;
+  margin-bottom: 3px;
+  margin-left: 14%;
+}
+.count-span {
+ 
+  padding: 8px 12px;
+  font-weight: weight(bold);
+  border: 2px solid $primary-color;
+  color: black;
+  max-width: 35px;
+  max-height: 50px;
+  margin-right: 3% !important;
+}
+.buttonContainer {
+  margin-top: 3%;
+}
+.ticket-count {
+  font-weight: 700;
+  font-size: larger;
+}
+.seat-para {
+  font-weight: weight(medium-s);
+  margin-left: 1%;
+  margin-bottom: 1.5%;
+  //make the content virtically center
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ticket-price {
+  font-weight: 500;
+  font-size: larger;
+  color: $primary-color;
+  font-style: italic;
+}
+.cost-para {
+  font-style: italic;
+  color: grey;
+  font-weight: 500;
+}
+.book-btnc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btnBook {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 150px;
+  font-weight: 600;
+  font-size: larger;
+}
+.ticket-pricing {
+  display: flex;
+  margin-top: -2%;
+}
+.class-fonts {
+  font-weight: weight(medium-l);
+}
+.head-question {
+  font-weight: 400;
+}
+.head-question {
+  font-weight: weight(medium-s) !important;
+  margin-bottom: 0;
+}
+
+@media (max-width: 720px) {
+  .train-details {
+    align-items: center;
+  }
+
+  .right-side-train {
+    div {
+      font-size: 70%;
+    }
+  }
+  .horizontal-bar-container {
+    padding: 0 8% 6px 10%;
+  }
+  .horizontal-bar {
+    background-color: black;
+    height: 6px;
+  }
+
+  .crowd-boxes-container {
+    margin-left: 4%;
+    .crowd-boxes {
+      height: 8px;
+      margin: 2px 1px 10px;
+    }
+  }
+  .avai-para,
+  .booked-para {
+    transform: translateX(30px);
+  }
+  .ticket-pricing {
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+  }
+  .seat-para {
+    margin-bottom: 4%;
+  }
+  .train-container{
+    margin-top:-10% !important;
+    margin-bottom: 10% !important;
+  }
+  .count-container{
+    width: 90%;
+    margin-top:5%;
+  }
+}

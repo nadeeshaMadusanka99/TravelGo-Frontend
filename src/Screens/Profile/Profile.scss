@@ -1,21 +1,19 @@
 @import '../Common/main.scss';
 
 .profile {
-
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
     align-items: center;
     height: 100vh;
     overflow: hidden;
-
       .profile-background {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url('../../assets/PersonalProfile .png');
+        background-image: url('../../assets/PersonalProfile .jpg');
         background-size: cover;
         z-index: 0;
       }
@@ -54,8 +52,6 @@
         border-radius: 15px 0 0 15px;
         height: 85px;
         align-items: center;
-
-        
         }
 
         .col-change{

@@ -10,13 +10,14 @@ const Payment = () => {
     <main className="payment">
         {/* Payment box */}
       <Container className="payment-container">
-        <div className="content-inside-upper">
+        <Row className="content-inside-upper">
           <p className="payment-heading">Payment Method</p>
           <div className="centered-container">
             <FaRegCreditCard size="1.5rem" className="card-icon" />
             Please select your payment method
           </div>
-          <div className="form-check-inline">
+          
+          <Col className="form-check-inline">
             <input
               className="form-check-input-radio"
               type="radio"
@@ -27,8 +28,8 @@ const Payment = () => {
             <label className="form-check-payment-methods" htmlFor="visa">
               <RiVisaLine></RiVisaLine>
             </label>
-          </div>
-          <div className="form-check-inline">
+          </Col>
+          <Col className="form-check-inline">
             <input
               className="form-check-input-radio"
               type="radio"
@@ -39,8 +40,8 @@ const Payment = () => {
             <label className="form-check-payment-methods" htmlFor="master">
               <FaCcMastercard></FaCcMastercard>
             </label>
-          </div>
-          <div className="form-check-inline">
+          </Col>
+          <Col className="form-check-inline">
             <input
               className="form-check-input-radio"
               type="radio"
@@ -51,9 +52,11 @@ const Payment = () => {
             <label className="form-check-payment-methods" htmlFor="paypal">
               <FaPaypal></FaPaypal>
             </label>
-          </div>
-        </div>
-        <div className="divider"></div>
+          </Col>
+        </Row>
+        <Row className="divider"></Row>
+       
+      <Col >
         <div className="content-inside-bottom">
           <div className="new-card mb-4">
             <p className="new-card-content">
@@ -63,15 +66,15 @@ const Payment = () => {
           </div>
           <form className="card-form">
             <Row>
-              <Col className="card-number">
+              <Col className="card-number" xs={12} md={6}>
                 <div className="form-group">
                   <label htmlFor="card-number" className="card-label">
                     Card Number
                   </label>
-                  <input type="text" className="card-inputs" id="card-number" />
+                  <input type="text" className="card-inputs " id="card-number" />
                 </div>
               </Col>
-              <Col className="card-holder">
+              <Col className="card-holder" xs={12} md={6}>
                 <div className="form-group">
                   <label htmlFor="card-holder" className="card-label">
                     Card Holder's Name
@@ -81,7 +84,7 @@ const Payment = () => {
               </Col>
             </Row>
             <Row>
-              <Col xs={6}>
+              <Col xs={12} md={6}>
                 <div className="form-group">
                   <label htmlFor="card-expiry" className="card-label">
                     Card Expiry Date
@@ -105,10 +108,10 @@ const Payment = () => {
                   </div>
                 </div>
               </Col>
-              <Col xs={6}>
-                <div className="form-group">
+              <Col xs={12} md={6}>
+                <div className="form-group ">
                   <label htmlFor="card-cvv" className="card-label">
-                    CVV
+                    CVV 
                   </label>
                   <input
                     type="text"
@@ -132,8 +135,10 @@ const Payment = () => {
             </div>
           </form>
         </div>
+      </Col>
       </Container>
         {/* Terms and conditions */}
+        
       <div className="terms-check mt-3">
         <input
           type="checkbox"
@@ -147,17 +152,17 @@ const Payment = () => {
       {/* Price breakdown total - footer*/}
       <div className="divider-outside mb-2"></div>
 
-      <Container fluid={true}>
+      <Container fluid={true} className="bottom-price">
         <Row className="bottom-row">
-          <Col className="total-price" xs={4}>
+          <Col className="total-price" xs={6} md={4}>
             <p className="total mt-2">Total Price : </p>
           </Col>
-          <Col className="total-price-val" xs={4}>
+          <Col className="total-price-val" xs={6} md={4}>
             <p className="total-value mt-2"> 3632.50 LKR</p>
           </Col>
-          <Col xs={4}>
+          <Col xs={12} md={4} className="btncontainer">
             <LinkContainer to="/eticket">
-              <button className="btn btn-primary  btn-lg checkout-btn">
+              <button className="btn btn-primary  btn-lg check-btn">
                 Confirm and Pay
               </button>
             </LinkContainer>

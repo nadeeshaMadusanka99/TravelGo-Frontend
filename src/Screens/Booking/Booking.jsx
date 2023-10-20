@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+
 import { Button, Container } from "react-bootstrap";
 import "./Booking.scss";
 import MapContainer from "./MapContainer";
+import React, { useEffect, useState } from "react";
 import {useLocation} from "react-router-dom";
 import { useGetScheduleMutation } from "../../slices/trainApiSlice";
 
@@ -38,7 +39,6 @@ const dayOfWeek = daysOfWeek[dateName.getDay()];
       fetchSchedule(); 
     }
   }, [fromStation, toStation, date]); 
-  console .log(scheduleData);
   
   let trainNo, trainName, arrivalTime, departureTime, arrivalTimeAtDestination, arrivalTimeAtSource, defaultTotalSeats, departureTimeAtSource, destinationStationID, frequencyName, sourceStationID, trainType;
 
