@@ -71,7 +71,7 @@ const Payment = () => {
                   <label htmlFor="card-number" className="card-label">
                     Card Number
                   </label>
-                  <input type="text" className="card-inputs" id="card-number" />
+                  <input type="text" className="card-inputs " id="card-number" />
                 </div>
               </Col>
               <Col className="card-holder" xs={12} md={6}>
