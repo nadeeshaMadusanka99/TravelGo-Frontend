@@ -1,381 +1,326 @@
 @import "../Common/main.scss";
-
-.schedule {
+.booking {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 90vh;
-  overflow: hidden;
+  //align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: scroll;
 }
-.schedule-background {
-  position: absolute;
-  width: 100%;
-  background-size: cover;
-  z-index: 0;
-  margin-top: 110px;
+.booking-background {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6%;
+  height: 100%;
+}
+.search-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -1%;
+  margin-top: 4%;
+}
+.glass-container-extend {
+  @include glass-container;
+  padding: 2%;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+  display: flex;
+  background-color: rgba(193, 191, 191, 0.188);
+  box-shadow: 0 5px 7px 0 rgba(2, 3, 26, 0.155);
+}
+.dropdown-class {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-label {
+  margin-bottom: 7px;
+  color: rgb(16, 16, 16);
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  margin: -1% auto 0 auto;
+  select,
+  input[type="text"],
+  input[type="date"] {
+    padding: 2%;
+    margin-right: 4%;
+    border-radius: 8px;
+    background: none;
+    border: 2px solid rgba(51, 50, 50, 0.89);
+  }
+
+  .search-btn {
+    margin-left: 2rem;
+    margin-top: auto;
+  }
+
+  input::placeholder {
+    color: #000000; /* Red color for the placeholder text */
+  }
+  .button-extend {
+    @include Button;
+    align-items: center;
+    border-radius: 20px;
+    opacity: 0.9;
+    &:hover {
+      opacity: 1.1;
+    }
+  }
 }
 .map-container {
-  position: relative;
-  border: 2px solid black;
-  margin: 0 6cm;
-  height: 18%;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.16);
-}
-.container {
-  padding: 0 1cm;
-
-  .row {
-    display: flex;
-    align-items: center;
-
-    .train-details {
-      flex: 1;
-      text-align: right;
-
-      .body-paragraph {
-        margin-bottom: 0.01rem;
-      }
-
-      .gray-paragraph {
-        color: gray;
-        margin-bottom: 0.01rem;
-      }
-    }
-
-    .station-details {
-      flex: 1;
-      text-align: left;
-      border-left: 5px solid black;
-
-      .gray-paragraph {
-        color: gray;
-        margin-bottom: 0.01rem;
-      }
-      .station-paragraph {
-        @extend .gray-paragraph;
-        transform: translateY(-50%);
-      }
-      .arrival-paragraph {
-        @extend .gray-paragraph;
-        transform: translateY(60%);
-      }
-      .departure-paragraph {
-        @extend .gray-paragraph;
-        transform: translateY(60%);
-      }
-      .crowd-paragraph {
-        @extend .gray-paragraph;
-        transform: translateY(70%);
-      }
-    }
-
-    .short-map {
-      .lines {
-        width: 100%;
-        height: 20px;
-        position: relative;
-        transform: translateY(-90%);
-
-        &::before {
-          content: "";
-          position: absolute;
-          width: 100%;
-          top: 50%;
-          transform: translateY(-50%);
-          border-bottom: 2px dotted #080808;
-        }
-
-        .circle {
-          width: 20px;
-          height: 20px;
-          background-image: url("../../assets/finalstate.png");
-          background-size: cover;
-          background-repeat: no-repeat;
-          border-radius: 50%;
-          position: absolute;
-          top: 50%;
-          left: calc(25% - 10px);
-          transform: translateY(-50%);
-
-          .next-station {
-            white-space: nowrap;
-            position: absolute;
-            top: 50%;
-            left: calc(10% - 20px);
-            transform: translateY(-170%);
-
-            font-weight: 600;
-            font-size: 12px;
-          }
-          .arrival-time {
-            @extend .next-station;
-            transform: translateY(90%);
-            color: grey;
-          }
-          .departure-time {
-            @extend .next-station;
-            transform: translateY(200%);
-            color: grey;
-          }
-        }
-
-        .circle:nth-child(1) {
-          left: calc(0% - 10px);
-        }
-
-        .circle:nth-child(2) {
-          left: calc(20% - 10px);
-        }
-
-        .circle:nth-child(3) {
-          left: calc(60% - 10px);
-        }
-
-        .circle:nth-child(4) {
-          left: calc(100% - 10px);
-        }
-      }
-      .crowd-line {
-        width: 100%;
-        height: 6px;
-        position: relative;
-        transform: translateY(750%);
-
-        .crowd-rectangle {
-          height: 100%;
-          position: absolute;
-          width: 55px;
-        }
-
-        .one {
-          left: 0;
-          background-color: #e6f360;
-        }
-
-        .two {
-          left: 10%;
-          background-color: #a7b047;
-        }
-
-        .three {
-          left: 20%;
-          background-color: #e9621e;
-        }
-
-        .four {
-          left: 30%;
-          background-color: #b1605b;
-        }
-
-        .five {
-          left: 40%;
-          background-color: #b05927;
-        }
-
-        .six {
-          left: 50%;
-          background-color: #e9621e;
-        }
-
-        .seven {
-          left: 60%;
-          background-color: #ff9800;
-        }
-
-        .eight {
-          left: 70%;
-          background-color: #a7b047;
-        }
-
-        .nine {
-          left: 80%;
-          background-color: #e6f360;
-        }
-
-        .ten {
-          left: 90%;
-          background-color: #e6f360;
-        }
-      }
-    }
-  }
+  padding: 0% 4% 0 5%;
+  margin-top: -1%;
+  margin-bottom: -1%;
 }
 
-.text-container {
-  margin-top: 0.7cm;
+.train-container {
+  border: 2px black solid;
+  margin: auto;
+  margin-top: 4%;
+  padding: 1.8%;
+  height: auto;
+  width: 65%;
+  box-shadow: 2px 3px 2px 0 rgba(2, 3, 26, 0.237);
+}
+
+.train-details {
   display: flex;
-  align-items: center;
-  margin-left: 3cm;
-
-  h1 {
-    color: $primary-color;
-    font-weight: 600;
-  }
-  .radio-switch {
-    text-align: right;
-    margin-right: 1cm;
-    margin-left: 5cm;
-    position: relative;
-    font-weight: 300;
-
-    label {
-      color: rgb(203, 5, 5);
-      font-weight: 600;
-    }
-  }
+  flex-direction: column;
+  align-items: end;
 }
 
-.custom-switch {
-  margin-left: 1cm;
+.train-name {
+  font-weight: weight(medium-s);
+  font-size: 22px;
+  margin-top: -5%;
+  text-align: right;
 }
-
-.choose-class {
-  margin-top: 1cm;
-  margin-left: 3cm;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+.grey-para {
+  color: grey;
+  font-size: 13px;
+  font-size: weight(bold);
 }
-
-.book-container {
-  .btn-inc {
-    margin-top: 5px;
-    border-radius: 100%;
-    width: 25px;
-    height: 25px;
-    display: flex; // Use flexbox
-    justify-content: center; // Center horizontally
-    align-items: center;
-    margin-left: 40%;
-  }
-  .btn-dec {
-    @extend .btn-inc;
-    margin-bottom: 15px;
-  }
-  .booking-seats {
-    position: relative;
-    font-weight: 600;
-    margin-bottom: 10px;
-    p{
-      margin-bottom: 3px;
-    }
-  }
-
-  .booking-ele {
-    display: flex;
-    flex-direction: column;
-    color: grey;
-    font-weight: 500;
-  }
-  .booking-class {
-    @extend .booking-ele;
-    color: black;
-    font-weight: 600;
-    font-size: larger;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-bottom: 3px;
-  }
-  .booking-count {
-    @extend .booking-ele;
-    p {
-      font-size: medium;
-      margin-bottom: 5px;
-    }
-  }
-
-  .ticket-count {
-    display: flex;
-    justify-content: center; //Center horizontally
-    align-items: center; //Center vertically
-
-    border: 2px solid $primary-color;
-    color: black;
-    max-width: 35px;
-    max-height: 50px;
-  }
+.train-right-label {
+  color: grey;
+  font-weight: weight(medium-s);
 }
-.choose-class-container {
-  display: flex;
-  flex-direction: column; // Evenly space the elements
-  align-items: center;
-
-  margin-bottom: 0.1cm;
-
-  .choose-class {
-    flex: 1; // Allow each element to grow and fill available space
-    max-width: 50%;
-    max-height: 1.8cm;
-    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.207);
-    border-radius: 5px;
-    margin: 0.5%;
-  }
-}
-.seat-para {
-  padding-top: 0.8cm;
-  font-weight: 500;
-}
-.ticket-count {
-  @extend .seat-para;
-  font-weight: 600;
-  font-size: larger;
-  margin-right: 0.3cm;
-}
-.ticket-price {
-  font-weight: 600;
-  font-size: larger;
-  margin-right: 0.3cm;
-  font-style: italic;
-  color: $primary-color;
-}
-.cost-para {
-  color: gray;
-  font-weight: 500;
-  font-style: italic;
+.margin-s {
+  margin-top: 2%;
 }
 .btn-book {
-  @include Button;
-  width: 150px;
-  height: 40px;
+  width: 130px;
+  height: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 15px;
+  margin-top: 2%;
+  margin-left: 15%;
+  box-shadow: 0 2px 2px 0 rgba(2, 3, 26, 0.316);
 }
-.bottom-row-conotainer {
+.vertical-bar-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  margin: 0cm 3cm 0.5cm 3cm;
+  padding: 3px;
+}
+.vertical-bar {
+  width: 8px;
+  height: 90%;
+  background-color: black;
 }
 
-@media (max-width: 1056px) and (min-width: 350px) {
+.right-side-train {
+  div {
+    font-size: 15px;
+    overflow: hidden;
+  }
+}
+
+.end-station {
+  display: flex;
+  justify-content: end;
+  font-weight: weight(medium-s);
+}
+.source-station,
+.dest-station,
+.start-station {
+  display: flex;
+  justify-content: center;
+  font-weight: weight(medium-s);
+  //make it show in a one line
+  white-space: nowrap;
+}
+
+.map-container-lines {
+  position: relative;
+  padding: 10px 0.7%;
+}
+
+.dotted-line {
+  border: 2px blue dashed;
+}
+
+.circle-position {
+  position: absolute;
+  background-image: url("../../assets/finalstate.png");
+  background-size: cover;
+  height: 20px;
+  width: 20px;
+  top: 0;
+}
+
+.c-p-source {
+  left: 41%;
+}
+
+.c-p-dest {
+  right: 24%;
+}
+
+.c-p-end {
+  right: 5px;
+}
+
+.crowd-boxes {
+  height: 12px;
+  margin: 5px 2px;
+}
+.intensity-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+  .crowd-intensity {
+    height: 10px;
+    background-image: linear-gradient(to right, #e8f934, #ff0000);
+    width: 80%;
+  }
+}
+.low-crowd {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(48, 97, 246, 0.647);
+  width: 110px;
+  height: 25px;
+  margin-top: 25px;
+  transform: translateX(-50%);
+  border-radius: 10%;
+}
+.low-arrow {
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: -10px;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-bottom: 10px solid rgba(48, 97, 246, 0.647);
+}
+.high-crowd {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(48, 97, 246, 0.647);
+  width: 110px;
+  height: 25px;
+  margin-top: -25px;
+  transform: translateX(-50%);
+  border-radius: 10%;
+  margin-left: 100%;
+}
+.high-arrow {
+  @extend .low-arrow;
+  top: -9.5px;
+}
+
+@media (max-width: 922px) {
+  .booking-background {
+    overflow-y: scroll;
+  }
+  .search-form {
+    .glass-container-extend {
+      flex-direction: column;
+      padding: 10%;
+      width: 250px;
+    }
+    input[type="text"],
+    select {
+      width: 100%;
+    }
+    input[type="date"] {
+      width: 100%;
+    }
+    .button-extend {
+      width: 100%;
+      padding: 5px 2.3rem;
+    }
+    .search-btn {
+      margin-left: 0;
+      margin-top: 10%;
+    }
+  }
   .map-container {
-    display: none !important;
+    margin-top: 10%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 770px) and (min-width: 721px) {
+  .booking-background {
+    overflow-y: scroll;
+  }
+  .glass-wrapper {
+    margin-top: 40%;
+  }
+}
+
+@media (max-width: 721px) {
+  .booking-background {
+    overflow-y: scroll;
+  }
+  .train-details {
+    align-items: center;
+  }
+  .train-name {
+    margin-top: 1%;
+    text-align: center;
   }
 
-  .schedule-background {
-    margin-top: 0 !important;
+  .right-side-train {
+    div {
+      font-size: 70%;
+    }
+  }
+  .horizontal-bar-container {
+    padding: 0 8% 6px 10%;
+  }
+  .horizontal-bar {
+    background-color: black;
+    height: 6px;
   }
 
-  .text-container h1 {
-    font-size: 1rem;
+  .crowd-boxes-container {
+    margin-left: 4%;
+    .crowd-boxes {
+      height: 8px;
+      margin: 2px 1px 10px;
+    }
   }
-
-  .text-container {
-    margin-left: 15px !important;
-    margin-bottom: 15px;
+  .search-form {
+    margin-bottom: 5%;
   }
-
-  .radio-switch {
-    margin-left: 0 !important;
+  .start-station,
+  .source-station,
+  .dest-station,
+  .end-station {
+    //make the text in two lines if the text is long
   }
-
-  .choose-class {
-    margin-left: 5px !important;
+  .btn-book {
+    margin-left: auto;
+    margin-right: auto;
   }
-  .booking-count {
-    display: none !important;
+  .train-container{
+    width: 90%;
   }
 }
