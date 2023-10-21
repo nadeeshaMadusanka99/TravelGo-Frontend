@@ -11,7 +11,7 @@ const PriceBreakdown = () => {
         <p className="summary-heading">Summary</p>
         <div className="divider-upper mb-2"></div>
         <Row className="pricebreakdown-row">
-          <Col className="pricebreakdown-col-left" xs={4}>
+          <Col className="pricebreakdown-col-left" md={4} xs={6}>
             <p className="left-headings">Train Number & Name</p>
             <p className="left-headings">Start Station</p>
             <p className="left-headings">End Station</p>
@@ -22,8 +22,8 @@ const PriceBreakdown = () => {
             <p className="left-headings">Price Per Seat</p>
             <p className="left-headings">Discounts</p>
           </Col>
-          <Col className="pricebreakdown-col-mid" xs={4}></Col>
-          <Col className="pricebreakdown-col-right" xs={4}>
+          <Col className="pricebreakdown-col-mid" md={4} xs={1}></Col>
+          <Col className="pricebreakdown-col-right" md={4} xs={5}>
             <p className="right-data">8057 Galu Kumari</p>
             <p className="right-data">Colombo Fort</p>
             <p className="right-data">Ambalangoda</p>
@@ -37,15 +37,15 @@ const PriceBreakdown = () => {
         </Row>
         <div className="divider-below mb-2"></div>
         <Row className="pricebreakdown-row">
-          <Col className="pricebreakdown-col-left" xs={4}>
+          <Col className="pricebreakdown-col-left" md={4} xs={6}>
             <div className="sum-charge">
               <p className="left-headings">Seat Charges</p>
               <p className="left-headings">Taxes</p>
               <p className="left-headings">Booking Charges</p>
             </div>
           </Col>
-          <Col className="pricebreakdown-col-mid" xs={4}></Col>
-          <Col className="pricebreakdown-col-right" xs={4}>
+          <Col className="pricebreakdown-col-mid" md={4} xs={1}></Col>
+          <Col className="pricebreakdown-col-right" md={4} xs={5}>
             <div className="sum-charge">
               <p className="right-data">3100 LKR</p>
               <p className="right-data">232.50 LKR</p>
@@ -56,16 +56,16 @@ const PriceBreakdown = () => {
       </Container>
     
         {/* Price breakdown total - footer*/}
-      <div className="divider-outside mb-2"></div>
-      <Container fluid={true}>
+      <div className="divider-outsid mb-2"></div>
+      <Container fluid={true} className="out-content">
         <Row className="bottom-row">
-          <Col xs={4} className="price-colomn">
+          <Col md={4} xs={6} className="price-colomn-a">
             <p className="total-a mt-2">Total Price : </p>
           </Col>
-          <Col xs={4} className="price-colomn">
+          <Col md={4} xs={6} className="price-colomn">
             <p className="total-val mt-2"> 3632.50 LKR</p>
           </Col>
-          <Col xs={4} className="checkout">
+          <Col  md={4} xs={12} className="checkout">
             <LinkContainer to="/payment">
               <button className="btn btn-primary btn-block btn-lg checkout-btn">
                 Checkout

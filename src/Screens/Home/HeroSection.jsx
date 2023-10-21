@@ -4,6 +4,7 @@ import { useGetStationsQuery } from "../../slices/trainApiSlice";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const HeroSection = () => {
   //getting stations data from api
   const { data, isLoading } = useGetStationsQuery();
