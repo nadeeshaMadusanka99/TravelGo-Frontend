@@ -1,8 +1,6 @@
 import { Container, Button } from "react-bootstrap";
 import "./HeroSection.scss";
-import {
-  useGetStationsQuery,
-} from "../../slices/trainApiSlice";
+import { useGetStationsQuery } from "../../slices/trainApiSlice";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -13,17 +11,23 @@ const HeroSection = () => {
   const [fromStation, setFromStation] = useState("");
   const [toStation, setToStation] = useState("");
   const [date, setDate] = useState("");
+  const [fromStationName, setFromStationName] = useState("");
+  const [toStationName, setToStationName] = useState("");
 
-  
   const navigate = useNavigate();
 
   //function to handle from station
   const handleFromStation = (e) => {
-    setFromStation(e.target.value);
+    const selectedValue = e.target.value;
+    setFromStation(selectedValue);
   };
   //function to handle to station
   const handleToStation = (e) => {
-    setToStation(e.target.value);
+    const selectedValue = e.target.value;
+    setToStation(selectedValue);
+    // const stationName = data.find((station) => station.StationID === selectedValue);
+    // setToStationName(stationName.StationName);
+    console.log("station details:",stationName);
   };
   //function to handle date
   const handleDate = (e) => {
@@ -36,10 +40,14 @@ const HeroSection = () => {
       fromStation,
       toStation,
       date,
+      fromStationName,
+      toStationName,
     };
+    console.log("searchData: ", searchData);
     // Use the history object to navigate to the next page and pass the data as query parameters
-    navigate("/booking", { state: { searchData } });
+    navigate("/schedule", { state: { searchData } });
   };
+
   return (
     <section className="hero-section">
       <div className="hero-background"></div>
@@ -59,7 +67,7 @@ const HeroSection = () => {
             <div className="dropdown-class">
               {/* Dropdown menu for selecting from station. */}
               <label className="dropdown-label">From</label>
-              <select onChange={(e) => handleFromStation(e)}>
+              <select onChange={handleFromStation}>
                 {data != undefined ? (
                   data.map((station) => (
                     <option key={station.StationID} value={station.StationID}>
@@ -100,17 +108,13 @@ const HeroSection = () => {
                 onChange={handleDate}
               />
             </div>
-            {/* <LinkContainer to="/booking"> */}
-              {/* <Link to={`/booking?data=${JSON.stringify(sheduleData)}`}> */}
-              <Button
-                variant="primary"
-                className="search-button-extend"
-                onClick={handleSubmit}
-              >
-                Search
-              </Button>
-              {/* </Link> */}
-            {/* </LinkContainer> */}
+            <Button
+              variant="primary"
+              className="search-button-extend"
+              onClick={handleSubmit}
+            >
+              Search
+            </Button>
           </div>
         </div>
       </Container>
