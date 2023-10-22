@@ -98,7 +98,7 @@ const PassengerDetails = () => {
                             <Col className="col-auto">
                                 <button type="submit" className="btn btn-primary btn-passenger-details">Submit</button>
                             </Col>
-                            <LinkContainer to="/seatview">
+                            <LinkContainer to="/pricebreakdown">
                                 <Col className="col-auto">
                                     <button type="cancel" className="btn btn-secondary btn-passenger-details">Cancel</button>
                                 </Col>
