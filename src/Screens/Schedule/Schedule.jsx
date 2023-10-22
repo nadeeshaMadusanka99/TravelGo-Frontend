@@ -52,7 +52,7 @@ const NewBooking = () => {
     }
   }, [fromStation, toStation, date]);
 
-  // console.log(scheduleData);
+  console.log("scheduleData: ", scheduleData);
   let trainNo,
     trainName,
     arrivalTime,
@@ -64,7 +64,16 @@ const NewBooking = () => {
     destinationStationID,
     frequencyName,
     sourceStationID,
-    trainType;
+    trainType,
+    firstClassName,
+    firstClassSeats,
+    // firstClassPrice,
+    secondClassName,
+    secondClassSeats,
+    // secondClassPrice,
+    thirdClassName,
+    thirdClassSeats;
+  // thirdClassPrice
   if (scheduleData && scheduleData.length > 0) {
     const firstItem = scheduleData[0];
     trainNo = firstItem.TrainNo;
@@ -79,9 +88,41 @@ const NewBooking = () => {
     frequencyName = firstItem.FrequencyName;
     sourceStationID = firstItem.SourceStationID;
     trainType = firstItem.TrainType;
+    if (firstItem.classes && firstItem.classes.length === 3) {
+      if (firstItem.classes[0]) {
+        thirdClassName = firstItem.classes[0].Class;
+        thirdClassSeats = firstItem.classes[0].Capacity;
+      }
+
+      if (firstItem.classes[1]) {
+        secondClassName = firstItem.classes[1].Class;
+        secondClassSeats = firstItem.classes[1].Capacity;
+      }
+
+      if (firstItem.classes[2]) {
+        firstClassName = firstItem.classes[2].Class;
+        firstClassSeats = firstItem.classes[2].Capacity;
+      }
+    } else if (firstItem.classes && firstItem.classes.length === 2) {
+      if (firstItem.classes[0]) {
+        thirdClassName = firstItem.classes[0].Class;
+        thirdClassSeats = firstItem.classes[0].Capacity;
+      }
+
+      if (firstItem.classes[1]) {
+        secondClassName = firstItem.classes[1].Class;
+        secondClassSeats = firstItem.classes[1].Capacity;
+      }
+    } else if (firstItem.classes && firstItem.classes.length === 1) {
+      if (firstItem.classes[0]) {
+        thirdClassName = firstItem.classes[0].Class;
+        thirdClassSeats = firstItem.classes[0].Capacity;
+      }
+    }
   } else {
     console.log("No schedule data available.");
   }
+
   // console.log("trainNo:", trainNo);
   // console.log("trainName:", trainName);
   // console.log("arrivalTime:", arrivalTime);
@@ -110,23 +151,10 @@ const NewBooking = () => {
       ],
     },
     {
-      trainName: trainName,
-      trainType: trainType,
-      trainNo: trainNo,
-      frequencyName: frequencyName,
-      classes: "1st, 2nd, 3rd",
-      schedule: [
-        { name: "Colombo Fort", arrival: "06:30 am", departure: "06:45 am" },
-        { name: "Mount Lavinia", arrival: "07:15 am", departure: "07:17 am" },
-        { name: "Ambalangoda", arrival: "09:15 am", departure: "09:17 am" },
-        { name: "Beliatta", arrival: "11:15 am", departure: "" },
-      ],
-    },
-    {
-      trainName: trainName,
-      trainType: trainType,
-      trainNo: trainNo,
-      frequencyName: frequencyName,
+      trainName: "GALU KUMARI",
+      trainType: "Express Train",
+      trainNo: "5437",
+      frequencyName: "Weekdays",
       classes: "1st, 2nd, 3rd",
       schedule: [
         { name: "Colombo Fort", arrival: "06:30 am", departure: "06:45 am" },
