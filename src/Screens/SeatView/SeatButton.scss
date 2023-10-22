@@ -1,7 +1,12 @@
 @import '../Common/main.scss';
 
+.seat-button-container {
+  margin: 0;
+}
 .seat-image{
-    width: 29%;
+  max-width: 70%; 
+  max-height: 70%; 
+    width: auto;
     height: auto;
     cursor: pointer;
     margin: 5px;
@@ -10,4 +15,21 @@
         color: white;
       }
     
+}
+
+
+.seat-number {
+  position: relative;
+  top:-38%;
+  left: 35%;
+}
+
+
+.lavatory {
+    width: 85%;
+    height: 50%;
+    cursor: pointer;
+    margin: 5px;
+    margin-top: 1rem;
+    font-weight : weight(medium-s); 
 }
