@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React, { useState } from "react";
 import "./SeatView.scss";
 import { Container, Row, Col } from "react-bootstrap";
@@ -193,6 +194,7 @@ const SeatView = () => {
                 return (<a
                     className="list-group-item list-group-item-action"
                     href={wagonId}
+                    key={wagonIndex}
                     
                   >
                     Wagon {wagonIndex+1}
@@ -200,7 +202,7 @@ const SeatView = () => {
             })}
             </div>
             <div className="button-container">
-              <LinkContainer to="/pricebreakdown">
+              <LinkContainer to="/passengerdetails">
                 <Button variant="primary" className="button-proceed">
                   Proceed
                 </Button>
