@@ -204,7 +204,7 @@ const SeatView = () => {
                             <a className="list-group-item list-group-item-action" href="#wagon-3">3rd Wagon</a>
                         </div>
                         <div className="button-container"> 
-                            <LinkContainer to="/pricebreakdown">
+                            <LinkContainer to="/passengerdetails">
                                 <Button variant="primary" className="button-proceed">Proceed</Button>
                             </LinkContainer>
                         </div>
