@@ -89,15 +89,27 @@
     }
 
 @media(max-width:920px){
-  .hero-section{
 
-    .hero-content{
+  .header-content{
+    display: none;
+  }
+  .traveler-para{
+    padding: 0.8rem;
+    margin-top: -20%;
+  }
+  .traveler-div{
+    display: flex;
+    justify-content: center;
+      align-items: center;
+  }
+  
+    
+  .hero-content{
+    display: flex;
       align-items: center;
       margin-top: 0;
       justify-content: center;
-      h1{
-        display: none;
-      }
+      
       .search-form{
         
         .glass-container-extend{
@@ -172,5 +184,4 @@
       }
     } 
   }
-}
 }
