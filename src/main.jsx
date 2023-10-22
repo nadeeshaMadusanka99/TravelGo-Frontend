@@ -18,10 +18,10 @@ import MyTicketsScreen from './Screens/MyTickets/MyTickets'
 import MyFavouritesScreen from './Screens/MyFavourites/MyFavourites'
 import PassengerDetails from './Screens/PassengerDetails/PassengerDetails'
 import PriceBreakdown from './Screens/PriceBreakdown/PriceBreakdown'
-import ScheduleScreen from './Screens/Schedule/ScheduleScreen.jsx'
+import BookingScreen from './Screens/Booking/BookingScreen.jsx'
 import Payment from './Screens/Payment/Payment'
 import Eticket from './Screens/ETicket/Eticket'
-import BookingScreen from './Screens/Booking/BookingScreen';
+import ScheduleScreen from './Screens/Schedule/ScheduleScreen';
 
 
 // Create the link element for Google Fonts
@@ -43,11 +43,11 @@ const router = createBrowserRouter(
       <Route path='/myfavourites' element={<MyFavouritesScreen />} />
       <Route path='/passengerdetails' element={<PassengerDetails />} />
       <Route path='/pricebreakdown' element={<PriceBreakdown />} />
-      <Route path='/schedule' element={<ScheduleScreen />} />
+      <Route path='/booking' element={<BookingScreen />} />
       <Route path='/payment' element={<Payment />} />
       <Route path='/eticket' element={<Eticket />} />
       <Route path='/seatview' element={<SeatView />} />
-      <Route path='/booking' element={<BookingScreen />} />
+      <Route path='/schedule' element={<ScheduleScreen />} />
     </Route>
   )
 );
