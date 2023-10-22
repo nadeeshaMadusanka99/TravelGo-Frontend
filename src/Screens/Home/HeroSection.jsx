@@ -45,9 +45,9 @@ const HeroSection = () => {
       <div className="hero-background"></div>
 
       <Container className="hero-content">
-        <div>
-          <p>Hello Travellers</p>
-          <h1>
+        <div className="traveler-div">
+          <p  className="traveler-para">Hello Travellers</p>
+          <h1 className="header-content">
             make your booking
             <br />
             experience easy!
