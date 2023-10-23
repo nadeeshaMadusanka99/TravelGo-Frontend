@@ -5,8 +5,43 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 import logo from "../../assets/LogoBlack.png";
 import QR from "../../assets/QR.png";
 import { BsDownload } from "react-icons/bs";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas"; 
 
 const Eticket = () => {
+  function downloadpdf() {
+    const doc = new jsPDF({
+      unit: "mm",
+      format: "a4",
+      orientation: "landscape",
+    });
+  
+    const eticketContainer = document.querySelector(".eticket-container");
+  
+    html2canvas(eticketContainer).then((canvas) => {
+      const imgData = canvas.toDataURL("image/jpeg");
+  
+      const pageWidth = doc.internal.pageSize.width;
+      const pageHeight = doc.internal.pageSize.height;
+  
+      const contentWidth = canvas.width ;
+      const contentHeight = canvas.height;
+  
+      const scaleWidth = pageWidth / contentWidth;
+      const scaleHeight = pageHeight / contentHeight;
+     
+      const scale = Math.min(scaleWidth, scaleHeight);
+  
+      const centerX = (pageWidth - contentWidth * scale) / 2 +5;
+      const centerY = (pageHeight - contentHeight * scale) / 2;
+  
+      // Add the image to the PDF, scaling and positioning it properly
+      doc.addImage(imgData, "JPEG", centerX, centerY, contentWidth * scale -10, contentHeight * scale);
+  
+      doc.save("eticket.pdf");
+    });
+  }
+
   return (
     <main className="eticket">
       <container className="heading-container">
@@ -114,7 +149,7 @@ const Eticket = () => {
         </div>
       </Container>
       {/* Download Area */}
-      <BsDownload size="2rem" className="download-btn mb-2"></BsDownload>
+      <BsDownload size="2rem" className="download-btn mb-2" onClick={downloadpdf}></BsDownload>
       <p className="download-text"> Download from here</p>
     </main>
   );

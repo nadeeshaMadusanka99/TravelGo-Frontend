@@ -1,6 +1,6 @@
 
 import { apiSlice } from "./apiSlice";
-import { GET_STATIONS_API_URL, GET_SCHEDULE_API_URL } from "../config";
+import { GET_STATIONS_API_URL, GET_SCHEDULE_API_URL, GET_SEATS_API_URL } from "../config";
 
 export const trainApiSlice = apiSlice.injectEndpoints({
     
@@ -23,9 +23,16 @@ export const trainApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: data
             })
+        }),
+        getSeats: builder.query({
+            query: (data) => ({
+                url: GET_SEATS_API_URL,
+                method: 'POST',
+                body: data
+            })
         })
     })
 })
 
 
-export const { useGetStationsQuery, useGetScheduleMutation } = trainApiSlice;
+export const { useGetStationsQuery, useGetScheduleMutation, useGetSeatsQuery } = trainApiSlice;
