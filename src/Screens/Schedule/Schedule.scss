@@ -141,9 +141,9 @@
 }
 
 .end-station {
-  display: flex;
-  justify-content: end;
   font-weight: weight(medium-s);
+  white-space: normal;
+  text-align: right;
 }
 .source-station,
 .dest-station,
@@ -151,8 +151,11 @@
   display: flex;
   justify-content: center;
   font-weight: weight(medium-s);
-  //make it show in a one line
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
+}
+.start-station{
+  text-align: left;
 }
 
 .map-container-lines {
@@ -232,6 +235,17 @@
 .high-arrow {
   @extend .low-arrow;
   top: -9.5px;
+}
+.no-crowd-data{
+  color: red;
+  margin-bottom: 0%;
+}
+.no-train-text{
+  font-size: 25px;
+  font-weight: weight(medium-s);
+  text-align: center;
+  margin-top: 4%;
+  color:#ff0000;
 }
 
 @media (max-width: 922px) {
@@ -314,7 +328,9 @@
   .source-station,
   .dest-station,
   .end-station {
-    //make the text in two lines if the text is long
+    //make the text in two lines if the text is too long
+    // white-space: normal;
+
   }
   .btn-book {
     margin-left: auto;

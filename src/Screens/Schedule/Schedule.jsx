@@ -1,5 +1,5 @@
 import { Button, Container } from "react-bootstrap";
-import NewMapContainer from "./NewMapContainer";
+import ScheduleCard from "./ScheduleCard";
 import { useGetStationsQuery } from "../../slices/trainApiSlice";
 import { LinkContainer } from "react-router-bootstrap";
 import { useEffect, useState } from "react";
@@ -15,7 +15,8 @@ const NewBooking = () => {
   const [scheduleData, setScheduleData] = useState(null);
 
   // Get the data from the query parameters
-  const { fromStation, toStation, date } = state.searchData;
+  const { fromStation, toStation, date, fromStationName, toStationName } =
+    state.searchData;
   const [newDate, setNewDate] = useState(date);
   // Get the day of the week from the date
   const dateName = new Date(date);
@@ -52,7 +53,8 @@ const NewBooking = () => {
     }
   }, [fromStation, toStation, date]);
 
-  console.log("scheduleData: ", scheduleData);
+  console.log(scheduleData);
+
   let trainNo,
     trainName,
     arrivalTime,
@@ -64,16 +66,9 @@ const NewBooking = () => {
     destinationStationID,
     frequencyName,
     sourceStationID,
+    classNames = [],
     trainType,
-    firstClassName,
-    firstClassSeats,
-    // firstClassPrice,
-    secondClassName,
-    secondClassSeats,
-    // secondClassPrice,
-    thirdClassName,
-    thirdClassSeats;
-  // thirdClassPrice
+    loads = [];
   if (scheduleData && scheduleData.length > 0) {
     const firstItem = scheduleData[0];
     trainNo = firstItem.TrainNo;
@@ -88,53 +83,29 @@ const NewBooking = () => {
     frequencyName = firstItem.FrequencyName;
     sourceStationID = firstItem.SourceStationID;
     trainType = firstItem.TrainType;
-    if (firstItem.classes && firstItem.classes.length === 3) {
-      if (firstItem.classes[0]) {
-        thirdClassName = firstItem.classes[0].Class;
-        thirdClassSeats = firstItem.classes[0].Capacity;
-      }
+    loads = firstItem.load;
 
-      if (firstItem.classes[1]) {
-        secondClassName = firstItem.classes[1].Class;
-        secondClassSeats = firstItem.classes[1].Capacity;
-      }
+    // Setting class names
+    if (firstItem.classes && firstItem.classes.length > 0) {
+      firstItem.classes.forEach((classItem) => {
+        if (classItem.Class) {
+          let classAbbreviation = classItem.Class;
 
-      if (firstItem.classes[2]) {
-        firstClassName = firstItem.classes[2].Class;
-        firstClassSeats = firstItem.classes[2].Capacity;
-      }
-    } else if (firstItem.classes && firstItem.classes.length === 2) {
-      if (firstItem.classes[0]) {
-        thirdClassName = firstItem.classes[0].Class;
-        thirdClassSeats = firstItem.classes[0].Capacity;
-      }
+          if (classAbbreviation.includes("First")) {
+            classAbbreviation = "1st";
+          } else if (classAbbreviation.includes("Second")) {
+            classAbbreviation = "2nd";
+          } else if (classAbbreviation.includes("Third")) {
+            classAbbreviation = "3rd";
+          }
 
-      if (firstItem.classes[1]) {
-        secondClassName = firstItem.classes[1].Class;
-        secondClassSeats = firstItem.classes[1].Capacity;
-      }
-    } else if (firstItem.classes && firstItem.classes.length === 1) {
-      if (firstItem.classes[0]) {
-        thirdClassName = firstItem.classes[0].Class;
-        thirdClassSeats = firstItem.classes[0].Capacity;
-      }
+          classNames.push(classAbbreviation);
+        }
+      });
+    } else {
+      console.log("No schedule data available.");
     }
-  } else {
-    console.log("No schedule data available.");
   }
-
-  // console.log("trainNo:", trainNo);
-  // console.log("trainName:", trainName);
-  // console.log("arrivalTime:", arrivalTime);
-  // console.log("departureTime:", departureTime);
-  // console.log("arrivalTimeAtDestination:", arrivalTimeAtDestination);
-  // console.log("arrivalTimeAtSource:", arrivalTimeAtSource);
-  // console.log("defaultTotalSeats:", defaultTotalSeats);
-  // console.log("departureTimeAtSource:", departureTimeAtSource);
-  // console.log("destinationStationID:", destinationStationID);
-  // console.log("frequencyName:", frequencyName);
-  // console.log("sourceStationID:", sourceStationID);
-  // console.log("trainType:", trainType);
 
   const trainData = [
     {
@@ -142,13 +113,26 @@ const NewBooking = () => {
       trainType: trainType,
       trainNo: trainNo,
       frequencyName: frequencyName,
-      classes: "1st, 2nd, 3rd",
+      classes: classNames.join(" , "),
       schedule: [
-        { name: "Colombo Fort", arrival: "06:30 am", departure: "06:45 am" },
+        {
+          name: fromStationName,
+          arrival: arrivalTime,
+          departure: departureTime,
+        },
         { name: "Mount Lavinia", arrival: "07:15 am", departure: "07:17 am" },
-        { name: "Ambalangoda", arrival: "09:15 am", departure: "09:17 am" },
-        { name: "Beliatta", arrival: "11:15 am", departure: "" },
+        {
+          name: "Ambalangoda",
+          arrival: arrivalTimeAtSource,
+          departure: departureTimeAtSource,
+        },
+        {
+          name: toStationName,
+          arrival: arrivalTimeAtDestination,
+          departure: "",
+        },
       ],
+      loads: loads,
     },
     {
       trainName: "GALU KUMARI",
@@ -175,7 +159,7 @@ const NewBooking = () => {
                 <label className="dropdown-label">From</label>
                 <select>
                   <option disabled value="" selected>
-                    {fromStation}
+                    {fromStationName}
                   </option>
                   {data != undefined ? (
                     data.map((station, index) => (
@@ -193,7 +177,7 @@ const NewBooking = () => {
                 <label className="dropdown-label">To</label>
                 <select>
                   <option disabled value="" selected>
-                    {toStation}
+                    {toStationName}
                   </option>
                   {data != undefined ? (
                     data.map((station, index) => (
@@ -226,9 +210,17 @@ const NewBooking = () => {
             </div>
           </div>
         </Container>
-        {trainData.map((data, index) => (
-          <NewMapContainer key={index} {...data} />
-        ))}
+        {scheduleData ? (
+          <div>
+            {trainData.map((data, index) => (
+              <ScheduleCard key={index} {...data} />
+            ))}
+          </div>
+        ) : (
+          <p className="no-train-text">
+            No train schedules available for this date. Please try another date.
+          </p>
+        )}
         <div className="intensity-container">
           <div className="crowd-intensity">
             <div className="low-crowd">
