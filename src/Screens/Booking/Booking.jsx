@@ -54,6 +54,8 @@ const NewSchedule = () => {
       }
     });
   };
+
+  
   return (
     <Container fluid="true" className="schedule-container">
       <Container fluid="true" className="train-container">
@@ -248,7 +250,11 @@ const NewSchedule = () => {
           </Col>
           <Col md="3" sm="12" className="book-btnc">
             <LinkContainer to="/seatview">
-              <Button variant="primary" className="btnBook">
+              <Button 
+              variant="primary" 
+              className="btnBook" 
+              //onClick={handleSubmit}
+              >
                 Continue
               </Button>
             </LinkContainer>

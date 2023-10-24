@@ -1,5 +1,5 @@
 import useCounter from "./useCounter";
-import { Col, Container, Row, Button, Form } from "react-bootstrap";
+import { Col, Container, Row, Button } from "react-bootstrap";
 import "./Booking.scss";
 import { useState } from "react";
 
@@ -14,14 +14,18 @@ const ClassDetails = ({
     
   }) => {
     const { count, increment, decrement } = useCounter();
-    const [available,setAvailableSeats]=useState(availableSeats);
+    const [booked,setBookedSeats]=useState(bookedSeats);
     const setSeatCount=(newCount,count)=>{
-        if (newCount < count) {
+    if (newCount < 0) {
+        setBookedSeats(booked)
+    }
+
+    else if (newCount < count) {
             
-        setAvailableSeats(available-count);
+        setBookedSeats(parseInt(booked)-1);
     }
     else{
-        setAvailableSeats(available+count);
+        setBookedSeats(parseInt(booked)+1);
     }
 }
     
@@ -47,7 +51,7 @@ const ClassDetails = ({
             <Row className="seat-grey">
               <Col xs={6}>Booked:</Col>
               <Col xs={6} className="booked-para">
-                {seatsCount - availableSeats}
+                {booked}
               </Col>
             </Row>
           </Col>
@@ -68,10 +72,12 @@ const ClassDetails = ({
                   variant="primary"
                   className="btn-inc"
                   onClick={() => {
+                    if(count<availableSeats){
                     increment();
                     updateTicketCounts(seatClass, count + 1);
                     updateCost(parseInt(price),count+1,count);
-                    console.log(bookedSeats);
+                    setSeatCount(count+1,count);
+                    }
                   }}
   
                 >
@@ -86,6 +92,7 @@ const ClassDetails = ({
                     decrement();
                     updateTicketCounts(seatClass, count - 1);
                     updateCost(parseInt(price),count-1,count);
+                    setSeatCount(count-1,count);
                   }}
                 >
                   -
