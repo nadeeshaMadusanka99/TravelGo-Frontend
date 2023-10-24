@@ -4,7 +4,6 @@ import { useGetStationsQuery } from "../../slices/trainApiSlice";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const HeroSection = () => {
   //getting stations data from api
   const { data, isLoading } = useGetStationsQuery();
@@ -19,15 +18,19 @@ const HeroSection = () => {
   //function to handle from station
   const handleFromStation = (e) => {
     const selectedValue = e.target.value;
-    setFromStation(selectedValue);
+    const selectedOption = e.target.options[e.target.selectedIndex];
+    const stationId = selectedOption.getAttribute('data-station-id');
+    setFromStation(stationId);
+    setFromStationName(selectedValue);
   };
+
   //function to handle to station
   const handleToStation = (e) => {
     const selectedValue = e.target.value;
-    setToStation(selectedValue);
-    // const stationName = data.find((station) => station.StationID === selectedValue);
-    // setToStationName(stationName.StationName);
-    console.log("station details:",stationName);
+    const selectedOption = e.target.options[e.target.selectedIndex];
+    const stationId = selectedOption.getAttribute('data-station-id');
+    setToStation(stationId);
+    setToStationName(selectedValue);
   };
   //function to handle date
   const handleDate = (e) => {
@@ -42,8 +45,9 @@ const HeroSection = () => {
       date,
       fromStationName,
       toStationName,
+
     };
-    console.log("searchData: ", searchData);
+    // console.log("searchData: ", searchData);
     // Use the history object to navigate to the next page and pass the data as query parameters
     navigate("/schedule", { state: { searchData } });
   };
@@ -70,7 +74,11 @@ const HeroSection = () => {
               <select onChange={handleFromStation}>
                 {data != undefined ? (
                   data.map((station) => (
-                    <option key={station.StationID} value={station.StationID}>
+                    <option 
+                      key={station.StationID} 
+                      value={station.StationName} 
+                      data-station-id={station.StationID}
+                    >
                       {station.StationName}
                     </option>
                   ))
@@ -88,7 +96,11 @@ const HeroSection = () => {
               <select onChange={handleToStation}>
                 {data != undefined ? (
                   data.map((station) => (
-                    <option key={station.StationID} value={station.StationID}>
+                    <option 
+                      key={station.StationID} 
+                      value={station.StationName} 
+                      data-station-id={station.StationID}
+                    >
                       {station.StationName}
                     </option>
                   ))
@@ -98,6 +110,7 @@ const HeroSection = () => {
                   </>
                 )}
               </select>
+              <input type="hidden" id="stationName" />
             </div>
             <div className="dropdown-class">
               <label className="dropdown-label">Date</label>
