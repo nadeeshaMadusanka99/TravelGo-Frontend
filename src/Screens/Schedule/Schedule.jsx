@@ -17,9 +17,13 @@ const NewBooking = () => {
   // Get the data from the query parameters
   const { fromStation, toStation, date, fromStationName, toStationName } =
     state.searchData;
+  const [fromStationId, setFromStationId] = useState(fromStation);
+  const [toStationId, setToStationId] = useState(toStation);
+  const [fromStationNameAssign, setFromStationNameAssign] =
+    useState(fromStationName);
+  const [toStationNameAssign, setToStationNameAssign] = useState(toStationName);
   const [newDate, setNewDate] = useState(date);
-  // Get the day of the week from the date
-  const dateName = new Date(date);
+  const dateName = new Date(newDate);
   const daysOfWeek = [
     "Sunday",
     "Monday",
@@ -31,29 +35,42 @@ const NewBooking = () => {
   ];
   const dayOfWeek = daysOfWeek[dateName.getDay()];
 
+  // Get the day of the week from the date
   const handleDateChange = (e) => {
     setNewDate(e.target.value);
   };
-  useEffect(() => {
-    async function fetchSchedule() {
-      try {
-        const result = await schedule({
-          sourceId: fromStation,
-          destinationId: toStation,
-          date: dayOfWeek,
-        }).unwrap();
-        setScheduleData(result);
-      } catch (error) {
-        console.log(error);
-      }
-    }
+  const handleFromStation = (e) => {
+    const selectedValue = e.target.value;
+    const selectedOption = e.target.options[e.target.selectedIndex];
+    const stationId = selectedOption.getAttribute("data-station-id");
+    setFromStationId(stationId);
+    setFromStationNameAssign(selectedValue);
+  };
 
-    if (fromStation && toStation && date) {
-      fetchSchedule();
-    }
-  }, [fromStation, toStation, date]);
+  const handleToStation = (e) => {
+    const selectedValue = e.target.value;
+    const selectedOption = e.target.options[e.target.selectedIndex];
+    const stationId = selectedOption.getAttribute("data-station-id");
+    setToStationId(stationId);
+    setToStationNameAssign(selectedValue);
+  };
 
+  async function fetchScheduleData() {
+    try {
+      const result = await schedule({
+        sourceId: fromStationId,
+        destinationId: toStationId,
+        date: dayOfWeek,
+      }).unwrap();
+      setScheduleData(result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   console.log(scheduleData);
+  useEffect(() => {
+    fetchScheduleData();
+  }, []);
 
   let trainNo,
     trainName,
@@ -63,12 +80,16 @@ const NewBooking = () => {
     arrivalTimeAtSource,
     defaultTotalSeats,
     departureTimeAtSource,
+    departureTimeAtDestination,
     destinationStationID,
     frequencyName,
     sourceStationID,
+    trainEndStation,
+    trainStartStaion,
     classNames = [],
     trainType,
     loads = [];
+
   if (scheduleData && scheduleData.length > 0) {
     const firstItem = scheduleData[0];
     trainNo = firstItem.TrainNo;
@@ -79,11 +100,12 @@ const NewBooking = () => {
     arrivalTimeAtSource = firstItem.ArrivalTimeAtSource;
     defaultTotalSeats = firstItem.DefaultTotalSeats;
     departureTimeAtSource = firstItem.DepartureTimeAtSource;
-    destinationStationID = firstItem.DestinationStationID;
+    departureTimeAtDestination = firstItem.DepartureTimeAtDestination;
     frequencyName = firstItem.FrequencyName;
-    sourceStationID = firstItem.SourceStationID;
     trainType = firstItem.TrainType;
     loads = firstItem.load;
+    trainEndStation = firstItem.TrainEndStation;
+    trainStartStaion = firstItem.TrainStartStation;
 
     // Setting class names
     if (firstItem.classes && firstItem.classes.length > 0) {
@@ -116,36 +138,23 @@ const NewBooking = () => {
       classes: classNames.join(" , "),
       schedule: [
         {
-          name: fromStationName,
+          name: trainStartStaion,
           arrival: arrivalTime,
           departure: departureTime,
         },
-        { name: "Mount Lavinia", arrival: "07:15 am", departure: "07:17 am" },
+        { name: fromStationNameAssign, arrival: arrivalTimeAtSource, departure: departureTimeAtSource },
         {
-          name: "Ambalangoda",
-          arrival: arrivalTimeAtSource,
-          departure: departureTimeAtSource,
+          name: toStationNameAssign,
+          arrival: arrivalTimeAtDestination,
+          departure: departureTimeAtDestination,
         },
         {
-          name: toStationName,
-          arrival: arrivalTimeAtDestination,
+          name: trainEndStation,
+          arrival: "enter time",
           departure: "",
         },
       ],
       loads: loads,
-    },
-    {
-      trainName: "GALU KUMARI",
-      trainType: "Express Train",
-      trainNo: "5437",
-      frequencyName: "Weekdays",
-      classes: "1st, 2nd, 3rd",
-      schedule: [
-        { name: "Colombo Fort", arrival: "06:30 am", departure: "06:45 am" },
-        { name: "Mount Lavinia", arrival: "07:15 am", departure: "07:17 am" },
-        { name: "Ambalangoda", arrival: "09:15 am", departure: "09:17 am" },
-        { name: "Beliatta", arrival: "11:15 am", departure: "" },
-      ],
     },
   ];
 
@@ -157,13 +166,19 @@ const NewBooking = () => {
             <div className="glass-container-extend">
               <div className="dropdown-class">
                 <label className="dropdown-label">From</label>
-                <select>
+                <select onChange={handleFromStation}>
                   <option disabled value="" selected>
-                    {fromStationName}
+                    {fromStationNameAssign}
                   </option>
                   {data != undefined ? (
-                    data.map((station, index) => (
-                      <option key={index}>{station.StationName}</option>
+                    data.map((station) => (
+                      <option
+                        key={station.StationID}
+                        value={station.StationName}
+                        data-station-id={station.StationID}
+                      >
+                        {station.StationName}
+                      </option>
                     ))
                   ) : (
                     <>
@@ -175,13 +190,19 @@ const NewBooking = () => {
 
               <div className="dropdown-class">
                 <label className="dropdown-label">To</label>
-                <select>
+                <select onChange={handleToStation}>
                   <option disabled value="" selected>
-                    {toStationName}
+                    {toStationNameAssign}
                   </option>
                   {data != undefined ? (
-                    data.map((station, index) => (
-                      <option key={index}>{station.StationName}</option>
+                    data.map((station) => (
+                      <option
+                        key={station.StationID}
+                        value={station.StationName}
+                        data-station-id={station.StationID}
+                      >
+                        {station.StationName}
+                      </option>
                     ))
                   ) : (
                     <>
@@ -201,16 +222,19 @@ const NewBooking = () => {
               </div>
 
               <div className="search-btn">
-                <LinkContainer to="/booking">
-                  <Button variant="primary" className="button-extend">
-                    Search
-                  </Button>
-                </LinkContainer>
+                <Button
+                  variant="primary"
+                  className="button-extend"
+                  onClick={fetchScheduleData}
+                >
+                  Search
+                </Button>
               </div>
             </div>
           </div>
         </Container>
-        {scheduleData ? (
+
+        {scheduleData && scheduleData.length > 0 ? (
           <div>
             {trainData.map((data, index) => (
               <ScheduleCard key={index} {...data} />

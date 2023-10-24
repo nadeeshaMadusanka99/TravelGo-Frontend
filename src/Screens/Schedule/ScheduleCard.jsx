@@ -25,7 +25,6 @@ const MapContainer = ({
     "#FF7700",
     "#FF0000",
   ];
-  
   const numbers = Array.from({ length: 10 }, (_, i) => i + 1);
   const numberToColor = {};
 
@@ -65,10 +64,16 @@ const MapContainer = ({
                 Station
               </Col>
               <Col xs="2" className="start-station">
-                Colombo Fort
+                {schedule[0].name
+                  .split(" ")
+                  .map(
+                    (word) =>
+                      word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+                  )
+                  .join(" ")}
               </Col>
               <Col xs="2" className="source-station">
-                {schedule[0].name
+                {schedule[1].name
                   .split(" ")
                   .map(
                     (word) =>
@@ -78,7 +83,7 @@ const MapContainer = ({
               </Col>
               <Col xs="2" />
               <Col xs="2" className="dest-station">
-                {schedule[3].name
+                {schedule[2].name
                   .split(" ")
                   .map(
                     (word) =>
@@ -87,7 +92,13 @@ const MapContainer = ({
                   .join(" ")}
               </Col>
               <Col xs="2" className="end-station">
-                Beliatta
+                {schedule[3].name
+                  .split(" ")
+                  .map(
+                    (word) =>
+                      word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+                  )
+                  .join(" ")}
               </Col>
             </Row>
 
