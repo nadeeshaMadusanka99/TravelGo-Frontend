@@ -15,7 +15,7 @@ const NewBooking = () => {
   const [scheduleData, setScheduleData] = useState(null);
 
   // Get the data from the query parameters
-  const { fromStation, toStation, date, fromStationName, toStationName } =
+  const { fromStation, toStation, date, fromStationName, toStationName , minDate } =
     state.searchData;
   const [fromStationId, setFromStationId] = useState(fromStation);
   const [toStationId, setToStationId] = useState(toStation);
@@ -33,6 +33,7 @@ const NewBooking = () => {
     "Friday",
     "Saturday",
   ];
+
   const dayOfWeek = daysOfWeek[dateName.getDay()];
 
   // Get the day of the week from the date
@@ -218,6 +219,7 @@ const NewBooking = () => {
                   type="date"
                   value={newDate}
                   onChange={handleDateChange}
+                  min={minDate}
                 />
               </div>
 
