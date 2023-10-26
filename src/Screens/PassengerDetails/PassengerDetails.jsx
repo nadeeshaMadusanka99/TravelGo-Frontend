@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './PassengerDetails.scss';
-import { Col, Row, Container } from 'react-bootstrap';
+import { Col, Row, Container, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { MdOutlineTrain } from 'react-icons/md';
 import { useNavigate } from "react-router-dom";
@@ -30,9 +30,6 @@ const PassengerDetails = () => {
       [name]: value,
      
     });
-    console.log('Form Data:', formData);
-    console.log('form name,', formData.firstName);
-    console.log('form passengerInfo,', formData.title);
   };
 
   const handlePassengerChange = (e, index) => {
@@ -140,7 +137,7 @@ const PassengerDetails = () => {
           {passengerInfo.map((passenger, index) => (
             <Row key={index}>
               <Col xs={4} className='label-heading'>
-                <label htmlFor={`title-${index}`} className='label-names'> Passenger {index + 1}</label><br></br>
+                <label htmlFor={`title-${index}`} className='label-names-passenger'> Passenger {index + 1}</label><br></br>
               </Col>
               <Col xs={4} className='label-heading'>
                 <select id={`title-${index}`} className='inputs-age middle-selection' name="title" onChange={(e) => handlePassengerChange(e, index)}>
@@ -160,7 +157,7 @@ const PassengerDetails = () => {
               </Col>
               
               <Col xs={6} md={2}>
-                <button type="button" onClick={() => removePassenger(index)}>Remove</button>
+                <Button type="button" className='otherpassenger-btn' variant = "outline-primary" onClick={() => removePassenger(index)}>Remove</Button>
               </Col>
             </Row>
           ))}
@@ -169,7 +166,7 @@ const PassengerDetails = () => {
             If the passenger is not of legal adult age, please provide the guardian's identity number
           </p>
           <Col className="col-auto" xs={6} md={2}>
-                <button type="button" onClick={addPassenger}>Add Passenger</button>
+                <Button type="button" onClick={addPassenger} variant = "outline-primary" className='otherpassenger-btn '>Add Passenger</Button>
             </Col>
           <p>
             <strong>Mandatory fields are marked with</strong> <span className='important-fields'>*</span>
