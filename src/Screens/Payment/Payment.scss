@@ -107,8 +107,7 @@
 }
 .terms-check{
     display: flex;
-    margin-left: 9%;
-    max-width:88%;
+    align-self: center;
    
 
 }
@@ -143,6 +142,13 @@
         justify-content: center;
      
       
+    }
+    .terms-check{
+        display: flex;
+        margin-left: 9%;
+        max-width:88%;
+       
+    
     }
     .check-btn{
         margin-left: 0%;

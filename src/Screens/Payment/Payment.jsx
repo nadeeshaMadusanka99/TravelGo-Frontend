@@ -1,14 +1,120 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import "./Payment.scss";
 import { FaRegCreditCard, FaCcMastercard, FaPaypal } from "react-icons/fa";
 import { RiVisaLine } from "react-icons/ri";
 
+
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+        Terms and Conditions for Train Booking:
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h5>1. Booking and Reservation:</h5>
+        <p>
+         By using our train booking system, you agree to provide accurate and complete information when making a booking or reservation. This includes personal details, travel information, and payment information.
+        </p>
+        <h5>2. Payment:</h5>
+        <p>
+         All bookings must be paid for in full. We accept various payment methods, and your payment is subject to our payment gateway provider's terms and conditions. In case of payment failure or fraud, we reserve the right to cancel your booking.
+        </p>
+        <h5>3. Cancellation and Refund:</h5>
+        <p>
+         Cancellation policies vary depending on the type of ticket and the timing of the cancellation. Please review our cancellation and refund policy before making a booking. Refunds are subject to a processing fee.
+        </p>
+        <h5> 4. Travel Documents:</h5>
+        <p>
+        It is your responsibility to carry valid travel documents, including tickets, government-issued IDs, and any required visas. Failure to do so may result in denied boarding.
+        </p>
+        <h5>5. Baggage: </h5>
+        <p>
+         Our baggage policies and fees are available on our website. Make sure to adhere to baggage rules to avoid additional charges or inconvenience.
+        </p>
+        <h5>6. Changes and Rescheduling:</h5>
+        <p>
+         Changes to your booking are subject to availability and applicable fees. Contact our customer support for assistance with rescheduling.
+        </p>
+        <h5> 7. Safety and Conduct:</h5>
+        <p>
+          Passengers are expected to adhere to safety regulations and respectful behavior throughout the journey. Disruptive or unlawful conduct may result in removal from the train and legal consequences.
+        </p>
+        <h5>8.  and Schedule Changes: </h5>
+        <p>
+         Train schedules are subject to change due to various factors. We are not responsible for any inconvenience or additional costs due to schedule changes or delays.
+        </p>
+        <h5>9. Liability: </h5>
+        <p>
+        Our liability for any loss, damage, or injury during your journey is limited to the terms outlined in the applicable law. We recommend you consider travel insurance to cover unforeseen circumstances.
+        </p>
+        <h5>10. Amendments: </h5>
+        <p>
+        We reserve the right to modify these terms and conditions. Please check for updates on our website.
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={
+          props.onHide
+          }>Agree</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+
+
+
+
 const Payment = () => {
+  const [formData, setFormData] = useState({
+    cardNumber: "",
+    cardHolderName: "",
+    cardExpiryMM: "",
+    cardExpiryYY: "",
+    cardCVV: "",
+    saveCardDetails: false,
+  });
+const [terms,setTerms] = useState(false);
+const [modalShow, setModalShow] = React.useState(false);
+
+const handleTerms = (e) => {
+  setTerms(e.target.checked);
+  setModalShow(!terms);
+  console.log("terms",terms);
+  
+
+ 
+}
+//console.log("terms",terms);
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+    console.log("f data",formData);
+    setFormData({
+      ...formData,
+      [name]: newValue,
+    });
+  };
   return (
     <main className="payment">
-        {/* Payment box */}
+        {/* pop up window */}
+        <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+      {/* Payment box */}
       <Container className="payment-container">
         <Row className="content-inside-upper">
           <p className="payment-heading">Payment Method</p>
@@ -65,75 +171,107 @@ const Payment = () => {
             </p>
           </div>
           <form className="card-form">
-            <Row>
-              <Col className="card-number" xs={12} md={6}>
-                <div className="form-group">
-                  <label htmlFor="card-number" className="card-label">
-                    Card Number
-                  </label>
-                  <input type="text" className="card-inputs " id="card-number" />
-                </div>
-              </Col>
-              <Col className="card-holder" xs={12} md={6}>
-                <div className="form-group">
-                  <label htmlFor="card-holder" className="card-label">
-                    Card Holder's Name
-                  </label>
-                  <input type="text" className="card-inputs" id="card-holder" />
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={12} md={6}>
-                <div className="form-group">
-                  <label htmlFor="card-expiry" className="card-label">
-                    Card Expiry Date
-                  </label>
-                  <div className="d-flex">
-                    <input
-                      type="text"
-                      className="card-inputs-date"
-                      id="card-expiry-mm"
-                      placeholder="MM"
-                      maxLength="2"
-                    />
-                    <span className="slash">/</span>
-                    <input
-                      type="text"
-                      className="card-inputs-date"
-                      id="card-expiry-yy"
-                      placeholder="YY"
-                      maxLength="2"
-                    />
-                  </div>
-                </div>
-              </Col>
-              <Col xs={12} md={6}>
-                <div className="form-group ">
-                  <label htmlFor="card-cvv" className="card-label">
-                    CVV 
-                  </label>
+          <Row>
+            <Col className="card-number" xs={12} md={6}>
+              <div className="form-group">
+                <label htmlFor="card-number" className="card-label">
+                  Card Number
+                </label>
+                <input
+                  type="text"
+                  className="card-inputs"
+                  id="card-number"
+                  name="cardNumber"
+                  value={formData.cardNumber}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </Col>
+            <Col className="card-holder" xs={12} md={6}>
+              <div className="form-group">
+                <label htmlFor="card-holder" className="card-label">
+                  Card Holder's Name
+                </label>
+                <input
+                  type="text"
+                  className="card-inputs"
+                  id="card-holder"
+                  name="cardHolderName"
+                  value={formData.cardHolderName}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </Col>
+          </Row>
+         
+          <Row>
+            <Col xs={12} md={6}>
+              <div className="form-group">
+                <label htmlFor="card-expiry" className="card-label">
+                  Card Expiry Date
+                </label>
+                <div className="d-flex">
                   <input
-                    type="text"
-                    className="card-inputs-cvv"
-                    id="card-cvv"
+                    type="number"
+                    className="card-inputs-date"
+                    id="card-expiry-mm"
+                    name="cardExpiryMM"
+                    placeholder="MM"
+                    maxLength="2"
+                    value={formData.cardExpiryMM}
+                    onChange={handleInputChange}
+                    min="0"
+                    max="12"
+                  />
+                  <span className="slash">/</span>
+                  <input
+                    type="number"
+                    className="card-inputs-date"
+                    id="card-expiry-yy"
+                    name="cardExpiryYY"
+                    placeholder="YY"
+                    maxLength="2"
+                    value={formData.cardExpiryYY}
+                    onChange={handleInputChange}
+                    min="10"
                   />
                 </div>
-              </Col>
-            </Row>
-            <div className="form-group">
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="save-card"
-                />
-                <label className="form-check-label" htmlFor="save-card">
-                  Save Card Details
-                </label>
               </div>
+            </Col>
+            <Col xs={12} md={6}>
+              <div className="form-group">
+                <label htmlFor="card-cvv" className="card-label">
+                  CVV
+                </label>
+                <input
+                  type="number"
+                  className="card-inputs-cvv"
+                  id="card-cvv"
+                  name="cardCVV"
+                  value={formData.cardCVV}
+                  onChange={handleInputChange}
+                  max="999"
+                  min="0"
+                />
+              </div>
+            </Col>
+          </Row>
+          <div className="form-group">
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="save-card"
+                name="saveCardDetails"
+                checked={formData.saveCardDetails}
+                onChange={handleInputChange}
+              />
+              <label className="form-check-label" htmlFor="save-card">
+                Save Card Details
+              </label>
             </div>
-          </form>
+          </div>
+        </form>
         </div>
       </Col>
       </Container>
@@ -144,6 +282,7 @@ const Payment = () => {
           type="checkbox"
           className="form-check-input mx-2"
           id="agree-checkbox"
+          onChange={handleTerms}
         />
         <label className="terms-check-label" htmlFor="agree-checkbox">
           Agree to the terms & conditions
