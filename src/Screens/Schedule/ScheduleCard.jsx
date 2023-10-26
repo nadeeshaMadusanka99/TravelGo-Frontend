@@ -2,7 +2,6 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "./Schedule.scss";
-import { LinkContainer } from "react-router-bootstrap";
 
 const MapContainer = ({
   trainName,
@@ -12,6 +11,7 @@ const MapContainer = ({
   classes,
   frequencyName,
   loads,
+  onButtonClicked,
 }) => {
   const colors = [
     "#FFFF00",
@@ -31,6 +31,19 @@ const MapContainer = ({
   numbers.forEach((number, index) => {
     numberToColor[number] = colors[index];
   });
+  
+  const handleButtonClick = () => {
+    const dataToPass = {
+      trainName: trainName,
+      trainType: trainType,
+      trainNo: trainNo,
+      schedule: schedule,
+      classes: classes,
+      frequencyName: frequencyName,
+      loads: loads,
+    };  
+    onButtonClicked(dataToPass); // Call the callback function with the data
+  };
 
   return (
     <div className="map-container">
@@ -44,11 +57,13 @@ const MapContainer = ({
                 <div className="grey-para">Train No: {trainNo}</div>
                 <div>{frequencyName}</div>
                 <div className="grey-para">Classes: {classes}</div>
-                <LinkContainer to="/booking">
-                  <Button variant="primary" className="btn-book">
+
+                  
+                  <Button variant="primary" className="btn-book" onClick={handleButtonClick}>
                     Book Tickets
                   </Button>
-                </LinkContainer>
+
+
               </Col>
               <Col md="1" className="vertical-bar-container">
                 <div className="vertical-bar"></div>
