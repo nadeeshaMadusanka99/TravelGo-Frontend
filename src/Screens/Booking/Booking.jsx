@@ -13,20 +13,35 @@ const NewSchedule = () => {
   const [seatClassData, setSeatClassData] = useState({});
   const [wagonClasses, setWagonClasses] = useState([]);
   const [dataSchedule, setDataSchedule] = useState(null);
+  const [trainName, setTrainName] = useState("");
+  const [startStation, setStartStation] = useState("");
+  const [endStation, setEndStation] = useState("");
 
   const location = useLocation();
 
-  useEffect(() => {
-    const { state } = location;
-    const trainData = state && state.trainData;
-    if (trainData) {
-      setDataSchedule(trainData.data);
-      setWagonClasses(trainData.classes);
-    } else {
-      console.log("No trian data available");
+  async function fetchScheduleData() {
+    try {
+      const { state } = location;
+      const trainData = state && state.trainData;
+      if (trainData) {
+        setDataSchedule(trainData.data);
+        setWagonClasses(trainData.classes);
+        setTrainName(trainData.data.trainName);
+        setStartStation(trainData.data.schedule[1].name);
+        setEndStation(trainData.data.schedule[2].name);
+      } else {
+        console.log("No train data available");
+      }
+    } catch (error) {
+      console.log(error);
     }
+  }
+  
+  useEffect(() => {
+    fetchScheduleData();
   }, [location]);
 
+  
   //update total cost according to ticket count
   const updateCost = (ticketCost, newCount, count) => {
     setTotalCost((prevTotalCost) => {
@@ -74,8 +89,10 @@ const NewSchedule = () => {
       isReturnTicket,
       returndate,
       seatClassData,
+      trainName,
+      startStation,
+      endStation,
     };
-console.log(seatClassData);
     // Use the history object to navigate to the next page and pass the data as query parameters
     navigate("/seatview", { state: { submitData } });
   };

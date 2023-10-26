@@ -2,12 +2,11 @@ import { Button, Container } from "react-bootstrap";
 import ScheduleCard from "./ScheduleCard";
 import { useGetStationsQuery } from "../../slices/trainApiSlice";
 import { useEffect, useState } from "react";
-import { useLocation , useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useGetScheduleMutation } from "../../slices/trainApiSlice";
 import "./Schedule.scss";
 
 const NewBooking = () => {
-
   const { data, isLoading } = useGetStationsQuery();
   const location = useLocation();
   const { state } = location;
@@ -15,11 +14,19 @@ const NewBooking = () => {
   const [scheduleData, setScheduleData] = useState(null);
 
   // Get the data from the query parameters
-  const { fromStation, toStation, date, fromStationName, toStationName , minDate } = state.searchData;
+  const {
+    fromStation,
+    toStation,
+    date,
+    fromStationName,
+    toStationName,
+    minDate,
+  } = state.searchData;
 
   const [fromStationId, setFromStationId] = useState(fromStation);
   const [toStationId, setToStationId] = useState(toStation);
-  const [fromStationNameAssign, setFromStationNameAssign] = useState(fromStationName);
+  const [fromStationNameAssign, setFromStationNameAssign] =
+    useState(fromStationName);
   const [toStationNameAssign, setToStationNameAssign] = useState(toStationName);
   const [newDate, setNewDate] = useState(date);
 
@@ -75,11 +82,11 @@ const NewBooking = () => {
 
   // console.log("scheduleData: " , scheduleData);
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleButtonClicked = (data) => {
     const trainData = {
-      data : data,
+      data: data,
       classes: scheduleData[0].classes,
     };
 
@@ -157,7 +164,11 @@ const NewBooking = () => {
           arrival: arrivalTime,
           departure: departureTime,
         },
-        { name: fromStationNameAssign, arrival: arrivalTimeAtSource, departure: departureTimeAtSource },
+        {
+          name: fromStationNameAssign,
+          arrival: arrivalTimeAtSource,
+          departure: departureTimeAtSource,
+        },
         {
           name: toStationNameAssign,
           arrival: arrivalTimeAtDestination,
@@ -253,12 +264,11 @@ const NewBooking = () => {
         {scheduleData && scheduleData.length > 0 ? (
           <div>
             {trainData.map((data, index) => (
-
-              <ScheduleCard 
+              <ScheduleCard
                 onButtonClicked={handleButtonClicked}
-                key={index} 
-                {...data} />
-                
+                key={index}
+                {...data}
+              />
             ))}
           </div>
         ) : (
@@ -266,16 +276,18 @@ const NewBooking = () => {
             No train schedules available for this date. Please try another date.
           </p>
         )}
-        <div className="intensity-container">
-          <div className="crowd-intensity">
-            <div className="low-crowd">
-              <span className="low-arrow"></span>Low Crowd
-            </div>
-            <div className="high-crowd">
-              <span className="high-arrow"></span>High Crowd
+        {scheduleData && scheduleData.length > 0 && (
+          <div className="intensity-container">
+            <div className="crowd-intensity">
+              <div className="low-crowd">
+                <span className="low-arrow"></span>Low Crowd
+              </div>
+              <div className="high-crowd">
+                <span className="high-arrow"></span>High Crowd
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </main>
   );

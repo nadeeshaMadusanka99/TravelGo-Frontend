@@ -6,7 +6,7 @@
     justify-content: space-between; 
     align-items: center;
     height: 100vh;
-    overflow: hidden;    
+    // overflow: hidden;    
     .seat-view-container{
         display: flex;
         flex-direction: column;
@@ -38,14 +38,14 @@
     font-weight: weight(medium-l);
     margin:0 0 2% 0;
 }
-.edit-train-box{
-    color: $primary-color;
-    font-style: underline;
-    margin-left: 30%;
-    &:hover{
-        cursor: pointer;
-    }
-}
+// .edit-train-box{
+//     color: $primary-color;
+//     font-style: underline;
+//     margin-left: 30%;
+//     &:hover{
+//         cursor: pointer;
+//     }
+// }
 .box-train-icon{
     width: 9%;
     height: auto;
@@ -61,7 +61,8 @@
     margin-left: 2%;
 }
 .train-box {
-    margin: 8%;
+    margin-top: 10%;
+    margin-left: 10%;
     padding: 1%;
     border: 3px solid black;
     border-radius: 10px;

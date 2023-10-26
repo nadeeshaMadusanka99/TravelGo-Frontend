@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import useCounter from "./useCounter";
 import { Col, Container, Row, Button } from "react-bootstrap";
 import "./Booking.scss";
@@ -16,6 +17,7 @@ const ClassDetails = ({
   }) => {
     const { count, increment, decrement } = useCounter();
     const [booked,setBookedSeats]=useState(bookedSeats);
+
     const setSeatCount=(newCount,count)=>{
     if (newCount < 0) {
         setBookedSeats(booked)
