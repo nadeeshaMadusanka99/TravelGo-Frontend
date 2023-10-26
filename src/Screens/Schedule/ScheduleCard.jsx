@@ -31,7 +31,7 @@ const MapContainer = ({
   numbers.forEach((number, index) => {
     numberToColor[number] = colors[index];
   });
-  
+
   const handleButtonClick = () => {
     const dataToPass = {
       trainName: trainName,
@@ -41,7 +41,7 @@ const MapContainer = ({
       classes: classes,
       frequencyName: frequencyName,
       loads: loads,
-    };  
+    };
     onButtonClicked(dataToPass); // Call the callback function with the data
   };
 
@@ -58,12 +58,19 @@ const MapContainer = ({
                 <div>{frequencyName}</div>
                 <div className="grey-para">Classes: {classes}</div>
 
-                  
-                  <Button variant="primary" className="btn-book" onClick={handleButtonClick}>
+                {onButtonClicked ? ( // Check if onButtonClicked has props
+                  <Button
+                    variant="primary"
+                    className="btn-book"
+                    onClick={handleButtonClick}
+                  >
                     Book Tickets
                   </Button>
-
-
+                ) : (
+                  <Button variant="primary" className="btn-book" disabled>
+                    Book Tickets
+                  </Button>
+                )}
               </Col>
               <Col md="1" className="vertical-bar-container">
                 <div className="vertical-bar"></div>
