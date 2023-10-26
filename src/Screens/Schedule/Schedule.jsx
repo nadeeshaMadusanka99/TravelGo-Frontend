@@ -1,13 +1,13 @@
 import { Button, Container } from "react-bootstrap";
 import ScheduleCard from "./ScheduleCard";
 import { useGetStationsQuery } from "../../slices/trainApiSlice";
-import { LinkContainer } from "react-router-bootstrap";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation , useNavigate } from "react-router-dom";
 import { useGetScheduleMutation } from "../../slices/trainApiSlice";
 import "./Schedule.scss";
 
 const NewBooking = () => {
+
   const { data, isLoading } = useGetStationsQuery();
   const location = useLocation();
   const { state } = location;
@@ -15,7 +15,7 @@ const NewBooking = () => {
   const [scheduleData, setScheduleData] = useState(null);
 
   // Get the data from the query parameters
-  const { fromStation, toStation, date, fromStationName, toStationName } =
+  const { fromStation, toStation, date, fromStationName, toStationName , minDate } =
     state.searchData;
   const [fromStationId, setFromStationId] = useState(fromStation);
   const [toStationId, setToStationId] = useState(toStation);
@@ -23,6 +23,8 @@ const NewBooking = () => {
     useState(fromStationName);
   const [toStationNameAssign, setToStationNameAssign] = useState(toStationName);
   const [newDate, setNewDate] = useState(date);
+
+  // Get the day of the week from the date
   const dateName = new Date(newDate);
   const daysOfWeek = [
     "Sunday",
@@ -33,12 +35,12 @@ const NewBooking = () => {
     "Friday",
     "Saturday",
   ];
-  const dayOfWeek = daysOfWeek[dateName.getDay()];
 
-  // Get the day of the week from the date
+  const dayOfWeek = daysOfWeek[dateName.getDay()];
   const handleDateChange = (e) => {
     setNewDate(e.target.value);
   };
+
   const handleFromStation = (e) => {
     const selectedValue = e.target.value;
     const selectedOption = e.target.options[e.target.selectedIndex];
@@ -67,10 +69,16 @@ const NewBooking = () => {
       console.log(error);
     }
   }
-  console.log(scheduleData);
   useEffect(() => {
     fetchScheduleData();
   }, []);
+
+  const navigate = useNavigate();  
+
+  const handleButtonClicked = (data) => {
+    navigate("/booking", { state: { data } });
+  };
+
 
   let trainNo,
     trainName,
@@ -218,6 +226,7 @@ const NewBooking = () => {
                   type="date"
                   value={newDate}
                   onChange={handleDateChange}
+                  min={minDate}
                 />
               </div>
 
@@ -237,7 +246,12 @@ const NewBooking = () => {
         {scheduleData && scheduleData.length > 0 ? (
           <div>
             {trainData.map((data, index) => (
-              <ScheduleCard key={index} {...data} />
+
+              <ScheduleCard 
+                onButtonClicked={handleButtonClicked}
+                key={index} 
+                {...data} />
+                
             ))}
           </div>
         ) : (

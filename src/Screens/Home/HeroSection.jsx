@@ -12,9 +12,18 @@ const HeroSection = () => {
   const [date, setDate] = useState("");
   const [fromStationName, setFromStationName] = useState("");
   const [toStationName, setToStationName] = useState("");
-
+  
   const navigate = useNavigate();
-
+  
+  const getCurrentDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+  const [minDate, setMinDate] = useState(getCurrentDate());
+  
   //function to handle from station
   const handleFromStation = (e) => {
     const selectedValue = e.target.value;
@@ -45,6 +54,7 @@ const HeroSection = () => {
       date,
       fromStationName,
       toStationName,
+      minDate,
 
     };
     // console.log("searchData: ", searchData);
@@ -119,6 +129,7 @@ const HeroSection = () => {
                 placeholder="Date"
                 id="date-select"
                 onChange={handleDate}
+                min={minDate}
               />
             </div>
             <Button
