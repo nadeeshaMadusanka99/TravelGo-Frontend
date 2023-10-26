@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Col, Container, Row, Button, Form } from "react-bootstrap";
 import "./Booking.scss";
-import { LinkContainer } from "react-router-bootstrap";
 import ClassDetails from "./ClassDetails";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -18,6 +18,9 @@ const NewSchedule = () => {
   ];
   const [ticketCounts, setTicketCounts] = useState({ "": 0 });
   const [totalCost, setTotalCost] = useState(0);
+  const [isReturnTicket, setIsReturnTicket] = useState(false);
+  const [returndate, setDate] = useState("");
+  const [seatClassData, setSeatClassData] = useState({});
   
 
   //update total cost according to ticket count
@@ -54,7 +57,41 @@ const NewSchedule = () => {
       }
     });
   };
+  
+  const handleSeatCountChange = (seatClass, newCount) => {
+    // Update the seatClassData object with the new data
+    //console.log(`Seat Class: ${seatClass}, New Count: ${newCount}`);
+    setSeatClassData((prevData) => ({
+      ...prevData,
+      [seatClass]: newCount,
+    }));
+  };
 
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    // Convert the data to an object
+     const submitData = {
+     // fromStation,
+      isReturnTicket, 
+      returndate,
+      seatClassData,
+
+     };  
+   
+   
+    //console.log(submitData);
+     // Use the history object to navigate to the next page and pass the data as query parameters
+     navigate("/seatview",{state:{submitData}});
+
+  }
+
+  //Handling date input
+  const handleDate = (e) => {
+    setDate(e.target.value);
+  };
+  const currentDate = new Date();
+  const currentDateString = currentDate.toISOString().split('T')[0];
   
   return (
     <Container fluid="true" className="schedule-container">
@@ -179,9 +216,22 @@ const NewSchedule = () => {
             <Form className="radio-switch">
               <div className="d-flex justify-content-center align-items-center">
                 <label htmlFor="custom-switch">Return ticket?</label>
-                <Form.Check type="switch" id="custom-switch" />
+                <Form.Check 
+                type="switch" 
+                id="custom-switch"
+                checked={isReturnTicket}
+                onChange={() => setIsReturnTicket(!isReturnTicket)}
+                 />
               </div>
             </Form>
+            {isReturnTicket && (
+              <div className="d-flex justify-content-center align-items-center">
+              {/* Input field for return ticket data */}
+            <input type="date" 
+            placeholder="Enter return ticket data" 
+            onChange={handleDate} min={currentDateString}/>
+            </div>
+              )}
           </Col>
         </Row>
       </Container>
@@ -193,6 +243,7 @@ const NewSchedule = () => {
         bookedSeats="10"
         updateTicketCounts={updateTicketCounts}
         updateCost={updateCost}
+        onSeatCountChange={handleSeatCountChange}
       />
       <ClassDetails
         seatClass="Second Class"
@@ -202,6 +253,7 @@ const NewSchedule = () => {
         bookedSeats="26"
         updateTicketCounts={updateTicketCounts}
         updateCost={updateCost}
+        onSeatCountChange={handleSeatCountChange}
       />{" "}
       <ClassDetails
         seatClass="Third Class"
@@ -211,6 +263,7 @@ const NewSchedule = () => {
         bookedSeats="34"
         updateTicketCounts={updateTicketCounts}
         updateCost={updateCost}
+        onSeatCountChange={handleSeatCountChange}
 
       />
       <Container className="buttonContainer">
@@ -249,15 +302,15 @@ const NewSchedule = () => {
             </Row>
           </Col>
           <Col md="3" sm="12" className="book-btnc">
-            <LinkContainer to="/seatview">
+          
               <Button 
               variant="primary" 
               className="btnBook" 
-              //onClick={handleSubmit}
+              onClick={handleSubmit}
               >
                 Continue
               </Button>
-            </LinkContainer>
+            
           </Col>
         </Row>
       </Container>
