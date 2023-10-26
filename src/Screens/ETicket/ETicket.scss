@@ -85,3 +85,65 @@
 .main-row{
     margin:0;
 }
+@media (max-width: 1000px) {
+   
+    .eticket-container {
+       aspect-ratio:9/4 ;
+      
+     }
+     .content-text,.content-text-data{
+        font-size: 90%;
+     }
+  
+    
+    /* Add similar rules for other elements that need scaling */
+  }
+  @media (max-width: 774px) {
+   
+    .eticket-container {
+       aspect-ratio:9/4 ;
+      
+     }
+     .content-text,.content-text-data{
+        font-size: 70%;
+     }
+     .seat-text-data{
+        padding: 0;
+     }
+     .heading{
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+     }
+    }
+     @media (max-width: 400px) {
+   
+        .eticket-container {
+           aspect-ratio:9/4 ;
+          
+         }
+         .content-text,.content-text-data{
+            font-size: 50%;
+           margin: 0%;
+           padding: 0%;
+         }
+         .header-text{
+            font-size: 100%;
+         }
+         .seat-text-data{
+            padding: 0;
+         }
+         .logo-inside{
+           width: 150%;
+         }
+         .qr{
+            width:150%;
+         }
+  
+    
+    /* Add similar rules for other elements that need scaling */
+  }
+ 
+

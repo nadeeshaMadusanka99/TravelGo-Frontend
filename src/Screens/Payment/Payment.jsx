@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Col, Row, Container } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
 import "./Payment.scss";
 import { FaRegCreditCard, FaCcMastercard, FaPaypal } from "react-icons/fa";
 import { RiVisaLine } from "react-icons/ri";
 import MyVerticallyCenteredModal from "./MyVerticallyCenteredModal";
+import { useNavigate, useLocation }  from "react-router-dom";
+
 
 const Payment = () => {
   const [formData, setFormData] = useState({
@@ -42,6 +43,18 @@ const handlePopup = () => {
       ...formData,
       [name]: newValue,
     });
+  };
+const navigate= useNavigate();
+
+const handleSubmit = () => {
+    // Convert the data to an object
+    const submitData = {
+      // fromStation,
+      terms,
+    };
+   
+    // Use the history object to navigate to the next page and pass the data as query parameters
+    navigate("/eticket", { state: { submitData } });
   };
   return (
     <main className="payment">
@@ -239,11 +252,15 @@ const handlePopup = () => {
             <p className="total-value mt-2"> 3632.50 LKR</p>
           </Col>
           <Col xs={12} md={4} className="btncontainer">
-            <LinkContainer to="/eticket">
-              <button className="btn btn-primary  btn-lg check-btn">
+            
+              <button className="btn btn-primary 
+               btn-lg check-btn"
+               disabled={!terms}
+               onClick={handleSubmit}
+              >
                 Confirm and Pay
               </button>
-            </LinkContainer>
+            
           </Col>
         </Row>
       </Container>
