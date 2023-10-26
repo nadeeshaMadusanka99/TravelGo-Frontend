@@ -11,6 +11,7 @@ const ClassDetails = ({
     bookedSeats,
     updateTicketCounts,
     updateCost,
+    onSeatCountChange,
     
   }) => {
     const { count, increment, decrement } = useCounter();
@@ -27,6 +28,7 @@ const ClassDetails = ({
     else{
         setBookedSeats(parseInt(booked)+1);
     }
+    onSeatCountChange(seatClass, newCount);
 }
     
     return (
