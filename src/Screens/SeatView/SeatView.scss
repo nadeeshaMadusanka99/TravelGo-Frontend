@@ -99,6 +99,17 @@
     margin: 2% 15% 6% 10%;
    
 }
+.wagon-text{
+    //make the text center
+    text-align: center;
+    font-weight: weight(medium-s);
+    font-size: 1.4rem;
+    margin-bottom: 6%;
+}
+.wagon-text-span{
+    font-size: 1.6rem;
+    font-weight: weight(bold);
+}
 .wagon-row{
    width: 100%;
 }

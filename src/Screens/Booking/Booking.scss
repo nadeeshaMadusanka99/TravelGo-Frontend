@@ -212,6 +212,18 @@
   font-weight: weight(medium-s) !important;
   margin-bottom: 0;
 }
+.return-date{
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border: 2px solid $primary-color;
+  padding: 3%;
+  border-radius: 5px;
+}
+.return-ticket-text{
+  color: red;
+  font-weight: weight(medium-l);
+  margin-right: 4%;
+}
 
 @media (max-width: 720px) {
   .train-details {

@@ -121,7 +121,7 @@ const SeatView = () => {
 
                   return (
                     <div>
-                      <h4 id={wagonIndex}>Wagon {wagonIndex + 1} - {WagonClass}</h4>
+                      <h4 id={wagonIndex} className="wagon-text">Wagon {wagonIndex + 1} - <span className="wagon-text-span">{WagonClass}</span></h4>
                       <div className="wagon" >
                         <div className="wagon-row">
                           {/* Iterate through the rows of seats in the current wagon */}

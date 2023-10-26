@@ -15,12 +15,11 @@ const NewBooking = () => {
   const [scheduleData, setScheduleData] = useState(null);
 
   // Get the data from the query parameters
-  const { fromStation, toStation, date, fromStationName, toStationName , minDate } =
-    state.searchData;
+  const { fromStation, toStation, date, fromStationName, toStationName , minDate } = state.searchData;
+
   const [fromStationId, setFromStationId] = useState(fromStation);
   const [toStationId, setToStationId] = useState(toStation);
-  const [fromStationNameAssign, setFromStationNameAssign] =
-    useState(fromStationName);
+  const [fromStationNameAssign, setFromStationNameAssign] = useState(fromStationName);
   const [toStationNameAssign, setToStationNameAssign] = useState(toStationName);
   const [newDate, setNewDate] = useState(date);
 
@@ -37,6 +36,7 @@ const NewBooking = () => {
   ];
 
   const dayOfWeek = daysOfWeek[dateName.getDay()];
+
   const handleDateChange = (e) => {
     setNewDate(e.target.value);
   };
@@ -73,12 +73,19 @@ const NewBooking = () => {
     fetchScheduleData();
   }, []);
 
-  const navigate = useNavigate();  
+  // console.log("scheduleData: " , scheduleData);
+
+  const navigate = useNavigate(); 
 
   const handleButtonClicked = (data) => {
-    navigate("/booking", { state: { data } });
-  };
+    const trainData = {
+      data : data,
+      classes: scheduleData[0].classes,
+    };
 
+    console.log("train Data: ", trainData);
+    navigate("/booking", { state: { trainData } });
+  };
 
   let trainNo,
     trainName,
