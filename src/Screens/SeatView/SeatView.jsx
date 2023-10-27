@@ -9,13 +9,14 @@ import Button from "react-bootstrap/Button";
 import tableImage from "../../assets/TableDesign.png";
 import { useGetSeatsQuery } from "../../slices/trainApiSlice";
 import Loader from "../../components/Loader";
-import { useLocation } from "react-router-dom";
+import { useLocation , useNavigate } from "react-router-dom";
 
 const SeatView = () => {
   const [startStation, setStartStation] = useState("");
   const [endStation, setEndStation] = useState("");
   const [trainName, setTrainName] = useState("");
   const [wagonClasses, setWagonClasses] = useState([]);
+  const [trainData, setTrainData] = useState(null);
 
   const { data, isLoading } = useGetSeatsQuery({
     trainNo: 1001,
@@ -36,6 +37,7 @@ const SeatView = () => {
       setEndStation(trainData.endStation);
       setTrainName(trainData.trainName);
       setWagonClasses(trainData.seatClassData);
+      setTrainData(trainData);
     } else {
       console.log("No train data available");
     }
@@ -45,6 +47,16 @@ const SeatView = () => {
     fetchData();
   }, [location]);
   
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    const submitData ={
+      ...trainData,
+      seatBookingIDs: seatBookingIDs,
+    };
+    console.log(submitData);
+    navigate("/passengerdetails", { state: { submitData } });
+  }
   //take this from earlier page
   const wagons = [
     [1, 0],
@@ -235,11 +247,9 @@ const SeatView = () => {
               })}
             </div>
             <div className="button-container">
-              <LinkContainer to="/passengerdetails">
-                <Button variant="primary" className="button-proceed">
+                <Button variant="primary" className="button-proceed" onClick={handleSubmit}>
                   Proceed
                 </Button>
-              </LinkContainer>
             </div>
           </Col>
         </Row>

@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './PassengerDetails.scss';
 import { Col, Row, Container, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { MdOutlineTrain } from 'react-icons/md';
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useLocation} from "react-router-dom";
 
 const PassengerDetails = () => {
+
+  const [trainData, setTrainData] = useState(null);
+
   const [formData, setFormData] = useState({
     title: '',
     firstName: '',
@@ -14,7 +17,7 @@ const PassengerDetails = () => {
     nic: '',
     phone: '',
   });
-
+ 
   const [passengerInfo, setPassengerInfo] = useState([
     {
       title: '',
@@ -23,6 +26,23 @@ const PassengerDetails = () => {
     },
   ]);
 
+  const location = useLocation();
+  async function fetchData() {
+    const { state } = location;
+    const trainData = state && state.submitData;
+    if (trainData) {
+      setTrainData(trainData);
+    } else {
+      console.log("No train data available");
+    }
+  }
+  
+  useEffect(() => {
+    fetchData();
+  }, [location]);
+
+
+  
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -53,17 +73,12 @@ const PassengerDetails = () => {
   const handleSubmit = () => {
     
     const submitData = {
-        // fromStation,
+        trainData,
         formData, 
         passengerInfo,
         };  
     console.log('Submit Data:', submitData);   
-
     navigate("/pricebreakdown",{state:{submitData}});
-    // Access formData and passengerInfo for further processing
-    console.log('Form Data:', formData);
-    console.log('Passenger Info:', passengerInfo);
-    // You can perform any additional processing or submit this data as needed.
   };
 
   return (

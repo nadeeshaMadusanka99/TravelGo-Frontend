@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import "./Payment.scss";
 import { FaRegCreditCard, FaCcMastercard, FaPaypal } from "react-icons/fa";
@@ -8,6 +8,24 @@ import { useNavigate, useLocation }  from "react-router-dom";
 
 
 const Payment = () => {
+  const [trainData, setTrainData] = useState(null);
+
+  const location = useLocation();
+  async function fetchData() {
+    const { state } = location;
+    const trainData = state && state.submitData;
+    if (trainData) {
+      setTrainData(trainData);
+    } else {
+      console.log("No train data available");
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [location]);
+
+
   const [formData, setFormData] = useState({
     cardNumber: "",
     cardHolderName: "",
@@ -23,7 +41,7 @@ const handleTerms = (e) => {
   setTerms(e)
    
   
-  console.log("terms",terms);
+  // console.log("terms",terms);
 }
 const handlePopup = () => {
   if (terms === false) {
@@ -34,26 +52,25 @@ const handlePopup = () => {
   }
   
 };
-//console.log("terms",terms);
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : value;
-    console.log("f data",formData);
+    // console.log("f data",formData);
     setFormData({
       ...formData,
       [name]: newValue,
     });
   };
+
+
 const navigate= useNavigate();
 
 const handleSubmit = () => {
-    // Convert the data to an object
+
     const submitData = {
-      // fromStation,
+      trainData,
       terms,
     };
-   
-    // Use the history object to navigate to the next page and pass the data as query parameters
     navigate("/eticket", { state: { submitData } });
   };
   return (

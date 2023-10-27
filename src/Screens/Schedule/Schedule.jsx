@@ -7,6 +7,7 @@ import { useGetScheduleMutation } from "../../slices/trainApiSlice";
 import "./Schedule.scss";
 
 const NewBooking = () => {
+
   const { data, isLoading } = useGetStationsQuery();
   const location = useLocation();
   const { state } = location;
@@ -80,17 +81,16 @@ const NewBooking = () => {
     fetchScheduleData();
   }, []);
 
-  // console.log("scheduleData: " , scheduleData);
+  console.log("scheduleData: " , scheduleData);
 
   const navigate = useNavigate();
-
   const handleButtonClicked = (data) => {
     const trainData = {
       data: data,
       classes: scheduleData[0].classes,
+      scheduleData: scheduleData,
+      date: newDate,
     };
-
-    console.log("train Data: ", trainData);
     navigate("/booking", { state: { trainData } });
   };
 
@@ -161,8 +161,8 @@ const NewBooking = () => {
       schedule: [
         {
           name: trainStartStaion,
-          arrival: arrivalTime,
-          departure: departureTime,
+          arrival: "",
+          departure: arrivalTime,
         },
         {
           name: fromStationNameAssign,
@@ -176,7 +176,7 @@ const NewBooking = () => {
         },
         {
           name: trainEndStation,
-          arrival: "enter time",
+          arrival: departureTime,
           departure: "",
         },
       ],

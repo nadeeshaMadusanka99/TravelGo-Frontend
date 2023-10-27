@@ -61,6 +61,7 @@ const HeroSection = () => {
     // Use the history object to navigate to the next page and pass the data as query parameters
     navigate("/schedule", { state: { searchData } });
   };
+  
 
   return (
     <section className="hero-section">
