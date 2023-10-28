@@ -16,6 +16,8 @@ const NewSchedule = () => {
   const [trainName, setTrainName] = useState("");
   const [startStation, setStartStation] = useState("");
   const [endStation, setEndStation] = useState("");
+  const [scheduleData, setScheduleData] = useState(null);
+  const [date, setCurrentDate] = useState("");
 
   const location = useLocation();
 
@@ -29,6 +31,9 @@ const NewSchedule = () => {
         setTrainName(trainData.data.trainName);
         setStartStation(trainData.data.schedule[1].name);
         setEndStation(trainData.data.schedule[2].name);
+        setScheduleData(trainData.scheduleData);
+        setCurrentDate(trainData.date);
+
       } else {
         console.log("No train data available");
       }
@@ -36,7 +41,6 @@ const NewSchedule = () => {
       console.log(error);
     }
   }
-  
   useEffect(() => {
     fetchScheduleData();
   }, [location]);
@@ -85,14 +89,16 @@ const NewSchedule = () => {
   const handleSubmit = () => {
     // Convert the data to an object
     const submitData = {
-      // fromStation,
+      scheduleData,
       isReturnTicket,
       returndate,
       seatClassData,
       trainName,
       startStation,
       endStation,
+      date,
     };
+    console.log("submitData: ", submitData);
     // Use the history object to navigate to the next page and pass the data as query parameters
     navigate("/seatview", { state: { submitData } });
   };

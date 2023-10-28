@@ -62,7 +62,12 @@
 .important-tags{
    @extend .important-fields;
 }
-
+.label-names-passenger{
+    font-weight: weight(medium-l);
+    font-size: 18px;
+    margin-top: 1%;
+    
+}
 .inputs{
     border: 1.6px solid $primary-color;
     border-radius: 5px;
@@ -96,10 +101,19 @@
 .btn-passenger-details{
     height: 40px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 15%;
 }
 .btnC{
     justify-content: right;
 }
+.otherpassenger-btn{
+    // margin-top: 2%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    font-size: 0.8rem;
+}
+
 @media(max-width:920px){
     .passenger-details{
         overflow-y: scroll; 

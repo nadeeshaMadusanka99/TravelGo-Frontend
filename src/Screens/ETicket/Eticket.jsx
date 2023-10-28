@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./ETicket.scss";
 import { Col, Row, Container } from "react-bootstrap";
 import { BsFillCheckCircleFill } from "react-icons/bs";
@@ -7,8 +7,39 @@ import QR from "../../assets/QR.png";
 import { BsDownload } from "react-icons/bs";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas"; 
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Eticket = () => {
+  const [trainData, setTrainData] = useState(null);
+  const [startStation, setStartStation] = useState(null);
+  const [endStation, setEndStation] = useState(null);
+  const [mainUserFirstName, setMainUserFirstName] = useState(null);
+  const [mainUserLastName, setMainUserLastName] = useState(null);
+  const [trainNumber, setTrainNumber] = useState(null);
+  const [date, setDate] = useState(null);
+  const [arrivalTime, setArrivalTime] = useState(null);
+
+  const location = useLocation();
+  async function fetchData() {
+    const { state } = location;
+    const trainData = state && state.submitData;
+    if (trainData) {
+      setTrainData(trainData);
+      setTrainNumber(trainData.trainData.trainData.trainData.scheduleData[0].TrainNo);
+      setStartStation(trainData.trainData.trainData.trainData.startStation);
+      setEndStation(trainData.trainData.trainData.trainData.endStation);
+      setMainUserFirstName(trainData.trainData.trainData.formData.firstName);
+      setMainUserLastName(trainData.trainData.trainData.formData.lastName);
+      setDate(trainData.trainData.trainData.trainData.date);
+      setArrivalTime(trainData.trainData.trainData.trainData.scheduleData[0].ArrivalTimeAtSource);
+    } else {
+      console.log("No train data available");
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [location]);
   function downloadpdf() {
     const doc = new jsPDF({
       unit: "mm",
@@ -60,7 +91,7 @@ const Eticket = () => {
             <img className="logo-inside" src={logo} alt="logo"></img>
           </Col>
           <Col xs={7} className="d-flex align-items-center">
-            <p className="header-text text-center">FIRST CLASS</p>
+            <p className="header-text text-center">TRAVEL<span className="title-GO">GO {" "}</span> E - TICKET</p>
           </Col>
         </Row>
         <div className="content-inside px-4 pt-1">
@@ -71,7 +102,7 @@ const Eticket = () => {
                   <p className="content-text">NAME OF THE PASSENGER : </p>
                 </Col>
                 <Col xs={6} className="content-col">
-                  <p className="content-text-data"> MR. MAHINDA RAJAPAKSA</p>
+                  <p className="content-text-data"> MR. {mainUserFirstName} {mainUserLastName}</p>
                 </Col>
               </Row>
               <Row className="content-row">
@@ -79,13 +110,13 @@ const Eticket = () => {
                   <p className="content-text">FROM : </p>
                 </Col>
                 <Col xs={4} className="content-col">
-                  <p className="content-text-data">COLOMBO FORT</p>
+                  <p className="content-text-data">{startStation}</p>
                 </Col>
                 <Col xs={2} className="content-col">
                   <p className="content-text">TO : </p>
                 </Col>
                 <Col xs={3} className="content-col">
-                  <p className="content-text-data">AMBALANGODA</p>
+                  <p className="content-text-data">{endStation}</p>
                 </Col>
               </Row>
               <Row className="content-row">
@@ -93,13 +124,13 @@ const Eticket = () => {
                   <p className="content-text">DATE : </p>
                 </Col>
                 <Col xs={4} className="content-col">
-                  <p className="content-text-data">24/08/2023</p>
+                  <p className="content-text-data">{date}</p>
                 </Col>
                 <Col xs={2} className="content-col">
                   <p className="content-text">TIME : </p>
                 </Col>
                 <Col xs={3} className="content-col">
-                  <p className="content-text-data">8.00 AM</p>
+                  <p className="content-text-data">{arrivalTime}</p>
                 </Col>
               </Row>
               <Row className="content-row">
@@ -118,7 +149,7 @@ const Eticket = () => {
               </Row>
               <Row className="content-row">
                 <Col xs={3} className="content-col">
-                  <p className="content-text-data text-center">8057</p>
+                  <p className="content-text-data text-center">{trainNumber}</p>
                 </Col>
                 <Col xs={3} className="content-col">
                   <p className="content-text-data text-center">2</p>

@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './PassengerDetails.scss';
-import { Col, Row, Container } from 'react-bootstrap';
+import { Col, Row, Container, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { MdOutlineTrain } from 'react-icons/md';
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useLocation} from "react-router-dom";
 
 const PassengerDetails = () => {
+
+  const [trainData, setTrainData] = useState(null);
+
   const [formData, setFormData] = useState({
     title: '',
     firstName: '',
@@ -14,7 +17,7 @@ const PassengerDetails = () => {
     nic: '',
     phone: '',
   });
-
+ 
   const [passengerInfo, setPassengerInfo] = useState([
     {
       title: '',
@@ -23,6 +26,23 @@ const PassengerDetails = () => {
     },
   ]);
 
+  const location = useLocation();
+  async function fetchData() {
+    const { state } = location;
+    const trainData = state && state.submitData;
+    if (trainData) {
+      setTrainData(trainData);
+    } else {
+      console.log("No train data available");
+    }
+  }
+  
+  useEffect(() => {
+    fetchData();
+  }, [location]);
+
+
+  
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -30,9 +50,6 @@ const PassengerDetails = () => {
       [name]: value,
      
     });
-    console.log('Form Data:', formData);
-    console.log('form name,', formData.firstName);
-    console.log('form passengerInfo,', formData.title);
   };
 
   const handlePassengerChange = (e, index) => {
@@ -56,17 +73,12 @@ const PassengerDetails = () => {
   const handleSubmit = () => {
     
     const submitData = {
-        // fromStation,
+        trainData,
         formData, 
         passengerInfo,
         };  
     console.log('Submit Data:', submitData);   
-
     navigate("/pricebreakdown",{state:{submitData}});
-    // Access formData and passengerInfo for further processing
-    console.log('Form Data:', formData);
-    console.log('Passenger Info:', passengerInfo);
-    // You can perform any additional processing or submit this data as needed.
   };
 
   return (
@@ -140,7 +152,7 @@ const PassengerDetails = () => {
           {passengerInfo.map((passenger, index) => (
             <Row key={index}>
               <Col xs={4} className='label-heading'>
-                <label htmlFor={`title-${index}`} className='label-names'> Passenger {index + 1}</label><br></br>
+                <label htmlFor={`title-${index}`} className='label-names-passenger'> Passenger {index + 1}</label><br></br>
               </Col>
               <Col xs={4} className='label-heading'>
                 <select id={`title-${index}`} className='inputs-age middle-selection' name="title" onChange={(e) => handlePassengerChange(e, index)}>
@@ -160,7 +172,7 @@ const PassengerDetails = () => {
               </Col>
               
               <Col xs={6} md={2}>
-                <button type="button" onClick={() => removePassenger(index)}>Remove</button>
+                <Button type="button" className='otherpassenger-btn' variant = "outline-primary" onClick={() => removePassenger(index)}>Remove</Button>
               </Col>
             </Row>
           ))}
@@ -169,7 +181,7 @@ const PassengerDetails = () => {
             If the passenger is not of legal adult age, please provide the guardian's identity number
           </p>
           <Col className="col-auto" xs={6} md={2}>
-                <button type="button" onClick={addPassenger}>Add Passenger</button>
+                <Button type="button" onClick={addPassenger} variant = "outline-primary" className='otherpassenger-btn '>Add Passenger</Button>
             </Col>
           <p>
             <strong>Mandatory fields are marked with</strong> <span className='important-fields'>*</span>
